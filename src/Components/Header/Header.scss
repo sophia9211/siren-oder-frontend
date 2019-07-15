@@ -1,0 +1,55 @@
+.Header_box {
+  position: relative;
+  height: 80px;
+  width: 100%;
+  background-color: black;
+  .Header_angel_logo {
+    position: absolute;
+    background-image: url("../../Style/img/sLogo.png");
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    left: 30px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .Header_text_logo {
+    position: absolute;
+    background-image: url("../../Style/img/tLogo.png");
+    width: 20%;
+    height: 60px;
+    min-width: 200px;
+    max-width: 300px;
+    top: 10px;
+    left: 42%;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    @media only screen and(max-width: 1000px) {
+      left: 28%;
+    }
+  }
+  .Header_search_icon {
+    position: absolute;
+    background-image: url("../../Style/img/search-glass.png");
+    width: 33px;
+    height: 33px;
+    top: 25px;
+    right: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .Header_shopping_icon {
+    position: absolute;
+    background-image: url("../../Style/img/shopping-bag.png");
+    width: 33px;
+    height: 33px;
+    top: 25px;
+    right: 30px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
