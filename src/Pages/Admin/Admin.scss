@@ -1,0 +1,35 @@
+.root_header_admin {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  //   justify-content: space-between;
+  //   text-align: left;
+  align-items: baseline;
+  font-size: 20px;
+  padding-right: 10px;
+
+  .header_logo {
+    width: 100px;
+    margin-right: 5px;
+    border: 1px solid blue;
+  }
+
+  .wrap_admin_user_info {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    > span:nth-child(odd) {
+      background-color: aqua;
+    }
+    .admin_user_info {
+      margin-right: 5px;
+      border: 1px solid green;
+    }
+  }
+
+  .admin_login_button {
+    width: 10%;
+    font-size: 18px;
+  }
+}
