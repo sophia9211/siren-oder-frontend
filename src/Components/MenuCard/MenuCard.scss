@@ -1,0 +1,16 @@
+.root_menu_card {
+  display: flex;
+  width: 10%;
+  .wrap_menu_card_name {
+    .wrap_img_menu_card {
+      .img_menu_card {
+        border-radius: 50%;
+        border: 1px solid blue;
+        width: 100%;
+      }
+    }
+    .menu_name {
+      text-align: center;
+    }
+  }
+}

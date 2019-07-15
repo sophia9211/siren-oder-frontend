@@ -1,9 +1,35 @@
 import React, { Component } from "react";
 import "./Admin.scss";
+import MenuCard from "../../Components/MenuCard";
+import ameri from "../../Style/testImg/americano.jpg";
 
 class Admin extends Component {
   render() {
-    return <h1>헬로 가이즈!</h1>;
+    return (
+      <>
+        <header className="root_header_admin">
+          <div className="header_logo">adminPage</div>
+          <div className="wrap_admin_user_info">
+            <span className="admin_user_info">지점명</span>
+            <span className="admin_user_info">선릉역</span>
+            <span className="admin_user_info">직책명</span>
+            <span className="admin_user_info">매니져</span>
+            <span className="admin_user_info">관리자명</span>
+            <span className="admin_user_info">아이유</span>
+          </div>
+          <button className="admin_login_button">로그아웃</button>
+        </header>
+        <div className="root_body_admin">
+          <div className="wrap_order_list">
+            <div className="order_list_title">주문목록</div>
+            <div className="wrap_order_list_card">
+              <MenuCard menuImg={ameri} menuName="아메리카노" />
+            </div>
+            <div className="wrap_order_list_graph"></div>
+          </div>
+        </div>
+      </>
+    );
   }
 }
 
