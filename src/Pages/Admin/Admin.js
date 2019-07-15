@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Admin.scss";
+import MenuCard from "../../Components/MenuCard";
+import ameri from "../../Style/testImg/americano.jpg";
 
 class Admin extends Component {
   render() {
@@ -20,7 +22,9 @@ class Admin extends Component {
         <div className="root_body_admin">
           <div className="wrap_order_list">
             <div className="order_list_title">주문목록</div>
-            <div className="wrap_order_list_card"></div>
+            <div className="wrap_order_list_card">
+              <MenuCard menuImg={ameri} menuName="아메리카노" />
+            </div>
             <div className="wrap_order_list_graph"></div>
           </div>
         </div>
