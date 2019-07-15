@@ -1,9 +1,9 @@
-.Header_box {
+.header_box {
   position: relative;
   height: 80px;
   width: 100%;
   background-color: black;
-  .Header_angel_logo {
+  .header_angel_logo {
     position: absolute;
     background-image: url("../../Style/img/sLogo.png");
     width: 50px;
@@ -14,7 +14,7 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  .Header_text_logo {
+  .header_text_logo {
     position: absolute;
     background-image: url("../../Style/img/tLogo.png");
     width: 20%;
@@ -30,7 +30,7 @@
       left: 28%;
     }
   }
-  .Header_search_icon {
+  .header_search_icon {
     position: absolute;
     background-image: url("../../Style/img/search-glass.png");
     width: 33px;
