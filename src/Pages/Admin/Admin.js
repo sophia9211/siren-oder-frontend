@@ -23,7 +23,14 @@ class Admin extends Component {
           <div className="wrap_order_list">
             <div className="order_list_title">주문목록</div>
             <div className="wrap_order_list_card">
-              <MenuCard menuImg={ameri} menuName="아메리카노" />
+              <div className="wrap_menu_card_customer">
+                <MenuCard menuImg={ameri} menuName="아메리카노" />
+                <div className="oder_customer">닉네임 : 레오</div>
+                <div className="wrap_button">
+                  <button className="ready_order_btn">준비중</button>
+                  <button className="finish_order_btn">완료</button>
+                </div>
+              </div>
             </div>
             <div className="wrap_order_list_graph"></div>
           </div>
