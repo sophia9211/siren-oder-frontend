@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import "./AdminLogin.scss";
 import { connect } from "react-redux";
-<<<<<<< HEAD
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
 import AdminFooter from "Components/FixedFooter/AdminFooter";
-=======
-import AdminHeader from "../../../Components/Header/AdminHeader";
-import "./AdminLogin.scss";
-import SelectBox from "../../../Components/SelectBox";
-import AdminFooter from "../../../Components/FixedFooter/AdminFooter";
->>>>>>> 0cf3f89dd0ea691ea50159867823ca1876201930
 
 class AdminLogin extends Component {
   render() {
