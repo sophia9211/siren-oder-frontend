@@ -8,7 +8,7 @@ class MainLayout extends React.Component {
     return (
       <div>
         <Header />
-        {this.props.children}
+        <div className="main_contain_box">{this.props.children}</div>
         <FixedFooter />
       </div>
     );
