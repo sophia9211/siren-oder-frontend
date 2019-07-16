@@ -1,0 +1,23 @@
+.admin_footer {
+  width: 100%;
+  font-size: 40px;
+  position: fixed;
+  bottom: 0px;
+  line-height: 80px;
+
+  .wrap_next_order_price {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid black;
+    > div:nth-child(odd) {
+      width: 15%;
+      background-color: black;
+      color: white;
+    }
+    .month_sales_amount {
+      padding-right: 20px;
+    }
+  }
+}
