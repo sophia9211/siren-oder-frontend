@@ -1,0 +1,37 @@
+.wrap_order_list_card {
+  // border: 1px solid gray;
+  box-shadow: 5px 5px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  margin-top: 15px;
+
+  .order_list_box {
+    padding: 5px;
+    font-size: 40px;
+    line-height: 100px;
+    width: 5%;
+    margin-right: 5px;
+  }
+
+  .wrap_menu_card_customer {
+    padding: 5px;
+    font-size: 25px;
+    margin-left: 5%;
+    > div {
+      margin-bottom: 5px;
+    }
+    .wrap_button > button {
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      min-width: 100px;
+      width: 45%;
+      margin-right: 10px;
+      border: 2px solid black;
+    }
+    .wrap_menu_card_name {
+      display: flex;
+    }
+  }
+}
