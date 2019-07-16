@@ -1,8 +1,12 @@
+@import "Style/font/font.scss";
+
 .total_menu_category_box {
   width: 100%;
   height: 60px;
-
   border-bottom: 1px solid #505050;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 .total_menu_category_btn {
   display: inline-block;
@@ -11,6 +15,7 @@
   text-align: center;
   height: 100%;
   padding-top: 14px;
+  font-family: $homefont;
   font-size: 1rem;
   background-color: white;
   color: #333333;
@@ -44,6 +49,7 @@
   height: 100%;
   padding-top: 14px;
   font-size: 1rem;
+  font-family: $homefont;
   color: #333333;
   @media only screen and (max-width: 800px) {
     padding-top: 20px;
