@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
-import AdminFooter from "Components/FixedFooter/AdminFooter";
 
 class AdminLogin extends Component {
   render() {
@@ -13,6 +12,12 @@ class AdminLogin extends Component {
         <div className="root_admin_login">
           <AdminHeader />
           <div className="wrap_login_admin_info">
+            <div className="wrap_locations">
+              <div className="location_city">시/군/구</div>
+              <SelectBox />
+              <SelectBox />
+              <SelectBox />
+            </div>
             <div className="wrap_location_select_box">
               <div className="location_admin">지점/위치</div>
               <SelectBox
@@ -34,6 +39,7 @@ class AdminLogin extends Component {
               <input type="password" className="employees_numbers"></input>
             </div>
             <div className="wrap_admin_button">
+              <button className="kakaoLogin">Kakao 로그인</button>
               <button className="signup_btn">회원가입</button>
               <button className="login_btn">로그인</button>
             </div>

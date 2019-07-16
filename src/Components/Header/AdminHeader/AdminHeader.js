@@ -1,7 +1,7 @@
 import React from "react";
 import "./AdminHeader.scss";
-import logo from "../../../Style/img/sLogo.png";
-import title from "../../../Style/img/tLogo.png";
+import logo from "Style/img/sLogo.png";
+import title from "Style/img/tLogo.png";
 
 const AdminHeader = ({ children }) => {
   return (

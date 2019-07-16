@@ -16,6 +16,13 @@
   width: 600px;
   height: 300px;
 
+  .wrap_locations {
+    display: flex;
+    .wrap_locations {
+      font-size: 30px;
+    }
+  }
+
   .wrap_location_select_box,
   .wrap_position_select_box,
   .wrap_number_input_box,
@@ -48,6 +55,12 @@
       background: green;
       color: azure;
       margin-left: 15px;
+      font-weight: bold;
+    }
+    .kakaoLogin {
+      background-color: yellow;
+      color: #381e1f;
+      font-size: 14px;
       font-weight: bold;
     }
   }
