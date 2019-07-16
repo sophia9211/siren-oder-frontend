@@ -19,15 +19,15 @@
     background-image: url("../../Style/img/tLogo.png");
     width: 20%;
     height: 60px;
-    min-width: 200px;
+    min-width: 130px;
     max-width: 300px;
     top: 10px;
-    left: 42%;
+    left: 40%;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    @media only screen and(max-width: 1000px) {
-      left: 28%;
+    @media only screen and(max-width: 700px) {
+      left: 31%;
     }
   }
   .header_search_icon {
@@ -40,8 +40,11 @@
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    @media only screen and(max-width: 700px) {
+      display: none;
+    }
   }
-  .Header_shopping_icon {
+  .header_shopping_icon {
     position: absolute;
     background-image: url("../../Style/img/shopping-bag.png");
     width: 33px;
@@ -51,5 +54,8 @@
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    @media only screen and(max-width: 700px) {
+      background-image: url("../../Style/img/menu.png");
+    }
   }
 }
