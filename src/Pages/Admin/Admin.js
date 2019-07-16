@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Admin.scss";
-import MenuCard from "../../Components/MenuCard";
-import ameri from "../../Style/testImg/americano.jpg";
-import logo from "../../Style/img/sLogo.png";
-import title from "../../Style/img/tLogo.png";
-import AdminHeader from "../../Components/Header/AdminHeader";
-import OrderListCard from "../../Components/OrderListCard";
-import AdminFooter from "../../Components/FixedFooter/AdminFooter";
+import MenuCard from "Components/MenuCard";
+import ameri from "Style/testImg/americano.jpg";
+import logo from "Style/img/sLogo.png";
+import title from "Style/img/tLogo.png";
+import AdminHeader from "Components/Header/AdminHeader";
+import OrderListCard from "Components/OrderListCard";
+import AdminFooter from "Components/FixedFooter/AdminFooter";
 
 class Admin extends Component {
   state = {};
@@ -50,7 +50,11 @@ class Admin extends Component {
           </div>
           <div className="wrap_order_list_graph"></div>
         </div>
-        <AdminFooter nextOrder="카라멜 마끼야또 1잔" monthPrice="150,000원" todayPrice="50,000원" />
+        <AdminFooter
+          nextOrder="카라멜 마끼야또 1잔"
+          monthPrice="150,000원"
+          todayPrice="50,000원"
+        />
       </>
     );
   }

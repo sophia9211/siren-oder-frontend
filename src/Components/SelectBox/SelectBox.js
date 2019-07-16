@@ -16,9 +16,9 @@ class SelectBox extends Component {
     const { isClicked } = this.state;
     const { location1, location2, location3 } = this.props;
     return (
-      <div class="root_selectbox">
+      <div className="root_selectbox">
         <select
-          id={isClicked ? "select" : "clickSelected"}
+          className={isClicked ? "select" : "clickSelected"}
           onClick={this.handleClick}
         >
           <option selected>{location1}</option>
