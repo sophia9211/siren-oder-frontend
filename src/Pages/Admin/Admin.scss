@@ -1,50 +1,151 @@
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script:700|Nanum+Pen+Script&display=swap");
+
+* {
+  font-family: "Nanum Pen Script", cursive;
+}
 .root_header_admin {
   width: 100%;
-  border: 1px solid red;
+  height: 80px;
   display: flex;
-  //   justify-content: space-between;
-  //   text-align: left;
-  align-items: baseline;
   font-size: 20px;
-  padding-right: 10px;
+  padding: 10px;
+  position: relative;
+  top: 0px;
+  background-color: black;
 
   .header_logo {
-    width: 100px;
-    margin-right: 5px;
-    border: 1px solid blue;
+    // width: 100%;
+    margin-right: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    > img {
+      width: 50px;
+    }
+  }
+
+  .title_logo {
+    width: 100%;
+    display: flex;
+    > img {
+      width: 50%;
+      height: 60px;
+      margin-right: 20px;
+    }
+    .title_logo_name {
+      color: yellow;
+      font-size: 60px;
+      font-weight: 700;
+      font-family: "Dancing Script", cursive;
+    }
   }
 
   .wrap_admin_user_info {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-
-    > span:nth-child(odd) {
-      background-color: aqua;
+    color: white;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    > span:nth-child(even) {
+      background-color: white;
+      color: black;
     }
     .admin_user_info {
+      width: 20%;
       margin-right: 5px;
-      border: 1px solid green;
+      // border: 1px solid green;
     }
   }
 
   .admin_login_button {
     width: 10%;
-    font-size: 18px;
+    font-size: 30px;
+    border: 1px solid black;
+    background-color: yellow;
   }
 }
 
-.wrap_order_list_card {
+//바디
+.root_body_admin {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
   display: flex;
-  border: 1px solid red;
+  justify-content: space-between;
+  .wrap_order_list {
+    width: 40%;
 
-  .wrap_menu_card_customer {
-    // display: flex;
-    .wrap_button {
-      // display: flex;
+    .order_list_title {
+      font-size: 40px;
     }
-    .wrap_menu_card_name {
+
+    .wrap_order_list_card {
+      // border: 1px solid gray;
+      box-shadow: 5px 5px 5px;
       display: flex;
+      flex-wrap: wrap;
+      width: 70%;
+      margin-top: 15px;
+
+      .order_list_box {
+        padding: 5px;
+        font-size: 40px;
+        line-height: 100px;
+        width: 5%;
+        margin-right: 5px;
+      }
+
+      .wrap_menu_card_customer {
+        padding: 5px;
+        font-size: 30px;
+        margin-left: 5%;
+        > div {
+          margin-bottom: 5px;
+        }
+        .wrap_button > button {
+          background-color: black;
+          color: white;
+          font-size: 30px;
+          min-width: 100px;
+          width: 45%;
+          margin-right: 10px;
+          border: 2px solid black;
+        }
+        .wrap_menu_card_name {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .wrap_order_list_graph {
+    width: 40%;
+    border: 1px solid red;
+  }
+}
+
+.admin_footer {
+  width: 100%;
+  font-size: 40px;
+  position: absolute;
+  bottom: 0px;
+  line-height: 80px;
+
+  .wrap_next_order_price {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid black;
+    > div:nth-child(odd) {
+      width: 15%;
+      background-color: black;
+      color: white;
+    }
+    .month_sales_amount {
+      padding-right: 20px;
     }
   }
 }
