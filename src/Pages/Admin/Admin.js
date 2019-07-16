@@ -5,6 +5,10 @@ import ameri from "../../Style/testImg/americano.jpg";
 import logo from "../../Style/img/sLogo.png";
 import title from "../../Style/img/tLogo.png";
 class Admin extends Component {
+  state = {};
+
+  handleClick = () => {};
+
   render() {
     return (
       <>
@@ -62,8 +66,20 @@ class Admin extends Component {
                 <div className="order_food">주문내용 : 아메리카노 1잔</div>
                 <div className="order_customer">닉네임 : 레오</div>
                 <div className="wrap_button">
-                  <button className="ready_order_btn">준비중</button>
-                  <button className="finish_order_btn">완료</button>
+                  <button
+                    className="ready_order_btn"
+                    name="ready"
+                    onClick={this.handleClick}
+                  >
+                    준비중
+                  </button>
+                  <button
+                    className="finish_order_btn"
+                    name="complete"
+                    onClick={this.handleClick}
+                  >
+                    완료
+                  </button>
                 </div>
               </div>
             </div>
