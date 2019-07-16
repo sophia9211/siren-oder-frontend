@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import "./AdminLogin.scss";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
 import AdminFooter from "Components/FixedFooter/AdminFooter";
+=======
+import AdminHeader from "../../../Components/Header/AdminHeader";
+import "./AdminLogin.scss";
+import SelectBox from "../../../Components/SelectBox";
+import AdminFooter from "../../../Components/FixedFooter/AdminFooter";
+>>>>>>> 0cf3f89dd0ea691ea50159867823ca1876201930
 
 class AdminLogin extends Component {
   render() {
@@ -34,7 +41,6 @@ class AdminLogin extends Component {
               <input type="password" className="employees_numbers"></input>
             </div>
             <div className="wrap_admin_button">
-              <button className="signup_btn"></button>
               <button className="signup_btn">회원가입</button>
               <button className="login_btn">로그인</button>
             </div>
