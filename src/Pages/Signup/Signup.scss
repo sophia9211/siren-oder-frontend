@@ -1,23 +1,79 @@
+@import "Style/config.scss";
+
 .signup_container {
     max-width: 450px;
     min-width: 320px;
 
-    @media screen and (min-width : 450px) {
+    @media #{$phone} {
         margin: 0 auto;
     }
 
     .signup_container_main {
         display: flex;
         flex-direction: column;
-        margin-top: 100px;
+        margin-top: 5px;
+
+        .signup_close_btn {
+            width: 30px;
+            margin-bottom: 100px;
+
+            img {
+                width: 100%;
+            }
+        }
 
         .signup_logo {
             height: 80px;
             margin-left: 20px;
 
             img {
-                // max-width: 100%;
                 height: 100%;
+            }
+        }
+
+        .signup_text {
+            font-size: 22px;
+            margin-left: 20px;
+
+            p {
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .signup_checkbox {
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: 100;
+
+            .check_all {
+                border-bottom: 1px solid gray;
+
+                label {
+                    input {
+                        background-color: red;
+                    }
+                }
+            }
+
+            input {
+                background-color: red;
+            }
+        }
+
+        .signup_btn {
+            margin-top: 20px;
+
+            a {
+                display: block;
+                width: 100%;
+                border-style: none;
+                font-size: 18px;
+                background-color: #006633;
+                color: white;
+                padding: 10px;
+                outline: none;
+                cursor: pointer;
             }
         }
     }

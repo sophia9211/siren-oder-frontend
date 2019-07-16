@@ -4,6 +4,9 @@ import Admin from "./Pages/Admin";
 import Main from "./Pages/Main";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import SignupSecond from "./Pages/SignupSecond";
+// import SignupThird from "./Pages/SignupThird";
+// import SignupLast from "./Pages/SignupLast";
 import TotalMenu from "./Pages/TotalMenu";
 import AdminLogin from "./Pages/Admin/AdminLogin";
 import AdminSignup from "./Pages/Admin/AdminSignup";
@@ -17,6 +20,9 @@ class Routes extends Component {
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/signup/second" component={SignupSecond} />
+          {/* <Route exact path="/signup/third" component={SignupThird} /> */}
+          {/* <Route exact path="/signup/last" component={SignupLast} /> */}
           <Route exact path="/TotalMenu" component={TotalMenu} />
           <Route exact path="/admin/login" component={AdminLogin} />
           <Route exact path="/admin/signup" component={AdminSignup} />
