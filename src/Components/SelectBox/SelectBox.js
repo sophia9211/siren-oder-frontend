@@ -18,7 +18,7 @@ class SelectBox extends Component {
     return (
       <div className="root_selectbox">
         <select
-          className={isClicked ? "select" : "clickSelected"}
+          className={!isClicked ? "non_clickSelected" : "clickSelected"}
           onClick={this.handleClick}
         >
           <option selected>{location1}</option>

@@ -18,9 +18,26 @@
 
   .wrap_locations {
     display: flex;
-    .wrap_locations {
+
+    .location_city {
       font-size: 30px;
+      margin-right: 31.2px;
+      line-height: 57px;
     }
+    .non_clickSelected {
+      width: 124px;
+      margin-right: 15px;
+    }
+    .clickSelected {
+      @extend .non_clickSelected;
+    }
+  }
+
+  .location_admin,
+  .admin_position,
+  .admin_number,
+  .admin_password {
+    line-height: 57px;
   }
 
   .wrap_location_select_box,
@@ -29,7 +46,7 @@
   .wrap_password_input_box {
     display: flex;
     margin-bottom: 30px;
-
+    margin-top: 30px;
     > div {
       font-size: 30px;
       margin-right: 3%;

@@ -1,4 +1,4 @@
-.select {
+.non_clickSelected {
   width: 400px; /* 원하는 너비설정 */
   padding: 0.8em 0.5em; /* 여백으로 높이 설정 */
   background: url("../../Style/img/arrow.png") no-repeat 95% 50%; /* 네이티브 화살표를 커스텀 화살표로 대체 */
@@ -12,6 +12,6 @@
 }
 
 .clickSelected {
-  @extend .select;
+  @extend .non_clickSelected;
   //클릭시 화살표 방향바꾸기 알려주세요 예리님. 못찾겠어여 ㅠㅠ .
 }
