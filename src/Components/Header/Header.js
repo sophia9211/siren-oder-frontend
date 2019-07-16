@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   render() {
@@ -7,7 +8,9 @@ class Header extends React.Component {
       <header>
         <div className="header_box">
           <div className="header_angel_logo"></div>
-          <div className="header_text_logo"></div>
+          <Link to="./">
+            <div className="header_text_logo"></div>
+          </Link>
           <div className="header_search_icon"></div>
           <div className="header_shopping_icon"></div>
         </div>
