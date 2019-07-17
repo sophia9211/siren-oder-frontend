@@ -14,8 +14,10 @@
         margin-top: 5px;
 
         .signup_close_btn {
-            width: 30px;
+            width: 20px;
             margin-bottom: 100px;
+            margin-top: 5px;
+            margin-left: 5px;
 
             img {
                 width: 100%;
@@ -37,34 +39,36 @@
 
             p {
                 margin-top: 30px;
-                margin-bottom: 15px;
+                margin-bottom: 60px;
             }
         }
 
-        .signup_checkbox {
+        .signup_checkbox1 {
+            font-size: 14px;
+            font-weight: 100;
+            border-bottom: 1px solid rgb(197, 197, 197);
+
+            .check_all {
+                margin-left: 20px;
+                padding-bottom: 8px;
+            }
+        }
+
+        .signup_checkbox2 {
             margin-left: 20px;
             font-size: 14px;
             font-weight: 100;
+            margin-top: 8px;
 
-            .check_all {
-                border-bottom: 1px solid gray;
-
-                label {
-                    input {
-                        background-color: red;
-                    }
-                }
-            }
-
-            input {
-                background-color: red;
+            .check_se {
+                margin: 8px 0;
             }
         }
 
         .signup_btn {
-            margin-top: 20px;
+            margin-top: 40px;
 
-            a {
+            input {
                 display: block;
                 width: 100%;
                 border-style: none;
