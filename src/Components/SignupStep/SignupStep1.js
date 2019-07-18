@@ -14,13 +14,14 @@ class SignupStep1 extends Component {
   clickCheckAll = e => {
     this.setState({
       check_all: !this.state.check_all,
-      check_fir: !this.state.check_fir,
-      check_sec: !this.state.check_sec,
-      check_thir: !this.state.check_thir
+      check_fir: !this.state.check_all,
+      check_sec: !this.state.check_all,
+      check_thir: !this.state.check_all
     });
   };
 
   clickCheckFir = () => {
+    let forCheck = this.state.check_all;
     this.setState(
       {
         check_fir: !this.state.check_fir
@@ -32,19 +33,20 @@ class SignupStep1 extends Component {
           this.state.check_thir
         ) {
           this.setState({
-            check_all: !this.state.check_all
+            check_all: !forCheck
           });
         }
       }
     );
-    if (this.state.check_all) {
+    if (forCheck) {
       this.setState({
-        check_all: !this.state.check_all
+        check_all: !forCheck
       });
     }
   };
 
   clickCheckSec = () => {
+    let forCheck = this.state.check_all;
     this.setState(
       {
         check_sec: !this.state.check_sec
@@ -56,19 +58,20 @@ class SignupStep1 extends Component {
           this.state.check_thir
         ) {
           this.setState({
-            check_all: !this.state.check_all
+            check_all: !forCheck
           });
         }
       }
     );
-    if (this.state.check_all) {
+    if (forCheck) {
       this.setState({
-        check_all: !this.state.check_all
+        check_all: !forCheck
       });
     }
   };
 
   clickCheckThir = () => {
+    let forCheck = this.state.check_all;
     this.setState(
       {
         check_thir: !this.state.check_thir
@@ -80,14 +83,14 @@ class SignupStep1 extends Component {
           this.state.check_thir
         ) {
           this.setState({
-            check_all: !this.state.check_all
+            check_all: !forCheck
           });
         }
       }
     );
-    if (this.state.check_all) {
+    if (forCheck) {
       this.setState({
-        check_all: !this.state.check_all
+        check_all: !forCheck
       });
     }
   };

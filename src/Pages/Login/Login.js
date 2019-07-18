@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-import { API_URL } from "Config/Config.js";
+import { LOGO, CLOSE_BTN, API_URL } from "Config/Config.js";
 
 class Login extends Component {
   state = {
@@ -48,7 +48,7 @@ class Login extends Component {
       <div className="login_container">
         <div className="login_container_main">
           <div className="login_logo">
-            <img src="http://img.khan.co.kr/news/2017/09/20/l_2017092001002683700218211.jpg" />
+            <img src={LOGO} />
           </div>
           <div className="login_text1">
             <p>
