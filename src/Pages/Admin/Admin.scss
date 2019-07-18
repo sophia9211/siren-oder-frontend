@@ -13,6 +13,7 @@
   font-size: 20px;
   line-height: 60px;
   text-align: center;
+  background-color: white;
   > span:nth-child(even) {
     background-color: white;
     color: black;
@@ -33,23 +34,59 @@
 
 //바디
 .root_body_admin {
+  background-color: #f9f7fa;
   position: relative;
   width: 100%;
-  margin-top: 90px;
+  margin-top: 80px;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 
-  .wrap_order_list {
-    width: 40%;
-
-    .order_list_title {
-      font-size: 40px;
-    }
+  .order_list_title {
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 15px;
   }
+  .wrap_list_praph {
+    display: flex;
+    justify-content: space-between;
 
-  .wrap_order_list_graph {
-    width: 40%;
-    border: 1px solid red;
+    .wrap_order_list {
+      padding: 5px;
+      width: 30%;
+      height: 800px;
+      // border: 1px solid black;
+      overflow-y: auto;
+
+      // display: flex;
+      // flex-wrap: wrap;
+    }
+
+    .wrap_order_list_graph {
+      width: 70%;
+      height: 800px;
+      padding-right: 30px;
+      border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+
+      .wrap_day_month_sales_charts {
+        display: flex;
+      }
+      .wrap_realtime_timeoder {
+        display: flex;
+
+        .wrap_realtime_month {
+          width: 48.5%;
+          padding: 20px 10px 10px 10px;
+          margin-top: 30px;
+          background-color: white;
+          margin-left: 30px;
+          margin-right: 0px;
+          box-shadow: 0 0 13px 0 rgba(62, 44, 90, 0.08);
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,33 @@
+.root_day_sales_information {
+  width: 400px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 13px 0 rgba(62, 44, 90, 0.08);
+  background-color: white;
+  .visual_price {
+    position: relative;
+    left: 40px;
+    top: 85px;
+  }
+
+  .wrap_title_visual_price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    > .title_visual_name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #bbbbbb;
+    }
+
+    > .title_visual_total_price {
+      margin-top: 10px;
+      font-size: 25px;
+    }
+  }
+}
