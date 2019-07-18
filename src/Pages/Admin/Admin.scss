@@ -66,13 +66,31 @@
       width: 70%;
       height: 800px;
       padding-right: 30px;
-      border: 1px solid red;
       display: flex;
       flex-direction: column;
       overflow-y: scroll;
 
       .wrap_day_month_sales_charts {
         display: flex;
+        .wrap_popular_legend_op {
+          display: flex;
+        }
+        .wrap_legends {
+          position: relative;
+          height: 100px;
+          left: 100px;
+          top: 20px;
+          .wrap_legend {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            display: flex;
+            .legend_size {
+              width: 20px;
+              height: 20px;
+              margin-right: 5px;
+            }
+          }
+        }
       }
       .wrap_realtime_timeoder {
         display: flex;
@@ -86,6 +104,14 @@
           margin-right: 0px;
           box-shadow: 0 0 13px 0 rgba(62, 44, 90, 0.08);
         }
+      }
+      .wrap_per_month_price {
+        box-shadow: 0 0 13px 0 rgba(62, 44, 90, 0.08);
+        background-color: white;
+        width: 97.5%;
+        margin-top: 30px;
+        margin-left: auto;
+        padding: 20px 10px 10px 10px;
       }
     }
   }

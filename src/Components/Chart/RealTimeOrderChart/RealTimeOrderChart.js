@@ -7,7 +7,7 @@ class RealTimeOrderChart extends Component {
     console.log(value);
     let ctx = document.getElementsByClassName("realtime_canvas")[0];
     let realtimeOrder = new Chart(ctx, {
-      type: "bar",
+      type: "line",
       data: {
         labels: [
           "7시-9시",
@@ -31,16 +31,7 @@ class RealTimeOrderChart extends Component {
               value["timeToValue"]["19to21"],
               value["timeToValue"]["21to23"]
             ],
-            backgroundColor: [
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)",
-              "rgba(34, 150, 243)"
-            ],
+            backgroundColor: ["rgba(194, 72, 49,0.2)"],
             borderColor: ["rgba(34, 150, 243)"],
             borderWidth: 1
           }

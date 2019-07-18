@@ -46,3 +46,27 @@ export const MONTH_SALES_PRICE = {
   month_price_percent: Math.floor((MonthPrice / 300000000) * 100),
   month_price: MonthPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 };
+
+export const POPULAR_ITEM = {
+  name: ["아메리카노", "카페라떼", "홍차", "마끼아또", "콜드블루"],
+  amount: [
+    Math.floor(Math.random() * 20) + 1,
+    Math.floor(Math.random() * 20) + 1,
+    Math.floor(Math.random() * 20) + 1,
+    Math.floor(Math.random() * 20) + 1,
+    Math.floor(Math.random() * 20) + 1
+  ]
+};
+
+export const MONTH_PRICE = {
+  month: ["1월", "2월", "3월", "4월", "5월", "6월", "7월"],
+  price: [
+    Math.floor(Math.random() * 300000000) + 1,
+    Math.floor(Math.random() * 300000000) + 1,
+    Math.floor(Math.random() * 300000000) + 1,
+    Math.floor(Math.random() * 300000000) + 1,
+    Math.floor(Math.random() * 300000000) + 1,
+    Math.floor(Math.random() * 300000000) + 1,
+    MonthPrice
+  ]
+};

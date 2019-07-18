@@ -12,7 +12,6 @@ const SalesInformation = ({
     <div className="root_day_sales_information">
       <div className="wrap_num_sales_chart">
         <span className="visual_price">{visualPrice}</span>
-
         {children}
       </div>
       <div className="wrap_title_visual_price">

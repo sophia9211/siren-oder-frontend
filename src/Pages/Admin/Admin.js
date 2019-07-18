@@ -13,17 +13,22 @@ import DaySalesChart from "Components/Chart/DaySalesChart/DaySalesChart";
 import MonthSalesChart from "Components/Chart/MonthSalesChart/MonthSalesChart";
 import RealTimeOrderChart from "Components/Chart/RealTimeOrderChart/RealTimeOrderChart";
 import TimeOrderAmountChart from "Components/Chart/TimeOrderAmountChart/TimeOrderAmountChart";
+import PopularItemChart from "Components/Chart/PopularItemChart/PopularItemChart";
 import { REALTIMEPRICE } from "testData/mockGraph";
 import { DAY_SALES_PRICE } from "testData/mockGraph";
 import { MONTH_SALES_PRICE } from "testData/mockGraph";
 import { ORDERAMOUNT } from "testData/mockGraph";
+import { POPULAR_ITEM } from "testData/mockGraph";
+import { MONTH_PRICE } from "testData/mockGraph";
 
 class Admin extends Component {
   state = {
     realtimeValue: REALTIMEPRICE,
     daySalesPrice: DAY_SALES_PRICE,
     monthSalesPrice: MONTH_SALES_PRICE,
-    orderAmount: ORDERAMOUNT
+    orderAmount: ORDERAMOUNT,
+    popularItem: POPULAR_ITEM,
+    monthPrice: MONTH_PRICE
   };
 
   componentDidMount() {
@@ -165,7 +170,6 @@ class Admin extends Component {
                     todayPrice={this.state.daySalesPrice["day_price_percent"]}
                   />
                 </SalesInforamtion>
-
                 <SalesInforamtion
                   visualPrice={
                     this.state.monthSalesPrice["month_price_percent"]
@@ -184,6 +188,59 @@ class Admin extends Component {
                     }
                   />
                 </SalesInforamtion>
+
+                <SalesInforamtion>
+                  <div className="wrap_popular_legend_op">
+                    <PopularItemChart itemList={this.state.popularItem} />
+                    <div className="wrap_legends">
+                      <div className="wrap_legend">
+                        <div
+                          className="legend_size"
+                          style={{ backgroundColor: "rgba(253, 194, 64)" }}
+                        ></div>
+                        <span className="legend_font">
+                          {this.state.popularItem.name[0]}
+                        </span>
+                      </div>
+                      <div className="wrap_legend">
+                        <div
+                          className="legend_size"
+                          style={{ backgroundColor: "rgba(90, 202, 184)" }}
+                        ></div>
+                        <span className="legend_font">
+                          {this.state.popularItem.name[1]}
+                        </span>
+                      </div>
+                      <div className="wrap_legend">
+                        <div
+                          className="legend_size"
+                          style={{ backgroundColor: "rgba(211, 103, 104)" }}
+                        ></div>
+                        <span className="legend_font">
+                          {this.state.popularItem.name[2]}
+                        </span>
+                      </div>
+                      <div className="wrap_legend">
+                        <div
+                          className="legend_size"
+                          style={{ backgroundColor: "rgba(176, 165, 202)" }}
+                        ></div>
+                        <span className="legend_font">
+                          {this.state.popularItem.name[3]}
+                        </span>
+                      </div>
+                      <div className="wrap_legend">
+                        <div
+                          className="legend_size"
+                          style={{ backgroundColor: "rgba(13, 123, 213)" }}
+                        ></div>
+                        <span className="legend_font">
+                          {this.state.popularItem.name[4]}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </SalesInforamtion>
               </div>
               <div className="wrap_realtime_timeoder">
                 <div className="wrap_realtime_month">
@@ -192,6 +249,9 @@ class Admin extends Component {
                 <div className="wrap_realtime_month">
                   <TimeOrderAmountChart amount={this.state.orderAmount} />
                 </div>
+              </div>
+              <div className="wrap_per_month_price">
+                <MonthPriceChart monthPrice={this.state.monthPrice} />
               </div>
             </section>
           </div>
