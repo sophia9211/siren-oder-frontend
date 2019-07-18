@@ -1,76 +1,71 @@
 import React, { Component } from "react";
 import "./Store.scss";
 import { ICON } from "Config/Config.js";
+import "./Overlay";
+import Overlay from "./Overlay";
 
 class Store extends Component {
   componentDidMount() {
-    var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+    var mapContainer = document.getElementById("map"), // 지도의 중심좌표
       mapOption = {
-        center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new window.kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
       };
 
     var map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다
-    var positions = [
-      {
-        content: "<div>카카오</div>",
-        latlng: new window.kakao.maps.LatLng(33.450705, 126.570677)
-      },
-      {
-        content: "<div>생태연못</div>",
-        latlng: new window.kakao.maps.LatLng(33.450936, 126.569477)
-      },
-      {
-        content: "<div>텃밭</div>",
-        latlng: new window.kakao.maps.LatLng(33.450879, 126.56994)
-      },
-      {
-        content: "<div>근린공원</div>",
-        latlng: new window.kakao.maps.LatLng(33.451393, 126.570738)
-      }
-    ];
+    // 지도에 마커를 표시합니다
+    var marker = new window.kakao.maps.Marker({
+      map: map,
+      position: new window.kakao.maps.LatLng(33.450701, 126.570667),
+      clickable: true
+    });
 
-    for (var i = 0; i < positions.length; i++) {
-      // 마커를 생성합니다
-      var marker = new window.kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng // 마커의 위치
-      });
+    // 커스텀 오버레이에 표시할 컨텐츠 입니다
+    // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+    // 별도의 이벤트 메소드를 제공하지 않습니다
+    var content =
+      '<div class="wrap">' +
+      '    <div class="info">' +
+      '        <div class="title">' +
+      "            카카오 스페이스닷원" +
+      '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+      "        </div>" +
+      '        <div class="body">' +
+      '            <div class="img">' +
+      '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+      "           </div>" +
+      '            <div class="desc">' +
+      '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
+      '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
+      '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+      "            </div>" +
+      "        </div>" +
+      "    </div>" +
+      "</div>";
 
-      // 마커에 표시할 인포윈도우를 생성합니다
-      var infowindow = new window.kakao.maps.InfoWindow({
-        content: positions[i].content // 인포윈도우에 표시할 내용
-      });
+    // this.test = () => {
+    //   <div>111</div>;
+    // };
 
-      // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-      // 이벤트 리스너로는 클로저를 만들어 등록합니다
-      // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-      window.kakao.maps.event.addListener(
-        marker,
-        "mouseover",
-        makeOverListener(map, marker, infowindow)
-      );
-      window.kakao.maps.event.addListener(
-        marker,
-        "mouseout",
-        makeOutListener(infowindow)
-      );
-    }
+    // 마커 위에 커스텀오버레이를 표시합니다
+    // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+    var overlay = new window.kakao.maps.CustomOverlay({
+      content: this.test(),
+      map: map,
+      position: marker.getPosition()
+    });
 
-    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-    function makeOverListener(map, marker, infowindow) {
-      return function() {
-        infowindow.open(map, marker);
-      };
-    }
+    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+    window.kakao.maps.event.addListener(marker, "click", function() {
+      overlay.setMap(map);
+      console.log(1);
+    });
 
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-    function makeOutListener(infowindow) {
-      return function() {
-        infowindow.close();
-      };
+    //커스텀 오버레이를 닫기 위해 호출되는 함수입니다
+    function closeOverlay() {
+      overlay.setMap(null);
+      console.log(11);
     }
   }
 
