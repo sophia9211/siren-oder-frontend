@@ -11,10 +11,33 @@
     justify-content: space-between;
     text-align: center;
     border: 1px solid black;
+
     > div:nth-child(odd) {
-      width: 15%;
+      width: 22%;
       background-color: black;
       color: white;
+    }
+
+    > div:nth-child(even) {
+      width: 18%;
+      background-color: white;
+      color: black;
+    }
+
+    > div:first-child {
+      width: 12%;
+      background-color: black;
+      color: white;
+    }
+    > div:first-child {
+      width: 12%;
+      background-color: black;
+      color: white;
+    }
+    > div:nth-child(2) {
+      width: 25%;
+      background-color: white;
+      color: black;
     }
     .month_sales_amount {
       padding-right: 20px;

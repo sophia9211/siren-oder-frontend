@@ -3,6 +3,7 @@ import "./TotalMenu.scss";
 import MainLayout from "Layouts/MainLayout";
 import CategoryButton from "Components/CategoryButton";
 import MenuTicket from "Components/MenuTicket";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 
 const sampleData = [
@@ -59,6 +60,8 @@ sampleData.map((el, idx) => {
   myData[el.categoryId] = el.subCategorys;
   console.log(myData);
 });
+=======
+>>>>>>> e25dd27fa04a02afbc35b53c0c9a59dc36830ef0
 
 class TotalMenu extends React.Component {
   state = {
