@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./AdminLogin.scss";
 import { connect } from "react-redux";
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
+import { withRouter } from "react-router-dom";
 
 class AdminLogin extends Component {
   render() {
@@ -13,8 +13,7 @@ class AdminLogin extends Component {
           <AdminHeader />
           <div className="wrap_login_admin_info">
             <div className="wrap_locations">
-              <div className="location_city">시/군/구</div>
-              <SelectBox />
+              <div className="location_city">군/구</div>
               <SelectBox />
               <SelectBox />
             </div>
@@ -45,7 +44,6 @@ class AdminLogin extends Component {
             </div>
           </div>
         </div>
-        <footer className="admin_login_footer"></footer>
       </>
     );
   }
