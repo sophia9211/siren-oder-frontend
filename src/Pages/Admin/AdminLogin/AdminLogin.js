@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./AdminLogin.scss";
 import { connect } from "react-redux";
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
+import { withRouter } from "react-router-dom";
 
 class AdminLogin extends Component {
   render() {
