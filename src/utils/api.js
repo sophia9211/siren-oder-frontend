@@ -1,23 +1,28 @@
 import { API_URL } from "Config/Config.js";
 import axios from "axios";
 
-const post = ({ path, body }) => {
-  fetch(`${API_URL}/${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ body })
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    });
-};
+// const post = ({ path, body }) => {
+//   fetch(`${API_URL}/${path}`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ body })
+//   })
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data);
+//     });
+// };
 
-export const postA = ({ path, body }) => {
+export const post = ({ path, body }) => {
   axios
     .post(
       `${API_URL}/${path}`,
-      body
+      body,
+      {
+        validateStatus: function(status) {
+          return true;
+        }
+      }
       // ,{headers: { Authorization: localStorage.getItem() || "" }}
     )
     .then(function(response) {
@@ -32,7 +37,12 @@ export const get = ({ path, body }) => {
   axios
     .get(
       `${API_URL}/${path}`,
-      body
+      body,
+      {
+        validateStatus: function(status) {
+          return true;
+        }
+      }
       // ,{headers: { Authorization: localStorage.getItem() || "" }}
     )
     .then(function(response) {

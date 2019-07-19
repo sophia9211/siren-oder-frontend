@@ -3,7 +3,7 @@ import SignupStep1 from "Components/SignupStep/SignupStep1";
 import SignupStep2 from "Components/SignupStep/SignupStep2";
 import SignupStep3 from "Components/SignupStep/SignupStep3";
 import { API_URL } from "Config/Config.js";
-import { postA } from "utils/api";
+import { post, get } from "utils/api";
 
 class Signup extends Component {
   state = {
@@ -16,6 +16,12 @@ class Signup extends Component {
   };
 
   callNext = e => {
+    get({
+      path: "store/sido"
+    }).then(res => {
+      console.log(res.data);
+    });
+
     this.setState({
       step: this.state.step + 1
     });
@@ -23,7 +29,7 @@ class Signup extends Component {
 
   clickSign = e => {
     e.preventDefault();
-    postA({
+    post({
       path: "account",
       body: {
         email: this.state.email,

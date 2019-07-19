@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
 import { LOGO, CLOSE_BTN, API_URL } from "Config/Config.js";
-import { postA } from "utils/api";
+import { post } from "utils/api";
 
 class Login extends Component {
   state = {
@@ -12,7 +12,7 @@ class Login extends Component {
 
   clickLogin = e => {
     e.preventDefault();
-    postA({
+    post({
       path: "account/login",
       body: { email: this.state.email, password: this.state.password }
     });
