@@ -1,0 +1,31 @@
+@import "Style/config.scss";
+
+.signup_container {
+    min-width: 320px;
+    max-width: 800px;
+
+    @media #{$phone} {
+        margin: 0 auto;
+        color: red;
+    }
+
+    @media #{$desktop} {
+        margin: 0 auto;
+        color: blue;
+    }
+
+    .signup_container_flex {
+        display: flex;
+        flex-direction: column;
+
+        .signup_close_btn {
+            width: 25px;
+            margin-top: 5px;
+            margin-left: 5px;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

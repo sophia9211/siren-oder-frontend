@@ -98,12 +98,12 @@ class SignupStep1 extends Component {
   render() {
     return (
       <div className="signup_container">
-        <div className="signup_container_main">
+        <div className="signup_container_flex">
           <Link to="/login" className="signup_close_btn">
-            <img src={CLOSE_BTN} />
+            <img src={CLOSE_BTN} alt="닫기" />
           </Link>
           <div className="signup_logo">
-            <img src={LOGO} />
+            <img src={LOGO} alt="로고" />
           </div>
           <div className="signup_text">
             <p>

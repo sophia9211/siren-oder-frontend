@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SignupStep1 from "Components/SignupStep/SignupStep1";
 import SignupStep2 from "Components/SignupStep/SignupStep2";
 import SignupStep3 from "Components/SignupStep/SignupStep3";
+import "./Signup.scss";
 import { API_URL } from "Config/Config.js";
 
 class Signup extends Component {
