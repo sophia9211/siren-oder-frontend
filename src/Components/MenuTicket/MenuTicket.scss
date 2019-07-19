@@ -29,7 +29,10 @@
 .menu_tiket_contain_box:nth-child(even) {
   background-color: #f6f5ef;
 }
-
+.menu_tiket_contain_box:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 .img_menu_none {
   width: 0;
   height: 0;
