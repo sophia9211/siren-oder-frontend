@@ -5,6 +5,7 @@ import Main from "./Pages/Main";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Store from "./Pages/Store";
+import History from "./Pages/History";
 import Mypage from "./Pages/Mypage";
 import TotalMenu from "./Pages/TotalMenu";
 import AdminLogin from "./Pages/Admin/AdminLogin";
@@ -20,6 +21,7 @@ class Routes extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/store" component={Store} />
+          <Route exact path="/history" component={History} />
           <Route exact path="/mypage" component={Mypage} />
           <Route exact path="/TotalMenu" component={TotalMenu} />
           <Route exact path="/admin/login" component={AdminLogin} />
