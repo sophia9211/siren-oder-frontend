@@ -12,8 +12,7 @@ class AdminSignup extends Component {
           <AdminHeader />
           <div className="wrap_login_admin_info">
             <div className="wrap_locations">
-              <div className="location_city">시/군/구</div>
-              <SelectBox />
+              <div className="location_city">군/구</div>
               <SelectBox />
               <SelectBox />
             </div>
@@ -55,7 +54,6 @@ class AdminSignup extends Component {
             </div>
           </div>
         </div>
-        <footer className="admin_login_footer"></footer>
       </>
     );
   }

@@ -4,7 +4,7 @@
   // justify-content: space-around;
   width: 95%;
   background-color: white;
-  margin-top: 15px;
+  margin-bottom: 15px;
   box-shadow: 0 0 13px 0 rgba(62, 44, 90, 0.08);
   // border: 1px solid black;
   .order_list_box {
@@ -18,6 +18,7 @@
 
   .wrap_menu_card_customer {
     // border: 1px solid blue;
+    margin-top: 10px;
     width: 100%;
     padding: 15px;
     font-size: 25px;
@@ -45,12 +46,17 @@
     .wrap_menu_card_name {
       display: flex;
     }
+    .order_food {
+      font-size: 19px;
+      font-weight: bold;
+    }
     > .order_food > li {
       width: 92.5%;
       margin-top: 10px;
       font-size: 18px;
-      background-color: #faf8fb;
-      box-shadow: 0 2px 6px 0 rgba(136, 106, 181, 0.5);
+      padding: 30px 0px;
+      border-top: 1px solid #eeeeee;
+      border-bottom: 1px solid #eeeeee;
       list-style: none;
     }
     .order_customer {

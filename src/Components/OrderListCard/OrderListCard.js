@@ -17,7 +17,7 @@ const OrderListCard = ({
       <div className="wrap_menu_card_customer">
         <div className="order_food">
           주문내용
-          <li>- {orderItem}</li>
+          <li>{orderItem}</li>
         </div>
 
         <div className="order_customer">주문자 : {orderUser}</div>
