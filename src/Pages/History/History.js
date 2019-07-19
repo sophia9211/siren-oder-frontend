@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-responsive-modal";
-import { DatePicker } from "@y0c/react-datepicker";
-// import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import "moment/locale/ko";
 import MainLayout from "Layouts/MainLayout";
 import MenuTicket from "Components/MenuTicket";
-import "../Main/Main.scss";
 import "./History.scss";
 
 class History extends Component {
@@ -31,7 +28,7 @@ class History extends Component {
     const { show } = this.state;
     return (
       <MainLayout>
-        <div className="history_search" id="history_search_modal">
+        {/* <div className="history_search" id="history_search_modal">
           <div onClick={this.showModal}>
             <span>주문상태(전체)</span>
             <span>||</span>
@@ -57,11 +54,7 @@ class History extends Component {
             </div>
           </Modal>
         </div>
-        <div className="history_date">
-          <div style={{ height: "400px" }}>
-            {/* <RangeDatePicker portal startText="Start" endText="End" /> */}
-          </div>
-        </div>
+        <div className="history_date"></div>
         <div className="history_list">
           <div>
             <MenuTicket
@@ -89,7 +82,7 @@ class History extends Component {
               imgSrc="http://image.istarbucks.co.kr/upload/store/skuimg/2015/07/[110621]_20150723005650154.jpg"
             />
           </div>
-        </div>
+        </div> */}
       </MainLayout>
     );
   }
