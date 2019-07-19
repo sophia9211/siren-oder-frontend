@@ -23,6 +23,7 @@ import { MONTH_PRICE } from "testData/mockGraph";
 
 class Admin extends Component {
   state = {
+    isClickedLogout: false,
     realtimeValue: REALTIMEPRICE,
     daySalesPrice: DAY_SALES_PRICE,
     monthSalesPrice: MONTH_SALES_PRICE,

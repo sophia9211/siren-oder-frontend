@@ -71,7 +71,7 @@ class TimeOrderAmountChart extends Component {
       }
     });
 
-    amountChart.canvas.parentNode.style.width = "500px";
+    amountChart.canvas.parentNode.style.width = "100%";
     amountChart.canvas.parentNode.style.height = "400px";
   }
   render() {

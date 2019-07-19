@@ -35,9 +35,7 @@ class MonthPriceChart extends Component {
               gradientFill,
               gradientFill,
               gradientFill
-            ],
-            borderColor: ["rgba(34, 150, 243)"],
-            borderWidth: 1
+            ]
           }
         ]
       },
@@ -49,8 +47,7 @@ class MonthPriceChart extends Component {
           fontSize: 20
         },
         animation: {
-          duration: 5000,
-          easing: "easeInOutBlack"
+          duration: 5000
         },
         maintainAspectRatio: false,
         padding: {

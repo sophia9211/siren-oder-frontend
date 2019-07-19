@@ -71,8 +71,8 @@ class RealTimeOrderChart extends Component {
       }
     });
 
-    realtimeOrder.canvas.parentNode.style.width = "600px";
-    realtimeOrder.canvas.parentNode.style.height = "400px";
+    realtimeOrder.canvas.parentNode.style.width = "100%";
+    realtimeOrder.canvas.parentNode.style.height = "100%";
   }
   render() {
     return (
