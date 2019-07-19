@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-responsive-modal";
 import { DatePicker } from "@y0c/react-datepicker";
-import "@y0c/react-datepicker/assets/styles/calendar.scss";
+// import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import "moment/locale/ko";
 import MainLayout from "Layouts/MainLayout";
 import MenuTicket from "Components/MenuTicket";
@@ -94,5 +94,4 @@ class History extends Component {
     );
   }
 }
-// render(<History />, document.getElementById("history_search_modal"));
 export default History;
