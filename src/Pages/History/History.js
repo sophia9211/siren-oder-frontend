@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-responsive-modal";
+import { DatePicker } from "@y0c/react-datepicker";
+import "@y0c/react-datepicker/assets/styles/calendar.scss";
+import "moment/locale/ko";
 import MainLayout from "Layouts/MainLayout";
 import MenuTicket from "Components/MenuTicket";
 import "../Main/Main.scss";
@@ -8,36 +11,57 @@ import "./History.scss";
 
 class History extends Component {
   state = {
-    open: false
+    show: false
   };
 
   showModal = () => {
     console.log(11);
     this.setState({
-      open: true
+      show: true
     });
   };
 
   closeModal = () => {
     this.setState({
-      open: false
+      show: false
     });
   };
 
   render() {
-    const { open } = this.state.open;
+    const { show } = this.state;
     return (
       <MainLayout>
         <div className="history_search" id="history_search_modal">
-          <button onClick={this.showModal}>
+          <div onClick={this.showModal}>
             <span>주문상태(전체)</span>
             <span>||</span>
-          </button>
-          <Modal open={open} onClose={this.closeModal} center>
-            11111
+          </div>
+          <Modal open={show} onClose={this.closeModal} center>
+            <div>
+              <label>
+                <input type="checkbox" />
+                전체
+              </label>
+              <label>
+                <input type="checkbox" />
+                결제완료
+              </label>
+              <label>
+                <input type="checkbox" />
+                준비완료
+              </label>
+              <label>
+                <input type="checkbox" />
+                결제취소
+              </label>
+            </div>
           </Modal>
         </div>
-        <div className="history_date"></div>
+        <div className="history_date">
+          <div style={{ height: "400px" }}>
+            {/* <RangeDatePicker portal startText="Start" endText="End" /> */}
+          </div>
+        </div>
         <div className="history_list">
           <div>
             <MenuTicket
