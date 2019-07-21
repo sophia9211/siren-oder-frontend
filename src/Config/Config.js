@@ -13,6 +13,8 @@ const CLOSE_BTN =
 const CHECK_IMG =
   "https://cdn4.iconfinder.com/data/icons/icocentre-free-icons/137/f-check_256-128.png";
 
+const RKXHSKZMS = "data.access_token";
+
 const API_URL = "http://10.58.5.97:8000";
 
-export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, CHECK_IMG };
+export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, CHECK_IMG, RKXHSKZMS };

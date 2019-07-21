@@ -12,19 +12,9 @@
         cursor: pointer;
     }
 
-    .showImg {
-        position: absolute;
-        display: inline-block;
-        right: 10px;
-        width: 15px;
-
-        img {
-            width: 100%;
-        }
-    }
-
-    .hideImg {
-        display: none;
+    input:focus {
+        outline: none;
+        border-bottom: 1px solid #006633;
     }
 }
 
@@ -42,7 +32,8 @@
         cursor: pointer;
     }
 
-    div {
-        display: none;
+    input:focus {
+        outline: none;
+        border-bottom: 1px solid #006633;
     }
 }
