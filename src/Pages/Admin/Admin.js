@@ -20,6 +20,7 @@ import { MONTH_SALES_PRICE } from "testData/mockGraph";
 import { ORDERAMOUNT } from "testData/mockGraph";
 import { POPULAR_ITEM } from "testData/mockGraph";
 import { MONTH_PRICE } from "testData/mockGraph";
+import { getKoreaDateYMD, getKoreaDateYMDTime } from "Util/date";
 
 class Admin extends Component {
   state = {
@@ -33,6 +34,9 @@ class Admin extends Component {
   };
 
   componentDidMount() {
+    getKoreaDateYMD("1998-12-31 23:59:59");
+    getKoreaDateYMDTime("1998-12-31 23:59:59");
+
     let itemList = document.getElementsByClassName("wrap_order_list")[0];
     console.log(itemList);
     itemList.addEventListener("scroll", this.handleScroll);
