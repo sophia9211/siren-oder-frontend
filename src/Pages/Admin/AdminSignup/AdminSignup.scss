@@ -60,7 +60,11 @@
         margin-right: 3%;
       }
 
-      .employees_numbers {
+      .employees_numbers,
+      .employees_user_name,
+      .employees_phone_number,
+      .employees_password,
+      .employees_password_chk {
         width: 66.8%;
         height: 55px;
         border: 1px solid #999;

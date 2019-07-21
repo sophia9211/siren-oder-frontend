@@ -51,4 +51,4 @@ class AdminLogin extends Component {
     );
   }
 }
-export default AdminLogin;
+export default withRouter(AdminLogin);
