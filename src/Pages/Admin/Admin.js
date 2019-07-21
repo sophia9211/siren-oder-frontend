@@ -70,7 +70,11 @@ class Admin extends Component {
     console.log(this.state.realtimeValue);
     return (
       <>
-        <AdminHeader logoSrc={logo} titleSrc={title}>
+        <AdminHeader
+          logoSrc={logo}
+          titleSrc={title}
+          logoTitleName="title_logo_name_main"
+        >
           <div className="wrap_admin_user_info">
             <span className="admin_user_info">지점명</span>
             <span className="admin_user_info">선릉역</span>
