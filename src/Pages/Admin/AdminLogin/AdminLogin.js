@@ -6,6 +6,13 @@ import SelectBox from "Components/SelectBox";
 import { withRouter } from "react-router-dom";
 
 class AdminLogin extends Component {
+  state = {
+    isLogined: false
+  };
+
+  handleSignup = () => {};
+  handleLogin = () => {};
+
   render() {
     return (
       <>
@@ -42,8 +49,12 @@ class AdminLogin extends Component {
             </div>
             <div className="wrap_admin_button">
               <button className="kakaoLogin">Kakao 로그인</button>
-              <button className="signup_btn">회원가입</button>
-              <button className="login_btn">로그인</button>
+              <button className="signup_btn" onClick={this.handleSignup}>
+                회원가입
+              </button>
+              <button className="login_btn" onClick={this.handleLogin}>
+                로그인
+              </button>
             </div>
           </div>
         </div>

@@ -6,36 +6,86 @@ import SelectBox from "Components/SelectBox";
 
 class AdminSignup extends Component {
   state = {
-    value: ""
+    value: "",
+    isSignupButtonInit: true
   };
 
   componentDidMount() {}
 
   handleChange = e => {
+    console.log(e.target.value);
+    const { password, chk_password } = this.state;
     const value = e.target.value;
     const name = e.target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
+      isSignupButtonInit: false
     });
-  };
-
-  handleSignup = () => {
-    const { user_name, phone_number } = this.state;
+    console.log(value);
+    console.log(name);
   };
 
   //select box
   handleSelectedChange = e => {
-    console.log(e.target.value);
     const selectValue = e.target.value;
     const name = e.target.name;
-
     this.setState({
       [name]: selectValue
     });
   };
 
+  handleSignup = () => {
+    const {
+      gun,
+      gu,
+      grade,
+      where_position,
+      user_name,
+      phone_number,
+      employees_number,
+      password,
+      chk_password
+    } = this.state;
+
+    if (
+      gun &&
+      gu &&
+      grade &&
+      where_position &&
+      user_name &&
+      phone_number &&
+      employees_number &&
+      password &&
+      chk_password
+    ) {
+      let data = {
+        gun: gun,
+        gu: gu,
+        where_position: where_position,
+        grade: grade === "지점장" ? true : false,
+        user_name: user_name,
+        phone_number: phone_number,
+        employees_numbers: employees_number,
+        employees_password: password,
+        employees_password_chk: chk_password
+      };
+
+      let sendData = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      };
+      //fetch 할부분. 가입하면 로그인화면으로 보내기
+    } else {
+      alert("빈칸이 없어야 합니다.");
+    }
+  };
+
   render() {
+    const { password, chk_password, isSignupButtonInit } = this.state;
     return (
       <>
         <div className="root_admin_login">
@@ -111,7 +161,7 @@ class AdminSignup extends Component {
               ></input>
             </div>
             <div className="wrap_password_input_box">
-              <div className="admin_password_chk">비밀확인</div>
+              <div className="admin_password_chk">비번확인</div>
               <input
                 name="chk_password"
                 type="password"
@@ -119,13 +169,32 @@ class AdminSignup extends Component {
                 onChange={this.handleChange}
               ></input>
             </div>
+            {password !== chk_password ? (
+              <p className="admin_chk_password">
+                "비밀번호가 일치하지 않습니다"
+              </p>
+            ) : (
+              ""
+            )}
             <div className="wrap_admin_button">
               <button className="admin_cancle_btn" onClick={this.handleCancel}>
                 취소
               </button>
-              <button className="admin_signup_btn" onClick={this.handleSignup}>
-                가입하기
-              </button>
+              {isSignupButtonInit && (
+                <button className={"admin_signup_btn_disable"}>가입하기</button>
+              )}
+              {!isSignupButtonInit && (
+                <button
+                  className={
+                    password === chk_password
+                      ? "admin_signup_btn"
+                      : "admin_signup_btn_disable"
+                  }
+                  onClick={this.handleSignup}
+                >
+                  가입하기
+                </button>
+              )}
             </div>
           </div>
         </div>
