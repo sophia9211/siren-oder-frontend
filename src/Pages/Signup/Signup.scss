@@ -17,14 +17,17 @@
     .signup_container_flex {
         display: flex;
         flex-direction: column;
+        padding: 0 15px;
 
         .signup_close_btn {
-            width: 25px;
+            width: 35px;
             margin-top: 5px;
-            margin-left: 5px;
+            margin-left: -10px;
+            cursor: pointer;
 
             img {
                 width: 100%;
+
             }
         }
     }

@@ -1,95 +1,44 @@
 @import "Style/config.scss";
 
-.signup_second_container {
-    max-width: 450px;
-    min-width: 320px;
+.signup_sec_text {
+    font-size: 22px;
 
-    @media #{$phone} {
-        margin: 0 auto;
+    p {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        line-height: 30px;
     }
+}
 
-    .signup_second_container_main {
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
+.signup_sec_check {
+    padding-bottom: 5px;
+    padding-left: 15px;
+    margin: 0 -15px 15px -15px;
+    border-bottom: 1px solid rgb(197, 197, 197);
 
-        .signup_close_btn {
-            width: 20px;
-            margin-bottom: 50px;
-            margin-top: 5px;
-            margin-left: 5px;
+    p {
+        font-size: 12px;
+        color: rgb(39, 39, 39);
+        margin-left: 3px;
+    }
+}
 
-            img {
-                width: 100%;
-            }
-        }
+.req_btn {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: grey;
+    // border-bottom: 1px solid rgb(197, 197, 197);
+    padding-bottom: 5px;
+    float: right;
+    margin-top: 5px;
+}
 
-        .signup_second_text {
-            margin-left: 20px;
-            margin-bottom: 15px;
 
-            p {
-                font-size: 20px;
-            }
-        }
-
-        .signup_second_check {
-            font-size: 13px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgb(197, 197, 197);
-
-            div {
-                margin-left: 20px;
-
-                p {
-                    font-size: 11px;
-                }
-            }
-        }
-
-        .signup_second_rdm {
-            margin-left: 20px;
-            margin-top: 25px;
-
-            input {
-                border: none;
-                border-bottom: 1px solid rgb(197, 197, 197);
-                width: 70%;
-                margin-bottom: 15px;
-                padding: 5px;
-            }
-
-            button {
-                margin-left: 20px;
-                border: none;
-                background-color: white;
-            }
-        }
-
-        .signup_second_text2 {
-            margin-left: 20px;
-            margin-right: 20px;
-
-            p {
-                color: grey;
-                font-size: 9px;
-            }
-        }
-
-        .signup_btn {
-            margin-top: 40px;
-
-            input {
-                display: block;
-                width: 100%;
-                border-style: none;
-                font-size: 18px;
-                background-color: #006633;
-                color: white;
-                padding: 10px;
-                outline: none;
-                cursor: pointer;
-            }
-        }
+.signup_sec_text2 {
+    p {
+        color: rgb(46, 45, 45);
+        font-size: 9px;
+        margin-bottom: 62px;
     }
 }

@@ -11,18 +11,21 @@ class Signup extends Component {
     email: "",
     name: "",
     phone: "",
+    rdm_num: "",
     password: "",
-    gender: ""
+    password_chk: "",
+    gender: "",
+    showImg: "hideImg"
   };
 
-  callNext = e => {
+  callNext = () => {
     this.setState({
       step: this.state.step + 1
     });
   };
 
   clickSign = e => {
-    e.preventDefault();
+    // e.preventDefault();
     fetch(`${API_URL}/account`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,18 +40,19 @@ class Signup extends Component {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        // if (data.error_code === "EMAIL_EXIST") {
-        //   this.setState({
-        //     email_text: "중복된 이메일입니다."
-        //   });
-        // } else if (data.message === "회원가입을 축하드립니다.") {
-        //   alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
-        //   this.props.history.push({
-        //     pathname: "/login"
-        //   });
-        // } else {
-        //   alert("죄송합니다. 회원가입을 다시 해주세요.");
-        // }
+        if (data.error_code === "DUPLICATE_EMAIL") {
+          // this.setState({
+          //   email_text: "중복된 이메일입니다."
+          // });
+          alert("중복된 이메일입니다.");
+        } else if (data.message === "SUCCESS") {
+          alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
+          this.props.history.push({
+            pathname: "/login"
+          });
+        } else {
+          alert("죄송합니다. 회원가입을 다시 해주세요.");
+        }
       });
   };
 
@@ -58,31 +62,46 @@ class Signup extends Component {
         [e.target.name]: e.target.value
       },
       () => {
-        console.log(this.state.phone, this.state.name, this.state.gender);
+        // console.log(this.state.gender);
       }
     );
   };
 
-  // callPre = () => {
-  //   this.setState({
-  //     step: this.state.step - 1
-  //   });
-  // };
-
   render() {
+    const {
+      step,
+      email,
+      name,
+      phone,
+      rdm_num,
+      password,
+      password_chk,
+      gender
+    } = this.state;
     const matchingStep = {
-      1: <SignupStep1 next={this.callNext} />,
-      2: <SignupStep2 next={this.callNext} fill={this.fillInput} />,
+      1: <SignupStep1 next={this.callNext} changeActive={this.changeActive} />,
+      2: (
+        <SignupStep2
+          next={this.callNext}
+          fill={this.fillInput}
+          phone={phone}
+          rdm_num={rdm_num}
+        />
+      ),
       3: (
         <SignupStep3
-          next={this.callNext}
+          email={email}
+          name={name}
+          password={password}
+          password_chk={password_chk}
+          gender={gender}
           fill={this.fillInput}
           click={this.clickSign}
         />
       )
     };
 
-    return matchingStep[this.state.step];
+    return matchingStep[step];
   }
 }
 

@@ -1,0 +1,35 @@
+.submit_btn {
+    input {
+        display: block;
+        width: 100%;
+        border-style: none;
+        font-size: 18px;
+        background-color: #006633;
+        color: white;
+        padding: 10px;
+        outline: none;
+        letter-spacing: 10px;
+        margin-top: 40px;
+        letter-spacing: 4px;
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+.submit_btn_disabled {
+    input {
+        display: block;
+        width: 100%;
+        border-style: none;
+        font-size: 18px;
+        background-color: rgb(175, 174, 174);
+        color: white;
+        padding: 10px;
+        outline: none;
+        letter-spacing: 10px;
+        margin-top: 40px;
+        letter-spacing: 4px;
+        cursor: pointer;
+        outline: none;
+    }
+}

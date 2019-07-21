@@ -1,10 +1,8 @@
 @import "Style/config.scss";
 
-
-
 .signup_logo {
     height: 80px;
-    margin-left: 20px;
+    margin-top: 80px;
 
     img {
         height: 100%;
@@ -13,7 +11,7 @@
 
 .signup_text {
     font-size: 22px;
-    margin-left: 20px;
+    line-height: 30px;
 
     p {
         margin-top: 30px;
@@ -21,40 +19,8 @@
     }
 }
 
-.signup_checkbox1 {
-    font-size: 14px;
-    font-weight: 100;
+.signup_checkbox_all {
     border-bottom: 1px solid rgb(197, 197, 197);
-
-    .check_all {
-        margin-left: 20px;
-        padding-bottom: 8px;
-    }
-}
-
-.signup_checkbox2 {
-    margin-left: 20px;
-    font-size: 14px;
-    font-weight: 100;
-    margin-top: 8px;
-
-    .check_se {
-        margin: 8px 0;
-    }
-}
-
-.signup_btn {
-    margin-top: 40px;
-
-    input {
-        display: block;
-        width: 100%;
-        border-style: none;
-        font-size: 18px;
-        background-color: #006633;
-        color: white;
-        padding: 10px;
-        outline: none;
-        cursor: pointer;
-    }
+    padding-bottom: 2px;
+    margin-bottom: 10px;
 }
