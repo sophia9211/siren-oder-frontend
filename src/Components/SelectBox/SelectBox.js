@@ -3,7 +3,8 @@ import "./SelectBox.scss";
 
 class SelectBox extends Component {
   state = {
-    isClicked: false
+    isClicked: false,
+    listAmount: []
   };
 
   handleClick = () => {
@@ -21,9 +22,9 @@ class SelectBox extends Component {
           className={!isClicked ? "non_clickSelected" : "clickSelected"}
           onClick={this.handleClick}
         >
-          <option selected>{location1}</option>
-          <option>{location2}</option>
-          <option>{location3}</option>
+          <option value="0">{location1}</option>
+          <option value="1">{location2}</option>
+          <option value="2">{location3}</option>
         </select>
       </div>
     );
