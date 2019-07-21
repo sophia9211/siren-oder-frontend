@@ -4,11 +4,10 @@ import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
 import { withRouter } from "react-router-dom";
+import { auth } from "Actions";
 
 class AdminLogin extends Component {
-  state = {
-    isLogined: false
-  };
+  //상태값 리덕스에서 관리
 
   handleSignup = () => {};
   handleLogin = () => {};
@@ -62,4 +61,17 @@ class AdminLogin extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isUserLogin: state.isUserLogin
+});
+
+const mapDispatchToProps = dispatch => ({
+  onAuth: () => dispatch(auth.auth())
+});
+
+const AdminLogin = connect({
+  mapStateToProps,
+  mapDispatchToProps
+})(AdminLogin);
 export default withRouter(AdminLogin);
