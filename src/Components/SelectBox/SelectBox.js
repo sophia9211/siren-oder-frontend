@@ -1,13 +1,7 @@
 import React from "react";
 import "./SelectBox.scss";
 
-const SelectBox = ({
-  handleSelectedChange,
-  selectName,
-  location1,
-  location2,
-  location3
-}) => {
+const SelectBox = ({ handleSelectedChange, selectName, locationList }) => {
   return (
     <div className="root_selectbox">
       <select
@@ -15,9 +9,15 @@ const SelectBox = ({
         className="clickSelected"
         onChange={handleSelectedChange}
       >
-        <option value={location1}>{location1}</option>
-        <option value={location2}>{location2}</option>
-        <option value={location3}>{location3}</option>
+        <option>선택</option>
+        {locationList &&
+          locationList.map((item, index) => {
+            return (
+              <option key={item + index} value={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
       </select>
     </div>
   );
