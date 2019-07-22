@@ -3,6 +3,7 @@ import "./Store.scss";
 import { ICON } from "Config/Config.js";
 import "./Overlay";
 import Overlay from "./Overlay";
+import { arrayExpression } from "@babel/types";
 
 class Store extends Component {
   componentDidMount() {
@@ -74,24 +75,56 @@ class Store extends Component {
   };
 
   searchStore = () => {
+    var arr = [];
     // console.log(this.state.search);
     if (!this.state.search) {
       alert("키워드를 입력해주세요!");
     } else {
-      const data = ["강남", "수원", "강남건물"];
-      // fetch("http://10.58.0.184:8000/store/sido")
-      //   .then(response => {
-      //     return response.json();
-      //   })
-      //   .then(data => {
-      //     console.log(data);
-      //   });
-      data.map(ele => {
-        if (ele.includes(this.state.search)) {
-          console.log(ele);
-        }
-      });
+      // const data = ["강남", "수원", "강남건물"];
+      if (
+        fetch("http://10.58.0.184:8000/store/shop/1")
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+            data.map(ele => {
+              if (ele.name.includes(this.state.search)) {
+                arr.push(ele.name);
+              }
+            });
+            console.log(arr);
+          })
+      ) {
+        console.log(1);
+      }
     }
+
+    // fetch("http://10.58.0.184:8000/store/gungu")
+    //   .then(response => {
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     console.log(data);
+    //     data.map(ele => {
+    //       if (ele.name.includes(this.state.search)) {
+    //         console.log(ele);
+    //       }
+    //     });
+    //   });
+
+    // fetch("http://10.58.0.184:8000/store/sido")
+    //   .then(response => {
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     console.log(data);
+    //     data.map(ele => {
+    //       if (ele.name.includes(this.state.search)) {
+    //         console.log(ele);
+    //       }
+    //     });
+    //   });
   };
 
   render() {
