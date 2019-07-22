@@ -62,16 +62,16 @@ class AdminLogin extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isUserLogin: state.isUserLogin
-});
+// const mapStateToProps = state => ({
+//   isUserLogin: state.isUserLogin
+// });
 
-const mapDispatchToProps = dispatch => ({
-  onAuth: () => dispatch(auth.auth())
-});
+// const mapDispatchToProps = dispatch => ({
+//   onAuth: () => dispatch(auth.auth())
+// });
 
-const AdminLogin = connect({
-  mapStateToProps,
-  mapDispatchToProps
-})(AdminLogin);
+// const AdminLogin = connect({
+//   mapStateToProps,
+//   mapDispatchToProps
+// })(AdminLogin);
 export default withRouter(AdminLogin);
