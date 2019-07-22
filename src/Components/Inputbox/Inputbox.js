@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CHECK_IMG } from "Config/Config.js";
+// import { CHECK_IMG } from "Config/Config.js";
 import "./Inputbox.scss";
 
 class inputbox extends Component {

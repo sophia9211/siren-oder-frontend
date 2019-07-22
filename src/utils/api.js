@@ -1,17 +1,6 @@
 import { API_URL } from "Config/Config.js";
 import axios from "axios";
-
-// const post = ({ path, body }) => {
-//   fetch(`${API_URL}/${path}`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ body })
-//   })
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log(data);
-//     });
-// };
+import { API_URLSEC } from "../Config/Config";
 
 export const post = ({ path, body }) => {
   return axios.post(
@@ -26,24 +15,8 @@ export const post = ({ path, body }) => {
   );
 };
 
-export const get = ({ path, body }) => {
-  axios
-    .get(
-      `${API_URL}/${path}`,
-      body,
-      {
-        validateStatus: function(status) {
-          return true;
-        }
-      }
-      // ,{headers: { Authorization: localStorage.getItem() || "" }}
-    )
-    .then(function(response) {
-      console.log(response.data);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+export const get = ({ path }) => {
+  return axios.get(`${API_URLSEC}/${path}`);
 };
 
 // 호출할 떄
