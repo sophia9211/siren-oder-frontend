@@ -4,13 +4,22 @@ import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
 import { withRouter } from "react-router-dom";
+import { auth } from "Actions";
 
 class AdminLogin extends Component {
+  //상태값 리덕스에서 관리
+
+  handleSignup = () => {};
+  handleLogin = () => {};
+
   render() {
     return (
       <>
         <div className="root_admin_login">
-          <AdminHeader />
+          <AdminHeader
+            imgClassName="login_img_name"
+            logoTitleName="title_logo_name"
+          />
           <div className="wrap_login_admin_info">
             <div className="wrap_locations">
               <div className="location_city">군/구</div>
@@ -39,8 +48,12 @@ class AdminLogin extends Component {
             </div>
             <div className="wrap_admin_button">
               <button className="kakaoLogin">Kakao 로그인</button>
-              <button className="signup_btn">회원가입</button>
-              <button className="login_btn">로그인</button>
+              <button className="signup_btn" onClick={this.handleSignup}>
+                회원가입
+              </button>
+              <button className="login_btn" onClick={this.handleLogin}>
+                로그인
+              </button>
             </div>
           </div>
         </div>
@@ -48,4 +61,17 @@ class AdminLogin extends Component {
     );
   }
 }
-export default AdminLogin;
+
+const mapStateToProps = state => ({
+  isUserLogin: state.isUserLogin
+});
+
+const mapDispatchToProps = dispatch => ({
+  onAuth: () => dispatch(auth.auth())
+});
+
+const AdminLogin = connect({
+  mapStateToProps,
+  mapDispatchToProps
+})(AdminLogin);
+export default withRouter(AdminLogin);

@@ -3,7 +3,8 @@ import "./Login.scss";
 import { Link } from "react-router-dom";
 import Inputbox from "Components/Inputbox";
 import Button from "Components/Button";
-import { LOGO, API_URL, CLOSE_BTN, RKXHSKZMS } from "Config/Config.js";
+import { LOGO, CLOSE_BTN, RKXHSKZMS } from "Config/Config.js";
+import { post } from "utils/api";
 
 class Login extends Component {
   state = {
@@ -13,35 +14,29 @@ class Login extends Component {
 
   clickLogin = e => {
     // e.preventDefault();
-    fetch(`${API_URL}/account/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.error_code === "EMAIL_NOT_FOUND") {
-          this.setState({
-            email_text: "존재하지 않는 이메일입니다."
-          });
-        } else if (data.access_token) {
-          localStorage.setItem(RKXHSKZMS, data.access_token);
-          console.log(data.access_token);
-          this.props.history.push({
-            pathname: "/"
-          });
-          alert("스타벅스에 오신 것을 환영합니다.");
-        }
-        //  else {
-        //   this.setState({
-        //     pw_text: "이메일 및 비밀번호를 확인해주세요."
-        //   });
-        // }
-      });
+    post({
+      path: "account/login",
+      body: { email: this.state.email, password: this.state.password }
+    }).then(data => {
+      console.log(data);
+      if (data.error_code === "EMAIL_NOT_FOUND") {
+        this.setState({
+          email_text: "존재하지 않는 이메일입니다."
+        });
+      } else if (data.access_token) {
+        localStorage.setItem(RKXHSKZMS, data.access_token);
+        console.log(data.access_token);
+        this.props.history.push({
+          pathname: "/"
+        });
+        alert("스타벅스에 오신 것을 환영합니다.");
+      }
+      //  else {
+      //   this.setState({
+      //     pw_text: "이메일 및 비밀번호를 확인해주세요."
+      //   });
+      // }
+    });
   };
 
   fillLogin = e => {
