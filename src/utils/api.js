@@ -14,23 +14,16 @@ import axios from "axios";
 // };
 
 export const post = ({ path, body }) => {
-  axios
-    .post(
-      `${API_URL}/${path}`,
-      body,
-      {
-        validateStatus: function(status) {
-          return true;
-        }
+  return axios.post(
+    `${API_URL}/${path}`,
+    body,
+    {
+      validateStatus: function(status) {
+        return true;
       }
-      // ,{headers: { Authorization: localStorage.getItem() || "" }}
-    )
-    .then(function(response) {
-      console.log(response.data);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+    }
+    // ,{headers: { Authorization: localStorage.getItem() || "" }}
+  );
 };
 
 export const get = ({ path, body }) => {

@@ -1,50 +1,43 @@
 @import "Style/config.scss";
 
-.signup_second_container {
-    max-width: 450px;
-    min-width: 320px;
+.signup_thir_text {
+    font-size: 22px;
 
-    @media #{$phone} {
-        margin: 0 auto;
+    p {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        line-height: 30px;
+    }
+}
+
+.signup_second_rdm1 {
+    margin-left: 20px;
+    margin-top: 25px;
+
+    input {
+        display: block;
+        width: 90%;
+        border: none;
+        border-bottom: 1px solid rgb(197, 197, 197);
+        margin-bottom: 15px;
+        padding: 5px;
+    }
+}
+
+.gender {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 160px;
+
+    span {
+        margin-right: 15px;
     }
 
-    .signup_second_container_main {
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
+    input {
+        margin-right: 5px;
+    }
 
-        .signup_close_btn {
-            width: 20px;
-            margin-bottom: 50px;
-            margin-top: 5px;
-            margin-left: 5px;
-
-            img {
-                width: 100%;
-            }
-        }
-
-        .signup_second_rdm1 {
-            margin-left: 20px;
-            margin-top: 25px;
-
-            input {
-                display: block;
-                width: 90%;
-                border: none;
-                border-bottom: 1px solid rgb(197, 197, 197);
-                margin-bottom: 15px;
-                padding: 5px;
-            }
-        }
-
-        .gender {
-            label {
-                input {
-                    display: inline;
-                    width: 15px;
-                }
-            }
-        }
+    label {
+        margin-right: 10px;
     }
 }

@@ -1,0 +1,39 @@
+.basic_input {
+    position: relative;
+    margin: 0 auto;
+
+    input {
+        border: none;
+        border-bottom: 1px solid rgb(197, 197, 197);
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    input:focus {
+        outline: none;
+        border-bottom: 1px solid #006633;
+    }
+}
+
+.short_input {
+    margin: 0 auto;
+    display: inline-block;
+
+    input {
+        border: none;
+        border-bottom: 1px solid rgb(197, 197, 197);
+        width: 150%;
+        margin-bottom: 10px;
+        padding: 5px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    input:focus {
+        outline: none;
+        border-bottom: 1px solid #006633;
+    }
+}

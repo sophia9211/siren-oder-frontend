@@ -1,84 +1,26 @@
 @import "Style/config.scss";
 
-.signup_container {
-    max-width: 450px;
-    min-width: 320px;
+.signup_logo {
+    height: 80px;
+    margin-top: 80px;
 
-    @media #{$phone} {
-        margin: 0 auto;
+    img {
+        height: 100%;
     }
+}
 
-    .signup_container_main {
-        display: flex;
-        flex-direction: column;
-        margin-top: 5px;
+.signup_text {
+    font-size: 22px;
+    line-height: 30px;
 
-        .signup_close_btn {
-            width: 20px;
-            margin-bottom: 100px;
-            margin-top: 5px;
-            margin-left: 5px;
-
-            img {
-                width: 100%;
-            }
-        }
-
-        .signup_logo {
-            height: 80px;
-            margin-left: 20px;
-
-            img {
-                height: 100%;
-            }
-        }
-
-        .signup_text {
-            font-size: 22px;
-            margin-left: 20px;
-
-            p {
-                margin-top: 30px;
-                margin-bottom: 60px;
-            }
-        }
-
-        .signup_checkbox1 {
-            font-size: 14px;
-            font-weight: 100;
-            border-bottom: 1px solid rgb(197, 197, 197);
-
-            .check_all {
-                margin-left: 20px;
-                padding-bottom: 8px;
-            }
-        }
-
-        .signup_checkbox2 {
-            margin-left: 20px;
-            font-size: 14px;
-            font-weight: 100;
-            margin-top: 8px;
-
-            .check_se {
-                margin: 8px 0;
-            }
-        }
-
-        .signup_btn {
-            margin-top: 40px;
-
-            input {
-                display: block;
-                width: 100%;
-                border-style: none;
-                font-size: 18px;
-                background-color: #006633;
-                color: white;
-                padding: 10px;
-                outline: none;
-                cursor: pointer;
-            }
-        }
+    p {
+        margin-top: 30px;
+        margin-bottom: 60px;
     }
+}
+
+.signup_checkbox_all {
+    border-bottom: 1px solid rgb(197, 197, 197);
+    padding-bottom: 2px;
+    margin-bottom: 10px;
 }
