@@ -1,3 +1,5 @@
+@import "Style/config.scss";
+
 .root_header_admin {
   .title_logo {
     > img {
@@ -6,26 +8,47 @@
       margin-right: 20px;
     }
   }
+  .wrap_admin_user_info {
+    display: inline;
+  }
+  .header_logo {
+    margin-right: 30px;
+    margin-left: 5px;
+    width: 350px;
+    > .login_img_name {
+      width: 74.2%;
+    }
+  }
+  .title_logo {
+    .title_logo_name {
+      color: violet;
+      font-size: 30px;
+      font-weight: 700;
+      font-family: "Dancing Script", cursive;
+      position: relative;
+      left: -150px;
+      top: 30px;
+    }
+  }
 }
 
 .wrap_login_admin_info {
   position: relative;
-  top: 300px;
+  top: 250px;
   margin-right: auto;
   margin-left: auto;
   width: 600px;
-  height: 300px;
 
   .wrap_locations {
     display: flex;
 
     .location_city {
       font-size: 30px;
-      margin-right: 31.2px;
+      margin-right: 75px;
       line-height: 57px;
     }
     .non_clickSelected {
-      width: 124px;
+      width: 192px;
       margin-right: 15px;
     }
     .clickSelected {
@@ -80,6 +103,12 @@
       font-size: 14px;
       font-weight: bold;
     }
+  }
+}
+//media query
+@media #{$ipad} {
+  .wrap_login_admin_info {
+    margin-left: 30px;
   }
 }
 

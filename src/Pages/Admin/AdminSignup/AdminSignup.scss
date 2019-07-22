@@ -1,0 +1,120 @@
+@import "Style/config.scss";
+
+.root_admin_login {
+  .header_logo {
+    margin-right: 30px;
+    margin-left: 5px;
+    width: 350px;
+    > .login_img_name {
+      width: 74.2%;
+    }
+  }
+  .title_logo_name {
+    color: violet;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Dancing Script", cursive;
+    position: relative;
+    left: -150px;
+    top: 30px;
+  }
+  .wrap_login_admin_info_signup {
+    position: relative;
+    top: 180px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 600px;
+    .wrap_locations {
+      display: flex;
+
+      .location_city {
+        font-size: 30px;
+        margin-right: 75px;
+        line-height: 57px;
+      }
+      .non_clickSelected {
+        width: 192px;
+        margin-right: 15px;
+      }
+      .clickSelected {
+        @extend .non_clickSelected;
+      }
+    }
+
+    .location_admin,
+    .admin_position,
+    .admin_number,
+    .admin_password {
+      line-height: 57px;
+    }
+
+    .wrap_location_select_box,
+    .wrap_position_select_box,
+    .wrap_number_input_box,
+    .wrap_password_input_box {
+      display: flex;
+      margin-bottom: 30px;
+      margin-top: 30px;
+      > div {
+        font-size: 30px;
+        margin-right: 3%;
+      }
+
+      .employees_numbers,
+      .employees_user_name,
+      .employees_phone_number,
+      .employees_password,
+      .employees_password_chk {
+        width: 66.8%;
+        height: 55px;
+        border: 1px solid #999;
+        margin-left: 11px;
+      }
+    }
+    .wrap_number_input_box {
+      .admin_user_name {
+        margin-right: 74px;
+        line-height: 57px;
+        text-align: center;
+      }
+    }
+    .admin_chk_password {
+      color: red;
+      margin-left: 150px;
+    }
+    .wrap_admin_button {
+      float: right;
+      margin-right: 56px;
+
+      > .admin_signup_btn,
+      .admin_cancle_btn {
+        width: 100px;
+        height: 40px;
+        border-radius: 15px;
+        font-size: 20px;
+        border: 1px solid black;
+        background: green;
+        color: azure;
+        margin-left: 15px;
+        font-weight: bold;
+      }
+      > .admin_signup_btn_disable {
+        @extend .admin_signup_btn;
+        background: gray;
+        pointer-events: none;
+      }
+      .kakaoLogin {
+        background-color: yellow;
+        color: #381e1f;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+  //media query
+  @media #{$ipad} {
+    .wrap_login_admin_info_signup {
+      margin-left: 30px;
+    }
+  }
+}
