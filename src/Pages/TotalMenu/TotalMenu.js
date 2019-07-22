@@ -54,10 +54,10 @@ const sampleData = [
 
 const myData = {};
 sampleData.map((el, idx) => {
-  console.log(el);
+  // console.log(el);
 
   myData[el.categoryId] = el.subCategorys;
-  console.log(myData);
+  // console.log(myData);
 });
 
 class TotalMenu extends React.Component {
@@ -71,12 +71,12 @@ class TotalMenu extends React.Component {
 
   handleClick = a => {
     this.setState({ id: a.toString() });
-    console.log(a);
+    // console.log(a);
   };
 
   render() {
-    console.log(myData);
-    console.log(this.state.id);
+    // console.log(myData);
+    // console.log(this.state.id);
 
     return (
       <MainLayout>

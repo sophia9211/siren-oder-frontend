@@ -95,6 +95,7 @@
           height: 100px;
           left: 100px;
           top: 20px;
+
           .wrap_legend {
             margin-top: 5px;
             margin-bottom: 5px;
@@ -137,15 +138,15 @@
     .header_logo {
       margin-right: 30px;
       margin-left: 5px;
-      width: 400px !important;
+      width: 400px;
       > img {
-        width: 137.5% !important;
+        width: 137.5%;
       }
     }
     .title_logo {
       .title_logo_name_main {
-        left: 11px !important;
-        top: 30px !important;
+        left: 11px;
+        top: 30px;
       }
     }
   }
@@ -183,16 +184,19 @@
           .root_day_sales_information {
             width: 100%;
             margin-left: 15px;
+            // display: flex;
+            // justify-content: space-between;
           }
 
           .wrap_popular_legend_op {
             display: flex;
+            // justify-content: space-between;
           }
           .wrap_legends {
-            position: relative;
+            // position: relative;
             height: 100px;
-            left: 70px;
-            top: 20px;
+            // left: 70px;
+            // top: 20px;
             .wrap_legend {
               margin-top: 5px;
               margin-bottom: 5px;

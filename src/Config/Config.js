@@ -13,3 +13,6 @@ const CLOSE_BTN =
 const API_URL = "http://10.58.5.97:8000";
 
 export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG };
+
+//지훈님 ip
+export const ADDRESS = "http://10.58.0.184:8000/";

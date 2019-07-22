@@ -1,19 +1,62 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminSignup.scss";
 import SelectBox from "Components/SelectBox";
-
+import { ADDRESS } from "Config/Config";
+import { withRouter } from "react-router-dom";
 class AdminSignup extends Component {
   state = {
     value: "",
-    isSignupButtonInit: true
+    isSignupButtonInit: true,
+    cityInfo: [],
+    gunguInfo: "",
+    locationInfo: "",
+    gradeInfo: [
+      { id: "지점장", name: "지점장" },
+      { id: "매니져", name: "매니져" }
+    ]
   };
 
-  componentDidMount() {}
+  componentDidMount = async () => {
+    this.getCity();
+  };
+
+  componentDidUpdate = async (previousProps, previousState) => {
+    const { cityNum, gunguNum } = this.state;
+
+    // console.log("componentDidUpdate props:", previousProps, this.props);
+    // console.log("componentDidUpdate state:", previousState, this.state);
+
+    //if (previousState.gunguInfo === this.state.gunguInfo) {
+    if (cityNum && previousState.cityNum !== this.state.cityNum) {
+      let getData = await fetch(ADDRESS + "store/gungu/" + cityNum);
+      let gungu = await getData.json();
+
+      this.setState({
+        gunguInfo: gungu
+      });
+    }
+
+    if (gunguNum && previousState.gunguNum !== this.state.gunguNum) {
+      console.log("지점 불러오기");
+      // const { gunguNum } = this.state;
+      let getData = await fetch(ADDRESS + "store/shop/" + gunguNum);
+      let getLocation = await getData.json();
+      this.setState({
+        locationInfo: getLocation
+      });
+    }
+  };
+
+  getCity = async () => {
+    let getData = await fetch(ADDRESS + "store/sido");
+    let getCity = await getData.json();
+    this.setState({
+      cityInfo: getCity
+    });
+  };
 
   handleChange = e => {
-    console.log(e.target.value);
     const { password, chk_password } = this.state;
     const value = e.target.value;
     const name = e.target.name;
@@ -22,14 +65,13 @@ class AdminSignup extends Component {
       [name]: value,
       isSignupButtonInit: false
     });
-    console.log(value);
-    console.log(name);
   };
 
   //select box
   handleSelectedChange = e => {
     const selectValue = e.target.value;
     const name = e.target.name;
+    console.log(name, selectValue);
     this.setState({
       [name]: selectValue
     });
@@ -37,8 +79,8 @@ class AdminSignup extends Component {
 
   handleSignup = () => {
     const {
-      gun,
-      gu,
+      cityNum,
+      gunguNum,
       grade,
       where_position,
       user_name,
@@ -49,8 +91,8 @@ class AdminSignup extends Component {
     } = this.state;
 
     if (
-      gun &&
-      gu &&
+      cityNum &&
+      gunguNum &&
       grade &&
       where_position &&
       user_name &&
@@ -59,26 +101,39 @@ class AdminSignup extends Component {
       password &&
       chk_password
     ) {
+      console.log(grade);
       let data = {
-        gun: gun,
-        gu: gu,
-        where_position: where_position,
-        grade: grade === "지점장" ? true : false,
-        user_name: user_name,
+        city: cityNum,
+        gungu: gunguNum,
+        store_id: where_position,
+        grade: grade,
+        name: user_name,
         phone_number: phone_number,
-        employees_numbers: employees_number,
-        employees_password: password,
-        employees_password_chk: chk_password
+        employee_code: employees_number,
+        password: password
       };
-
+      console.log(this.state.data);
       let sendData = {
         method: "POST",
+        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+        }
       };
-      //fetch 할부분. 가입하면 로그인화면으로 보내기
+
+      console.log(sendData);
+
+      this.sendAjax = async () => {
+        let reqData = await fetch(ADDRESS + "account/employee", sendData);
+        let getMessage = await reqData.json();
+        console.log(getMessage); //왜 이늠은 안가지?
+        if (getMessage.message === "SUCCESS") {
+          alert("회원가입을 축하드립니다.");
+          this.props.history.push("/admin/login");
+        }
+      };
+
+      this.sendAjax();
     } else {
       alert("빈칸이 없어야 합니다.");
     }
@@ -95,13 +150,17 @@ class AdminSignup extends Component {
           />
           <div className="wrap_login_admin_info_signup">
             <div className="wrap_locations">
-              <div className="location_city">군/구</div>
+              <div className="location_city">시/군구</div>
+              {
+                <SelectBox
+                  selectName="cityNum"
+                  locationList={this.state.cityInfo}
+                  handleSelectedChange={this.handleSelectedChange}
+                />
+              }
               <SelectBox
-                selectName="gun"
-                handleSelectedChange={this.handleSelectedChange}
-              />
-              <SelectBox
-                selectName="gu"
+                selectName="gunguNum"
+                locationList={this.state.gunguInfo}
                 handleSelectedChange={this.handleSelectedChange}
               />
             </div>
@@ -109,18 +168,15 @@ class AdminSignup extends Component {
               <div className="location_admin">지점/위치</div>
               <SelectBox
                 selectName="where_position"
+                locationList={this.state.locationInfo}
                 handleSelectedChange={this.handleSelectedChange}
-                location1="선릉역점"
-                location2="선릉역 1호점"
-                location3="선릉역 3호점"
               />
             </div>
             <div className="wrap_position_select_box">
               <div className="admin_position">직책/직급</div>
               <SelectBox
                 selectName="grade"
-                location1="매니져"
-                location2="지점장"
+                locationList={this.state.gradeInfo}
                 handleSelectedChange={this.handleSelectedChange}
               />
             </div>
@@ -202,4 +258,4 @@ class AdminSignup extends Component {
     );
   }
 }
-export default AdminSignup;
+export default withRouter(AdminSignup);
