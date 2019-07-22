@@ -8,11 +8,18 @@ const PROFILE_IMG =
   "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-256.png";
 
 const CLOSE_BTN =
-  "https://cdn0.iconfinder.com/data/icons/solid-line-essential-ui-icon-set/512/essential_set_close-256.png";
+  "https://cdn1.iconfinder.com/data/icons/solid-icons-part-3/128/close-128.png";
 
-const API_URL = "http://10.58.5.97:8000";
+const CHECK_IMG =
+  "https://cdn4.iconfinder.com/data/icons/icocentre-free-icons/137/f-check_256-128.png";
 
 export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG };
 
 //지훈님 ip
 export const ADDRESS = "http://10.58.0.184:8000/";
+const RKXHSKZMS = "data.access_token";
+
+const API_URL = "http://10.58.0.181:8000";
+// 10.58.0.219
+
+export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, CHECK_IMG, RKXHSKZMS };
