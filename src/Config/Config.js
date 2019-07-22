@@ -15,7 +15,7 @@ const CHECK_IMG =
 
 const RKXHSKZMS = "data.access_token";
 
-const API_URL = "http://10.58.2.97:8000";
+const API_URL = "http://10.58.0.181:8000";
 // 10.58.0.219
 
 export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, CHECK_IMG, RKXHSKZMS };

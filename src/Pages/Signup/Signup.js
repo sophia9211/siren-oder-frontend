@@ -43,13 +43,13 @@ class Signup extends Component {
         gender: this.state.gender
       }
     }).then(res => {
-      console.log(res.data);
-      if (res.error_code === "DUPLICATE_EMAIL") {
+      console.log(res);
+      if (res.message === "DUPLICATE_EMAIL") {
         // this.setState({
         //   email_text: "중복된 이메일입니다."
         // });
         alert("중복된 이메일입니다.");
-      } else if (res.message === "SUCCESS") {
+      } else if (res.data.message === "SUCCESS") {
         alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
         this.props.history.push({
           pathname: "/login"
