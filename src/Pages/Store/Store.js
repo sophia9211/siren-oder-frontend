@@ -76,28 +76,57 @@ class Store extends Component {
 
   searchStore = () => {
     var arr = [];
+    const url = "http://10.58.0.184:8000/";
     // console.log(this.state.search);
     if (!this.state.search) {
       alert("키워드를 입력해주세요!");
     } else {
       // const data = ["강남", "수원", "강남건물"];
-      if (
-        fetch("http://10.58.0.184:8000/store/shop/1")
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            console.log(data);
-            data.map(ele => {
-              if (ele.name.includes(this.state.search)) {
-                arr.push(ele.name);
-              }
-            });
-            console.log(arr);
-          })
-      ) {
-        console.log(1);
-      }
+
+      fetch(`${url}store/sido`)
+        .then(res1 => {
+          return res1.json();
+        })
+        .then(data1 => {
+          data1.map(ele => {
+            if (ele.name.includes(this.state.search)) {
+              arr.push(ele.name);
+            } else {
+              fetch(`${url}store/gungu/${ele.id}`)
+                .then(res2 => {
+                  return res2.json();
+                })
+                .then(data2 => {
+                  data2.map(ele => {
+                    // console.log(ele);
+                    if (ele.name) {
+                      // console.log(ele);
+                      if (ele.name.includes(this.state.search)) {
+                        arr.push(ele.name);
+                      } else {
+                        if (ele.id) {
+                          fetch(`${url}store/shop/${ele.id}`)
+                            .then(res3 => {
+                              return res3.json();
+                            })
+                            .then(data3 => {
+                              data3.map(ele => {
+                                if (ele.name) {
+                                  if (ele.name.includes(this.state.search)) {
+                                    arr.push(ele.name);
+                                  }
+                                }
+                              });
+                            });
+                        }
+                      }
+                    }
+                  });
+                });
+            }
+          });
+          console.log(arr);
+        });
     }
 
     // fetch("http://10.58.0.184:8000/store/gungu")
