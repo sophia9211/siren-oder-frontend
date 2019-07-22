@@ -3,6 +3,7 @@ import SignupStep1 from "Components/SignupStep/SignupStep1";
 import SignupStep2 from "Components/SignupStep/SignupStep2";
 import SignupStep3 from "Components/SignupStep/SignupStep3";
 import { API_URL } from "Config/Config.js";
+import { post, get } from "utils/api";
 
 class Signup extends Component {
   state = {
@@ -15,6 +16,12 @@ class Signup extends Component {
   };
 
   callNext = e => {
+    get({
+      path: "store/sido"
+    }).then(res => {
+      console.log(res.data);
+    });
+
     this.setState({
       step: this.state.step + 1
     });
@@ -22,33 +29,45 @@ class Signup extends Component {
 
   clickSign = e => {
     e.preventDefault();
-    fetch(`${API_URL}/account`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    post({
+      path: "account",
+      body: {
         email: this.state.email,
         name: this.state.name,
         password: this.state.password,
         phone_number: this.state.phone,
         gender: this.state.gender
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        // if (data.error_code === "EMAIL_EXIST") {
-        //   this.setState({
-        //     email_text: "중복된 이메일입니다."
-        //   });
-        // } else if (data.message === "회원가입을 축하드립니다.") {
-        //   alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
-        //   this.props.history.push({
-        //     pathname: "/login"
-        //   });
-        // } else {
-        //   alert("죄송합니다. 회원가입을 다시 해주세요.");
-        // }
-      });
+      }
+    }).then(res => {
+      console.log(res.data);
+    });
+    // fetch(`${API_URL}/account`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //     name: this.state.name,
+    //     password: this.state.password,
+    //     phone_number: this.state.phone,
+    //     gender: this.state.gender
+    //   })
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log(data);
+    //     // if (data.error_code === "EMAIL_EXIST") {
+    //     //   this.setState({
+    //     //     email_text: "중복된 이메일입니다."
+    //     //   });
+    //     // } else if (data.message === "회원가입을 축하드립니다.") {
+    //     //   alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
+    //     //   this.props.history.push({
+    //     //     pathname: "/login"
+    //     //   });
+    //     // } else {
+    //     //   alert("죄송합니다. 회원가입을 다시 해주세요.");
+    //     // }
+    //   });
   };
 
   fillInput = e => {

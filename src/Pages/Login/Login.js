@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
 import { LOGO, CLOSE_BTN, API_URL } from "Config/Config.js";
+import { post } from "utils/api";
 
 class Login extends Component {
   state = {
@@ -11,30 +12,34 @@ class Login extends Component {
 
   clickLogin = e => {
     e.preventDefault();
-    fetch(`${API_URL}/account/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        // if (data.error_code === "EMAIL_EXIST") {
-        //   this.setState({
-        //     email_text: "중복된 이메일입니다."
-        //   });
-        // } else if (data.message === "회원가입을 축하드립니다.") {
-        //   alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
-        //   this.props.history.push({
-        //     pathname: "/login"
-        //   });
-        // } else {
-        //   alert("죄송합니다. 회원가입을 다시 해주세요.");
-        // }
-      });
+    post({
+      path: "account/login",
+      body: { email: this.state.email, password: this.state.password }
+    });
+    // fetch(`${API_URL}/account/login`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //     password: this.state.password
+    //   })
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log(data);
+    //     // if (data.error_code === "EMAIL_EXIST") {
+    //     //   this.setState({
+    //     //     email_text: "중복된 이메일입니다."
+    //     //   });
+    //     // } else if (data.message === "회원가입을 축하드립니다.") {
+    //     //   alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
+    //     //   this.props.history.push({
+    //     //     pathname: "/login"
+    //     //   });
+    //     // } else {
+    //     //   alert("죄송합니다. 회원가입을 다시 해주세요.");
+    //     // }
+    //   });
   };
 
   fillLogin = e => {
