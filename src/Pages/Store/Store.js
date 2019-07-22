@@ -2,25 +2,50 @@ import React, { Component } from "react";
 import "./Store.scss";
 import { ICON } from "Config/Config.js";
 import "./Overlay";
-import Overlay from "./Overlay";
+import HeaderDetail from "Components/Header/HeaderDetail";
+import SelectBox from "Components/SelectBox";
+import { ADDRESS } from "Config/Config";
+// import Overlay from "./Overlay";
 import { arrayExpression } from "@babel/types";
 import { get } from "utils/api";
 import { API_URLSEC } from "../../Config/Config";
 
 class Store extends Component {
-  componentDidMount() {
+  state = {
+    cityInfo: [],
+    gunguInfo: "",
+    locationInfo: "",
+    lists: [1, 2, 3]
+  };
+
+  componentDidMount = async () => {
+    this.getCity();
+
     var mapContainer = document.getElementById("map"), // 지도의 중심좌표
       mapOption = {
-        center: new window.kakao.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        center: new window.kakao.maps.LatLng(37.500701, 127.050667), // 지도의 중심좌표
+        level: 5 // 지도의 확대 레벨
       };
     var map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-    // 지도에 마커를 표시합니다
-    var marker = new window.kakao.maps.Marker({
-      map: map,
-      position: new window.kakao.maps.LatLng(33.450701, 126.570667),
-      clickable: true
-    });
+    var positions = [
+      {
+        content: "<div>카카오</div>",
+        latlng: new window.kakao.maps.LatLng(37.500901, 127.050467)
+      },
+      {
+        content: "<div>생태연못</div>",
+        latlng: new window.kakao.maps.LatLng(37.504301, 127.050267)
+      },
+      {
+        content: "<div>텃밭</div>",
+        latlng: new window.kakao.maps.LatLng(37.500601, 127.058067)
+      },
+      {
+        content: "<div>근린공원</div>",
+        latlng: new window.kakao.maps.LatLng(37.497001, 127.050167)
+      }
+    ];
+
     // 커스텀 오버레이에 표시할 컨텐츠 입니다
     // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
     // 별도의 이벤트 메소드를 제공하지 않습니다
@@ -43,98 +68,115 @@ class Store extends Component {
       "        </div>" +
       "    </div>" +
       "</div>";
-    // 마커 위에 커스텀오버레이를 표시합니다
-    // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-    window.kakao.maps.event.addListener(marker, "click", function() {
-      window.overlay = new window.kakao.maps.CustomOverlay({
-        content: content,
+
+    // 지도에 마커를 표시합니다
+    for (var i = 0; i < positions.length; i++) {
+      var marker = new window.kakao.maps.Marker({
         map: map,
-        position: marker.getPosition()
+        position: positions[i].latlng,
+        clickable: true
       });
-      window.overlay.setMap(map);
-      console.log(1);
-    });
+      // 마커 위에 커스텀오버레이를 표시합니다
+      // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+      // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+      window.kakao.maps.event.addListener(marker, "click", function() {
+        console.log(positions[i]);
+        window.overlay = new window.kakao.maps.CustomOverlay({
+          content: content,
+          map: map,
+          position: positions[i].latlng.getPosition()
+        });
+        window.overlay.setMap(map);
+        console.log(1);
+      });
+    }
     //커스텀 오버레이를 닫기 위해 호출되는 함수입니다
     window.closeOverlay = function() {
       window.overlay.setMap(null);
     };
-  }
-
-  state = {
-    search: ""
   };
 
-  fillSearch = e => {
-    this.setState(
-      {
-        [e.target.name]: e.target.value
-      },
-      () => {
-        // console.log(this.state.search);
-      }
-    );
-  };
+  componentDidUpdate = async (previousProps, previousState) => {
+    const { cityNum, gunguNum } = this.state;
 
-  searchStore = () => {
-    var arr = [];
+    if (cityNum && previousState.cityNum !== this.state.cityNum) {
+      let getData = await fetch(ADDRESS + "store/gungu/" + cityNum);
+      let gungu = await getData.json();
 
-    if (!this.state.search) {
-      alert("키워드를 입력해주세요!");
-    } else {
-      get({
-        path: "store/sido"
-      }).then(si => {
-        si.data.map(ele => {
-          get({
-            path: `store/gungu/${ele.id}`
-          }).then(gu => {
-            // console.log(gu.data);
-            gu.data.map(ele => {
-              get({
-                path: `store/shop/${ele.id}`
-              }).then(store => {
-                // console.log(store.data);
-                // if (store.name.includes(this.state.search)) {
-                //   arr.push(store.name);
-                // }
-              });
-            });
-          });
-        });
+      this.setState({
+        gunguInfo: gungu
+      });
+    }
+
+    if (gunguNum && previousState.gunguNum !== this.state.gunguNum) {
+      let getData = await fetch(ADDRESS + "store/shop/" + gunguNum);
+      let getLocation = await getData.json();
+      this.setState({
+        locationInfo: getLocation
       });
     }
   };
 
+  getCity = async () => {
+    let getData = await fetch(ADDRESS + "store/sido");
+    let getCity = await getData.json();
+    this.setState({
+      cityInfo: getCity
+    });
+  };
+
+  handleSelectedChange = e => {
+    const selectValue = e.target.value;
+    const name = e.target.name;
+    console.log(name, selectValue);
+    this.setState({
+      [name]: selectValue
+    });
+  };
+
   render() {
     return (
-      // <div classNmae="store">
-      //   <div className="store_header"></div>
-      //   <div className="store_search">
-      //     <input type="text" />
-      //   </div>
-      //   <div id="map"></div>
-      //   <div className="store_list">컴포넌트</div>
-      // </div>
-      <div className="map_wrap">
-        {/* <div id="menu_wrap" class="bg_white">
-          <div class="option">
-            <div>
-              <form onsubmit="searchPlaces(); return false;">
-                키워드 :{" "}
-                <input type="text" value="이태원 맛집" id="keyword" size="15" />
-                <button type="submit">검색하기</button>
-              </form>
-            </div>
-          </div>
-          <hr />
-          <ul id="placesList"></ul>
-          <div id="pagination"></div>
-        </div> */}
-        <input tpye="search" name="search" onChange={this.fillSearch} />
-        <button onClick={this.searchStore}>검색</button>
+      <div className="store">
+        <HeaderDetail>매장 검색</HeaderDetail>
+        <div className="select_wraper">
+          <SelectBox
+            selectName="cityNum"
+            locationList={this.state.cityInfo}
+            handleSelectedChange={this.handleSelectedChange}
+          />
+          <SelectBox
+            selectName="gunguNum"
+            locationList={this.state.gunguInfo}
+            handleSelectedChange={this.handleSelectedChange}
+          />
+          <SelectBox
+            selectName="where_position"
+            locationList={this.state.locationInfo}
+            handleSelectedChange={this.handleSelectedChange}
+          />
+        </div>
+        <button className="select_btn" onClick={this.searchStore}>
+          검색
+        </button>
         <div id="map"></div>
-        <ul></ul>
+        <ul>
+          {/* {this.state.lists.map(el => {
+            return (
+              <li>
+                <div>
+                  <div className="store_img">
+                    <img src={img} alt="매장이미지" />
+                  </div>
+                  <div className="store_flex">
+                    <h4>{name}</h4>
+                    <p>{address}</p>
+                    <p>{location}</p>
+                  </div>
+                </div>
+              </li>
+            );
+          })} */}
+        </ul>
       </div>
     );
   }
