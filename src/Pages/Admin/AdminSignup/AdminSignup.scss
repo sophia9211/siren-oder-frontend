@@ -60,7 +60,11 @@
         margin-right: 3%;
       }
 
-      .employees_numbers {
+      .employees_numbers,
+      .employees_user_name,
+      .employees_phone_number,
+      .employees_password,
+      .employees_password_chk {
         width: 66.8%;
         height: 55px;
         border: 1px solid #999;
@@ -74,11 +78,16 @@
         text-align: center;
       }
     }
+    .admin_chk_password {
+      color: red;
+      margin-left: 150px;
+    }
     .wrap_admin_button {
       float: right;
       margin-right: 56px;
 
-      > button {
+      > .admin_signup_btn,
+      .admin_cancle_btn {
         width: 100px;
         height: 40px;
         border-radius: 15px;
@@ -88,6 +97,11 @@
         color: azure;
         margin-left: 15px;
         font-weight: bold;
+      }
+      > .admin_signup_btn_disable {
+        @extend .admin_signup_btn;
+        background: gray;
+        pointer-events: none;
       }
       .kakaoLogin {
         background-color: yellow;
