@@ -1,9 +1,9 @@
 import React from "react";
 import "./MenuTicket.scss";
 
-const MenuTicket = ({ engName, imgBox, imgSrc, price, menuName }) => {
+const MenuTicket = ({ engName, imgSrc, price, menuName }) => {
   return (
-    <div className="menu_tiket_contain_box">
+    <div className={"menu_tiket_contain_box"}>
       <div
         style={{
           backgroundImage: `url("${imgSrc}")`

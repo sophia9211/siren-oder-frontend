@@ -19,13 +19,7 @@
   }
 
   .title_logo {
-    display: flex;
-    > img {
-      width: 100%;
-      margin-right: 20px;
-    }
-
-    .title_logo_name {
+    .title_logo_name_main {
       color: violet;
       font-size: 30px;
       font-weight: 700;

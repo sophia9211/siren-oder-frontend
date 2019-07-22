@@ -10,7 +10,10 @@ class AdminLogin extends Component {
     return (
       <>
         <div className="root_admin_login">
-          <AdminHeader />
+          <AdminHeader
+            imgClassName="login_img_name"
+            logoTitleName="title_logo_name"
+          />
           <div className="wrap_login_admin_info">
             <div className="wrap_locations">
               <div className="location_city">군/구</div>
