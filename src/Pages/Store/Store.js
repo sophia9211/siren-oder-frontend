@@ -285,7 +285,7 @@ class Store extends Component {
               );
             })}
           <li onClick={this.handleOpenModal}>123</li>
-          {/* {this.state.modal && (
+          {this.state.modal && (
             <StorePortal>
               <StoreModal
                 onClick={this.handleCloseModal}
@@ -294,7 +294,7 @@ class Store extends Component {
                 // img={ele.img}
               />
             </StorePortal>
-          )} */}
+          )}
         </ul>
       </div>
     );
