@@ -9,13 +9,32 @@ import { ADDRESS, DJKLSAJFF } from "Config/Config.js";
 
 class AdminLogin extends Component {
   //상태값 리덕스에서 관리
-  componentDidUpdate() {
+  componentDidMount() {
     //리덕스 컴포넌트 변경되었는지 확인.
+    window.Kakao.init("a81d01b3bdfe45a0794edae07d009473");
+
+    window.Kakao.Auth.createLoginButton({
+      container: "#kakao-login-btn",
+      success: function(authObj) {
+        console.log(JSON.stringify(authObj));
+      },
+      fail: function(err) {
+        console.log(JSON.stringify(err));
+      }
+    });
   }
 
   handleSignup = () => {
     this.props.history.push("signup");
   };
+
+  //카카오 로그인 백엔드 뷰 엔드포인트 만들어지면 던지기.
+  // handleKakao = () => {
+  //   this.sendAjax = async () => {
+  //     let reqData = await fetch();
+  //   };
+  // };
+
   handleLogin = () => {
     const { inputID, inputPassword } = this.state;
     let sendData = {
@@ -87,7 +106,7 @@ class AdminLogin extends Component {
               />
             </div>
             <div className="wrap_admin_button">
-              <button className="kakaoLogin">Kakao 로그인</button>
+              <a id="kakao-login-btn" onClick={this.handleKakao}></a>
               <button className="signup_btn" onClick={this.handleSignup}>
                 회원가입
               </button>

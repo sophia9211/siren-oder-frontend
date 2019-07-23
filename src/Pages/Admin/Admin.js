@@ -47,20 +47,8 @@ class Admin extends Component {
     this.props.onUnAuth();
   };
 
-  handleScroll = () => {
-    const { innerHeight } = window;
-    const { scrollHeight } = document.body;
-
-    const scrollTop =
-      (document.documentElement && document.documentElement.scrollTop) ||
-      document.body.scrollTop;
-    if (scrollHeight - innerHeight - scrollTop < 100) {
-      console.log("끝");
-    }
-  };
-
   render() {
-    console.log(this.state.realtimeValue);
+    console.log(this.state.isUserLogin);
     return (
       <>
         <AdminHeader
@@ -261,7 +249,6 @@ class Admin extends Component {
 
 //키값은 props에서 확인.
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isUserLogin: state.auth.isUserLogin //여기서 auth는 reducer에서 선언한  state 값.
   };
