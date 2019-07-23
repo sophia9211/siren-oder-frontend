@@ -12,9 +12,9 @@ const HeaderDetail = ({ link, src_right, alt, children }) => {
         />
       </Link>
       <div className="header_detail_text">{children}</div>
-      <div header_detail_right>
+      {/* <div header_detail_right>
         <img src={src_right} alt={alt} />
-      </div>
+      </div> */}
     </div>
   );
 };
