@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Store.scss";
-import "./Overlay";
 import HeaderDetail from "Components/Header/HeaderDetail";
 import SelectBox from "Components/SelectBox";
 import StorePortal from "Components/StorePortal";
@@ -193,8 +192,6 @@ class Store extends Component {
     var r = 6371; //지구의 반지름(km)
     var dLat = deg2rad(lat2 - lat1);
     var dLon = deg2rad(lng2 - lng1);
-    console.log(lat2, lat1);
-    console.log(dLat);
     var a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(deg2rad(lat1)) *
@@ -202,17 +199,17 @@ class Store extends Component {
         Math.sin(dLon / 2) *
         Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    console.log(c);
     var d = r * c; // Distance in km
     if (d < 1) {
-      return Math.round(d * 1000 + "m");
+      return Math.round(d * 1000) + "m";
     }
-    return Math.round(d + "km");
+    return d.toFixed(1) + "km";
   };
 
-  handleOpenModal = () => {
+  handleOpenModal = ele => {
     this.setState({
-      modal: true
+      modal: true,
+      modalInfo: ele
     });
   };
   handleCloseModal = () => {
@@ -222,7 +219,6 @@ class Store extends Component {
   };
 
   render() {
-    console.log(this.state.resultStore);
     return (
       <div className="store">
         <HeaderDetail link="/">매장 검색</HeaderDetail>
@@ -247,14 +243,14 @@ class Store extends Component {
           검색
         </button>
         <div id="map"></div>
-        <ul className="lists_wraper">
+        <ul className="lists_wrapper">
           {this.state.resultStore &&
             this.state.resultStore.map(ele => {
               return (
                 <li
                   key={ele.id}
                   className="store_lists"
-                  onClick={this.handleOpenModal}
+                  onClick={() => this.handleOpenModal(ele)}
                 >
                   <div className="store_container">
                     <div className="store_img">
@@ -271,20 +267,10 @@ class Store extends Component {
                       </p>
                     </div>
                   </div>
-                  {this.state.modal && (
-                    <StorePortal>
-                      <StoreModal
-                        onClick={this.handleCloseModal}
-                        name={ele.name}
-                        address={ele.address}
-                        // img={ele.img}
-                      />
-                    </StorePortal>
-                  )}
                 </li>
               );
             })}
-          <li onClick={this.handleOpenModal}>123</li>
+          {/* <li onClick={this.handleOpenModal}>123</li>
           {this.state.modal && (
             <StorePortal>
               <StoreModal
@@ -294,8 +280,18 @@ class Store extends Component {
                 // img={ele.img}
               />
             </StorePortal>
-          )}
+          )} */}
         </ul>
+        {this.state.modal && (
+          <StorePortal>
+            <StoreModal
+              onClick={this.handleCloseModal}
+              name={this.state.modalInfo.name}
+              address={this.state.modalInfo.address}
+              // img={ele.img}
+            />
+          </StorePortal>
+        )}
       </div>
     );
   }

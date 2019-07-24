@@ -1,0 +1,30 @@
+.check_text {
+    display: inline-block;
+    padding-bottom: 15px;
+
+    .check_base {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #c7a111;
+        position: relative;
+        margin-right: 10px;
+    }
+
+    .check_fill {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #c7a111;
+        position: relative;
+        margin-right: 10px;
+
+        div {
+            width: 10px;
+            height: 10px;
+            background-color: #ddc058;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+        }
+    }
+}
