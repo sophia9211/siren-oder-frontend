@@ -1,0 +1,22 @@
+.root_not_found {
+  width: 100%;
+  height: 946.2px;
+  background-color: #60ddd6;
+  padding-top: 200px;
+  .not_found {
+    width: 1000px;
+    height: 500px;
+    background-image: url("../../Style/img/spotify-404-page.png");
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    // margin-top: 200px;
+  }
+  .go_to_back_btn {
+    position: absolute;
+    width: 108px;
+    height: 37px;
+    left: 51.8%;
+    top: 537px;
+  }
+}

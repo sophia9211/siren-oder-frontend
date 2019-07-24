@@ -14,13 +14,16 @@ import MonthSalesChart from "Components/Chart/MonthSalesChart/MonthSalesChart";
 import RealTimeOrderChart from "Components/Chart/RealTimeOrderChart/RealTimeOrderChart";
 import TimeOrderAmountChart from "Components/Chart/TimeOrderAmountChart/TimeOrderAmountChart";
 import PopularItemChart from "Components/Chart/PopularItemChart/PopularItemChart";
+import { connect } from "react-redux";
+import { unAuth } from "Actions/AuthAction.js";
 import { REALTIMEPRICE } from "testData/mockGraph";
 import { DAY_SALES_PRICE } from "testData/mockGraph";
 import { MONTH_SALES_PRICE } from "testData/mockGraph";
 import { ORDERAMOUNT } from "testData/mockGraph";
 import { POPULAR_ITEM } from "testData/mockGraph";
 import { MONTH_PRICE } from "testData/mockGraph";
-import { getKoreaDateYMD, getKoreaDateYMDTime } from "Util/date";
+import { getKoreaDateYMD, getKoreaDateYMDTime } from "Utils/date.js";
+import { DJKLSAJFF } from "Config/Config.js";
 
 class Admin extends Component {
   state = {
@@ -33,45 +36,19 @@ class Admin extends Component {
     monthPrice: MONTH_PRICE
   };
 
-  componentDidMount() {
-    getKoreaDateYMD("1998-12-31 23:59:59");
-    getKoreaDateYMDTime("1998-12-31 23:59:59");
-
-    let itemList = document.getElementsByClassName("wrap_order_list")[0];
-    console.log(itemList);
-    itemList.addEventListener("scroll", this.handleScroll);
-
-    // 그래프 정보 받아와야함.
-    console.log(this.state.daySalesPrice);
-    console.log(this.state.orderAmount);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-
   handleReadyClick = e => {
     console.log("클릭");
   };
 
-  handleFinishClick = () => {
-    console.log("로그아웃");
-  };
-
-  handleScroll = () => {
-    const { innerHeight } = window;
-    const { scrollHeight } = document.body;
-
-    const scrollTop =
-      (document.documentElement && document.documentElement.scrollTop) ||
-      document.body.scrollTop;
-    if (scrollHeight - innerHeight - scrollTop < 100) {
-      console.log("끝");
-    }
+  handleLogout = () => {
+    localStorage.removeItem(DJKLSAJFF);
+    alert("정상적으로 로그아웃 하였습니다.");
+    this.props.history.push("/admin/login");
+    this.props.onUnAuth();
   };
 
   render() {
-    console.log(this.state.realtimeValue);
+    console.log(this.state.isUserLogin);
     return (
       <>
         <AdminHeader
@@ -87,7 +64,7 @@ class Admin extends Component {
             <span className="admin_user_info">관리자명</span>
             <span className="admin_user_info">아이유</span>
           </div>
-          <button className="admin_login_button" onClick={this.handleLogIn}>
+          <button className="admin_login_button" onClick={this.handleLogout}>
             로그아웃
           </button>
         </AdminHeader>
@@ -265,14 +242,27 @@ class Admin extends Component {
             </section>
           </div>
         </section>
-        {/* <AdminFooter
-          nextOrder="카라멜 마끼야또 1잔"
-          monthPrice="150,000원"
-          todayPrice="50,000원"
-        /> */}
       </>
     );
   }
 }
+
+//키값은 props에서 확인.
+const mapStateToProps = state => {
+  return {
+    isUserLogin: state.auth.isUserLogin //여기서 auth는 reducer에서 선언한  state 값.
+  };
+};
+//위에꺼와 별개값
+const mapDispatchToProps = dispatch => {
+  return {
+    onUnAuth: () => dispatch(unAuth()) //dispatcher 실행함수
+  };
+};
+//이내용을 컴포넌트화로 보내면 지금처럼 라우터부분에 보내면됨. 변수로 처리할꺼면 라우터부분에 변수가 들어가야함
+Admin = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Admin);
 
 export default Admin;
