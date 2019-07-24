@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Inputbox from "Components/Inputbox";
 import Button from "Components/Button";
 import { LOGO, CLOSE_BTN, RKXHSKZMS } from "Config/Config.js";
-import { post } from "utils/api";
+import { post } from "Utils/api";
 
 class Login extends Component {
   state = {
