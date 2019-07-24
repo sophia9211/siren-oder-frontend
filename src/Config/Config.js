@@ -14,7 +14,7 @@ const CHECK_IMG =
   "https://cdn4.iconfinder.com/data/icons/icocentre-free-icons/137/f-check_256-128.png";
 
 //지훈님 ip
-export const ADDRESS = "http://10.58.6.80:8000/";
+export const ADDRESS = "http://10.58.3.107:8000/";
 const RKXHSKZMS = "data.access_token";
 export const DJKLSAJFF = "result.access_token";
 
