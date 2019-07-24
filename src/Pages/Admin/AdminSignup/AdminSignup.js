@@ -77,6 +77,10 @@ class AdminSignup extends Component {
     });
   };
 
+  handleCancle = () => {
+    this.props.history.push("login");
+  };
+
   handleSignup = () => {
     const {
       cityNum,
@@ -233,7 +237,7 @@ class AdminSignup extends Component {
               ""
             )}
             <div className="wrap_admin_button">
-              <button className="admin_cancle_btn" onClick={this.handleCancel}>
+              <button className="admin_cancle_btn" onClick={this.handleCancle}>
                 취소
               </button>
               {isSignupButtonInit && (
