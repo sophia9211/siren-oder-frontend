@@ -6,12 +6,12 @@
 
     @media #{$phone} {
         margin: 0 auto;
-        color: red;
+        margin-top: 100px;
     }
 
     @media #{$desktop} {
         margin: 0 auto;
-        color: blue;
+        margin-top: 100px;
     }
 
     .login_container_flex {

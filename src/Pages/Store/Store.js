@@ -243,7 +243,7 @@ class Store extends Component {
           검색
         </button>
         <div id="map"></div>
-        <ul className="lists_wraper">
+        <ul className="lists_wrapper">
           {this.state.resultStore &&
             this.state.resultStore.map(ele => {
               return (
