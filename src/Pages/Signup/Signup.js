@@ -4,7 +4,7 @@ import SignupStep2 from "Components/SignupStep/SignupStep2";
 import SignupStep3 from "Components/SignupStep/SignupStep3";
 import "./Signup.scss";
 // import { API_URL } from "Config/Config.js";
-import { post, get } from "Utils/api.js";
+import { post } from "Utils/api.js";
 
 class Signup extends Component {
   state = {
