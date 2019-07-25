@@ -1,4 +1,5 @@
 @import "Style/font/font.scss";
+
 .menu_modal {
   background: rgba(0, 0, 0, 0.25);
   position: fixed;
@@ -19,6 +20,7 @@
     border-radius: 6px;
     width: 400px;
     height: 550px;
+
     .menu_modal_img {
       display: block;
       width: 100%;
@@ -29,12 +31,14 @@
       background-size: 100%;
       background-position: center;
     }
+
     .menu_modal_name {
       font-size: 1.3em;
       text-align: center;
       margin: 20px 0 10px;
       font-family: $homefont;
     }
+
     .menu_modal_eng_name {
       font-size: 1em;
       text-align: center;
@@ -42,6 +46,7 @@
       margin: 0;
       font-family: $homefont;
     }
+
     .menu_modal_detail_text {
       font-size: 0.8em;
       text-align: center;
@@ -50,6 +55,7 @@
     }
   }
 }
+
 .modal_exit {
   position: absolute;
   display: block;

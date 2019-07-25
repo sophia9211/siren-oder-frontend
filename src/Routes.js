@@ -7,6 +7,8 @@ import Signup from "./Pages/Signup";
 import Store from "./Pages/Store";
 import History from "./Pages/History";
 import Mypage from "./Pages/Mypage";
+import ShoppingCart from "./Pages/ShoppingCart";
+import Payment from "./Pages/Payment";
 import TotalMenu from "./Pages/TotalMenu";
 import AdminLogin from "./Pages/Admin/AdminLogin";
 import AdminSignup from "./Pages/Admin/AdminSignup";
@@ -25,6 +27,8 @@ class Routes extends Component {
           <Route exact path="/store" component={Store} />
           <Route exact path="/history" component={History} />
           <Route exact path="/mypage" component={Mypage} />
+          <Route exact path="/shoppingcart" component={ShoppingCart} />
+          <Route exact path="/payment" component={Payment} />
           <Route exact path="/totalMenu" component={TotalMenu} />
           <Route exact path="/admin/login" component={AdminLogin} />
           <Route exact path="/admin/signup" component={AdminSignup} />

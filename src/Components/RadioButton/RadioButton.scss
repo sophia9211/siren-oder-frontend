@@ -1,0 +1,37 @@
+.radio_text {
+    display: inline-flex;
+
+    .radio_btn {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #c7a111;
+        position: relative;
+        margin-right: 5px;
+    }
+
+    .radio_btn_fill {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #c7a111;
+        position: relative;
+        margin-right: 5px;
+
+        div {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddc058;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+        }
+    }
+
+    p {
+        margin: 0;
+        font-size: 13px;
+        margin-right: 15px;
+    }
+}

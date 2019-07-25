@@ -18,7 +18,7 @@ class SignupStep2 extends Component {
   };
 
   render() {
-    const { fill, next } = this.props;
+    const { fill, next, phone, rdm_num } = this.props;
     return (
       <div className="signup_container">
         <div className="signup_container_flex">
@@ -47,14 +47,14 @@ class SignupStep2 extends Component {
             <Inputbox
               className="basic_input"
               name="phone"
-              type="tel"
+              type="number"
               placeholder="휴대폰 번호"
               change={fill}
             />
             <Inputbox
               className="short_input"
               name="rdm_num"
-              type="number"
+              type="password"
               placeholder="인증번호"
               change={fill}
             />
@@ -67,7 +67,11 @@ class SignupStep2 extends Component {
             </p>
           </div>
         </div>
-        {this.state.check_fourth && this.props.phone && this.props.rdm_num ? (
+        {this.state.check_fourth &&
+        phone &&
+        rdm_num &&
+        phone.length >= 10 &&
+        rdm_num.length === 4 ? (
           <Button className="submit_btn" value="다음" onClick={next} />
         ) : (
           <Button className="submit_btn_disabled" value="다음" />

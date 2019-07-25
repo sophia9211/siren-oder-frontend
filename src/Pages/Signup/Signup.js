@@ -4,7 +4,7 @@ import SignupStep2 from "Components/SignupStep/SignupStep2";
 import SignupStep3 from "Components/SignupStep/SignupStep3";
 import "./Signup.scss";
 // import { API_URL } from "Config/Config.js";
-import { post, get } from "Utils/api.js";
+import { post } from "Utils/api.js";
 
 class Signup extends Component {
   state = {
@@ -32,7 +32,13 @@ class Signup extends Component {
   };
 
   clickSign = e => {
+    const { password, password_chk } = this.state;
     e.preventDefault();
+    if (password.length < 6) {
+      alert("비밀번호는 6자리 이상입니다.");
+    } else if (password !== password_chk) {
+      alert("비밀번호를 다시 입력해주세요.");
+    }
     post({
       path: "account",
       body: {
@@ -43,7 +49,7 @@ class Signup extends Component {
         gender: this.state.gender
       }
     }).then(res => {
-      console.log(res);
+      // console.log(res);
       if (res.message === "DUPLICATE_EMAIL") {
         // this.setState({
         //   email_text: "중복된 이메일입니다."
