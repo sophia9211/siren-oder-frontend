@@ -310,6 +310,7 @@ class Store extends Component {
           <StorePortal>
             <StoreModal
               onClick={this.handleCloseModal}
+              id={this.state.modalInfo.id}
               name={this.state.modalInfo.name}
               address={this.state.modalInfo.address}
               // img={ele.img}

@@ -3,7 +3,7 @@
 .login_container {
     min-width: 320px;
     max-width: 450px;
-    font-family: source-code-pro;
+    // font-family: source-code-pro;
 
     @media #{$smPhone} {
         margin: 0 auto;
@@ -12,11 +12,13 @@
     @media #{$phone} {
         margin: 0 auto;
         margin-top: 100px;
+        // border: 1px solid rgb(196, 194, 194);
     }
 
     @media #{$desktop} {
         margin: 0 auto;
         margin-top: 100px;
+        // border: 1px solid rgb(196, 194, 194);
     }
 
     .login_container_flex {

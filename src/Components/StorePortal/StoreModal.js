@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import "./StoreModal.scss";
+import { withRouter } from "react-router-dom";
 
 class StoreModal extends Component {
   setStore = () => {
-    const store = JSON.parse(localStorage.getItem("cart"));
+    const store = JSON.parse(localStorage.getItem("store"));
+    const data = {
+      id: 1,
+      name: "강남점",
+      address: "서울시 강남구 대치동 대치상가"
+    };
     // this.props.history.push({
     //   pathname: "/detailmenu"
     // });
     if (store) {
-      localStorage.removeItem();
-      localStorage.setItem("cart", "name/history");
-      this.props.history.push({
-        pathname: "/detailmenu"
-      });
+      localStorage.removeItem("store");
+      localStorage.setItem("store", JSON.stringify(data));
+      // this.props.history.push({
+      //   pathname: "/detailmenu"
+      // });
     } else {
-      localStorage.setItem("cart", "name/history");
-      this.props.history.push({
-        pathname: "/detailmenu"
-      });
+      localStorage.setItem("store", JSON.stringify(data));
+      // this.props.history.push({
+      //   pathname: "/detailmenu"
+      // });
     }
   };
 
@@ -42,4 +48,4 @@ class StoreModal extends Component {
   }
 }
 
-export default StoreModal;
+export default withRouter(StoreModal);
