@@ -9,7 +9,7 @@ import { ADDRESS, DJKLSAJFF, LOGO } from "Config/Config.js";
 
 class AdminLogin extends Component {
   //상태값 리덕스에서 관리
-  componentDidMount() {
+  componentDidMount = () => {
     //리덕스 컴포넌트 변경되었는지 확인.
     window.Kakao.init("a81d01b3bdfe45a0794edae07d009473");
 
@@ -17,23 +17,39 @@ class AdminLogin extends Component {
       container: "#kakao-login-btn",
       success: function(authObj) {
         console.log(JSON.stringify(authObj));
+
+        let data = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(authObj)
+        };
+
+        this.sendAjax = async () => {
+          let reqData = await fetch("url", data);
+          let result = await reqData.json();
+          console.log(result);
+        };
+        this.sendAjax();
       },
       fail: function(err) {
         console.log(JSON.stringify(err));
       }
     });
-  }
+  };
 
   handleSignup = () => {
     this.props.history.push("signup");
   };
 
   //카카오 로그인 백엔드 뷰 엔드포인트 만들어지면 던지기.
-  // handleKakao = () => {
-  //   this.sendAjax = async () => {
-  //     let reqData = await fetch();
-  //   };
-  // };
+  handleKakao = () => {
+    console.log("카카오");
+    // this.sendAjax = async () => {
+    //   let reqData = await fetch();
+    // };
+  };
 
   handleExploer = async () => {
     //둘러보기 기능. 토큰만 받아와서 박아놓기.
@@ -74,7 +90,6 @@ class AdminLogin extends Component {
 
     this.sendAjax();
     this.props.onAuth();
-    console.log(this.props.onAuth());
   };
 
   handleChange = e => {
@@ -94,36 +109,45 @@ class AdminLogin extends Component {
             logoTitleName="title_logo_name"
           />
 
-          <div className="wrap_login_admin_info">
-            <div className="wrap_number_input_box">
-              <div className="admin_number">사원번호</div>
-              <input
-                name="inputID"
-                type="text"
-                className="employees_numbers"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="wrap_password_input_box">
-              <div className="admin_password">비밀번호</div>
-              <input
-                name="inputPassword"
-                type="password"
-                className="employees_numbers"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="wrap_admin_button">
-              <div className="wrap_admin_3button">
-                <button className="signup_btn" onClick={this.handleSignup}>
-                  회원가입
-                </button>
-                <button className="login_btn" onClick={this.handleLogin}>
-                  로그인
-                </button>
-                <button className="login_btn" onClick={this.handleExploer}>
-                  둘러보기
-                </button>
+          <div className="wrap_logo_information_text">
+            <div className="logo"></div>
+            <span className="information_text">
+              안녕하세요.
+              <br />
+              스타벅스입니다.
+            </span>
+            <p>관리자 서비스 이용을 위해 로그인을 해주세요.</p>
+            <div className="wrap_login_admin_info">
+              <div className="wrap_number_input_box">
+                <input
+                  name="inputID"
+                  type="text"
+                  className="employees_numbers"
+                  placeholder="사원번호"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="wrap_password_input_box">
+                <input
+                  name="inputPassword"
+                  type="password"
+                  className="employees_numbers"
+                  placeholder="비밀번호"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="wrap_admin_button">
+                <div className="wrap_admin_3button">
+                  <button className="signup_btn" onClick={this.handleSignup}>
+                    회원가입
+                  </button>
+                  <button className="login_btn" onClick={this.handleLogin}>
+                    로그인
+                  </button>
+                  <button className="login_btn" onClick={this.handleExploer}>
+                    둘러보기
+                  </button>
+                </div>
               </div>
               <a id="kakao-login-btn" onClick={this.handleKakao}></a>
             </div>

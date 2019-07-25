@@ -61,6 +61,13 @@ class Admin extends Component {
     });
   };
 
+  checkedToken = () => {
+    let getAuth = localStorage.getItem(DJKLSAJFF);
+    if (getAuth === undefined) {
+      this.props.history.push("admin/login");
+    }
+  };
+
   handleReadyClick = e => {
     console.log("클릭");
   };
