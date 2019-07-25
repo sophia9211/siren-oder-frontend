@@ -1,3 +1,4 @@
+@import "Style/font/font.scss";
 .menu_tiket_contain_box {
   position: relative;
   width: 100%;
@@ -48,8 +49,10 @@
     width: 70%;
   }
   .menu_tiket_name {
-    font-size: 1.5em;
+    font-size: 1.3em;
     padding: 22px 1% 0;
+    font-family: $homefont;
+    color: #333333;
     @media only screen and (max-width: 700px) {
       font-size: 0.8em;
       padding: 14px 1% 0;
@@ -59,6 +62,7 @@
     font-size: 1em;
     color: #c7a111;
     padding: 1%;
+    font-family: $homefont;
     @media only screen and (max-width: 700px) {
       font-size: 0.6em;
     }
@@ -66,6 +70,8 @@
   .menu_tiket_price {
     padding: 1%;
     font-weight: 500;
+    font-family: $homefont;
+    color: #333333;
     @media only screen and (max-width: 700px) {
       font-size: 0.8em;
     }

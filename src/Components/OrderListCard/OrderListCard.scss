@@ -1,11 +1,14 @@
+@import "Style/config.scss";
+
 .wrap_order_list_card {
   // border: 1px solid gray;
   display: flex;
   // justify-content: space-around;
-  width: 95%;
+  width: 444px;
   background-color: white;
   margin-bottom: 15px;
   box-shadow: 0 0 13px 0 rgba(62, 44, 90, 0.08);
+
   // border: 1px solid black;
   .order_list_box {
     padding-left: 15px;
@@ -26,6 +29,10 @@
     > div {
       margin-bottom: 5px;
     }
+    .wrap_button {
+      white-space: nowrap;
+    }
+
     .wrap_button > .ready_order_btn {
       background-color: #b6b6b6;
       color: white;
@@ -63,5 +70,11 @@
       font-size: 16px;
       font-weight: bold;
     }
+  }
+}
+
+@media #{$space-ipad} {
+  .wrap_order_list_card {
+    overflow-x: scroll;
   }
 }

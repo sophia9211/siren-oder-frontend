@@ -15,14 +15,13 @@
     background-repeat: no-repeat;
   }
   .header_text_logo {
-    position: absolute;
+    margin: 0 auto;
+    padding-top: 80px;
     background-image: url("../../Style/img/tLogo.png");
     width: 20%;
     height: 60px;
     min-width: 130px;
     max-width: 300px;
-    top: 10px;
-    left: 40%;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;

@@ -17,6 +17,17 @@ const CHECK_IMG =
 export const ADDRESS = "http://10.58.1.75:8001/";
 const RKXHSKZMS = "data.access_token";
 export const DJKLSAJFF = "result.access_token";
+const API_URL_MENU = "http://10.58.0.25:8000/product";
 
 const API_URL = "http://10.58.0.25:8000";
-export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, CHECK_IMG, RKXHSKZMS };
+
+export {
+  API_URL,
+  LOGO,
+  CLOSE_BTN,
+  ICON,
+  PROFILE_IMG,
+  CHECK_IMG,
+  RKXHSKZMS,
+  API_URL_MENU
+};
