@@ -1,11 +1,10 @@
 @import "Style/font/font.scss";
 .root_cup_pick_box {
-  background-color: white;
+  margin: 0;
 
   .cup_pick_contain_box {
     position: relative;
     display: flex;
-    margin: 0 0 0 2%;
     height: 40px;
 
     .cup_pick_alert_text {
@@ -31,19 +30,26 @@
   .cup_pick_btn_contain_box {
     display: flex;
     border: 1px solid #333333;
-    margin: 2%;
-    border-radius: 5px;
+    margin: 2% 0;
+    border-radius: 4px;
 
     .cup_pick_btn_box {
-      width: 33%;
       padding-top: 10px;
       text-align: center;
       height: 40px;
+      flex: 1;
       color: #333333;
+      font-family: $homefont;
       border-left: 1px solid #333333;
     }
-    .none {
+    .border_left_none {
       border-left: none;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    .border_right_radius {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
   }
 }

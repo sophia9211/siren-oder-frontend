@@ -1,3 +1,7 @@
+@import "Style/font/font.scss";
+* {
+  font-family: $homefont;
+}
 .fixed_footer_box {
   position: fixed;
   left: 25%;
@@ -6,6 +10,7 @@
   height: 60px;
   color: white;
   font-size: 1.2rem;
+  font-family: $homefont;
   background-color: #333333;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -16,17 +21,19 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     font-size: 0.9rem;
+    font-family: $homefont;
   }
   .footer_text_box {
     display: flex;
     justify-content: center;
     width: 100%;
     margin: 20px auto;
-
+    font-family: $homefont;
     .shop_footer_btn {
       background-color: #c7a111;
       color: #333333;
       border: none;
+      font-family: $homefont;
       border-radius: 10px;
       outline: 0;
       margin-left: 28%;
