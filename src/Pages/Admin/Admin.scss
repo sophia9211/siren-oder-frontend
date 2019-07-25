@@ -85,8 +85,9 @@
         .wrap_legends {
           position: relative;
           height: 100px;
-          left: 100px;
+          right: -40px;
           top: 20px;
+          white-space: nowrap;
 
           .wrap_legend {
             margin-top: 5px;
@@ -218,13 +219,16 @@
 
           .wrap_popular_legend_op {
             display: flex;
+            justify-content: space-around;
           }
           .wrap_legends {
             height: 100px;
+            right: -350px;
             .wrap_legend {
               margin-top: 5px;
               margin-bottom: 5px;
               display: flex;
+
               .legend_size {
                 width: 20px;
                 height: 20px;
