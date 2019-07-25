@@ -109,36 +109,45 @@ class AdminLogin extends Component {
             logoTitleName="title_logo_name"
           />
 
-          <div className="wrap_login_admin_info">
-            <div className="wrap_number_input_box">
-              <div className="admin_number">사원번호</div>
-              <input
-                name="inputID"
-                type="text"
-                className="employees_numbers"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="wrap_password_input_box">
-              <div className="admin_password">비밀번호</div>
-              <input
-                name="inputPassword"
-                type="password"
-                className="employees_numbers"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="wrap_admin_button">
-              <div className="wrap_admin_3button">
-                <button className="signup_btn" onClick={this.handleSignup}>
-                  회원가입
-                </button>
-                <button className="login_btn" onClick={this.handleLogin}>
-                  로그인
-                </button>
-                <button className="login_btn" onClick={this.handleExploer}>
-                  둘러보기
-                </button>
+          <div className="wrap_logo_information_text">
+            <div className="logo"></div>
+            <span className="information_text">
+              안녕하세요.
+              <br />
+              스타벅스입니다.
+            </span>
+            <p>관리자 서비스 이용을 위해 로그인을 해주세요.</p>
+            <div className="wrap_login_admin_info">
+              <div className="wrap_number_input_box">
+                <input
+                  name="inputID"
+                  type="text"
+                  className="employees_numbers"
+                  placeholder="사원번호"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="wrap_password_input_box">
+                <input
+                  name="inputPassword"
+                  type="password"
+                  className="employees_numbers"
+                  placeholder="비밀번호"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="wrap_admin_button">
+                <div className="wrap_admin_3button">
+                  <button className="signup_btn" onClick={this.handleSignup}>
+                    회원가입
+                  </button>
+                  <button className="login_btn" onClick={this.handleLogin}>
+                    로그인
+                  </button>
+                  <button className="login_btn" onClick={this.handleExploer}>
+                    둘러보기
+                  </button>
+                </div>
               </div>
               <a id="kakao-login-btn" onClick={this.handleKakao}></a>
             </div>
