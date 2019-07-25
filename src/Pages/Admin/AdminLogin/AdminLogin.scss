@@ -2,7 +2,7 @@
 
 .root_header_admin {
   .title_logo {
-    > img {
+    > .title_logo_name {
       width: 20%;
       height: 60px;
       margin-right: 20px;
@@ -14,10 +14,10 @@
   .header_logo {
     margin-right: 30px;
     margin-left: 5px;
-    width: 350px;
+    width: 337px;
 
     > .login_img_name {
-      width: 74.2%;
+      width: 250px;
     }
   }
   .title_logo {
@@ -27,8 +27,8 @@
       font-weight: 700;
       font-family: "Dancing Script", cursive;
       position: relative;
-      left: -150px;
-      top: 30px;
+      left: 220px;
+      top: -30px;
     }
   }
 }
@@ -87,25 +87,37 @@
     float: right;
     margin-right: 56px;
     display: flex;
+    flex-direction: column;
 
-    > button {
-      width: 100px;
+    .wrap_admin_3button {
+      display: flex;
+      margin-bottom: 10px;
+
+      > button {
+        width: 100px;
+        height: 40px;
+        border-radius: 15px;
+        font-size: 20px;
+        border: 1px solid black;
+        background: green;
+        color: azure;
+        margin-left: 15px;
+        margin-top: 5px;
+        font-weight: bold;
+      }
+    }
+    > #kakao-login-btn {
+      width: 210px;
       height: 40px;
-      border-radius: 15px;
-      font-size: 20px;
-      border: 1px solid black;
-      background: green;
-      color: azure;
-      margin-left: 15px;
-      margin-top: 5px;
-      font-weight: bold;
+      margin-left: 10px;
     }
-    .kakaoLogin {
-      background-color: yellow;
-      color: #381e1f;
-      font-size: 14px;
-      font-weight: bold;
-    }
+
+    // .kakaoLogin {
+    //   background-color: yellow;
+    //   color: #381e1f;
+    //   font-size: 14px;
+    //   font-weight: bold;
+    // }
   }
 }
 //media query

@@ -24,6 +24,10 @@ import { POPULAR_ITEM } from "testData/mockGraph";
 import { MONTH_PRICE } from "testData/mockGraph";
 import { getKoreaDateYMD, getKoreaDateYMDTime } from "Utils/date.js";
 import { DJKLSAJFF } from "Config/Config.js";
+import Blank from "Components/Blank";
+
+const BREAK_POINT = 768;
+const BREAK_POINT1 = 573;
 
 class Admin extends Component {
   state = {
@@ -33,7 +37,28 @@ class Admin extends Component {
     monthSalesPrice: MONTH_SALES_PRICE,
     orderAmount: ORDERAMOUNT,
     popularItem: POPULAR_ITEM,
-    monthPrice: MONTH_PRICE
+    monthPrice: MONTH_PRICE,
+    responsiveWeb: window.innerWidth <= BREAK_POINT,
+    showBlank: window.innerWidth <= BREAK_POINT1,
+    isOptionClick: false
+  };
+
+  componentDidMount = () => {
+    this.event = window.addEventListener("resize", () => {
+      if (window.innerWidth <= BREAK_POINT && !this.state.moblie) {
+        this.setState({ responsiveWeb: true });
+      } else {
+        this.setState({ responsiveWeb: false });
+      }
+    });
+
+    this.event1 = window.addEventListener("resize", () => {
+      if (window.innerWidth <= BREAK_POINT1) {
+        this.setState({ showBlank: true });
+      } else {
+        this.setState({ showBlank: false });
+      }
+    });
   };
 
   handleReadyClick = e => {
@@ -47,201 +72,237 @@ class Admin extends Component {
     this.props.onUnAuth();
   };
 
+  handleOption = () => {
+    const { isOptionClick } = this.state;
+    this.setState({
+      isOptionClick: !isOptionClick
+    });
+  };
+
   render() {
-    console.log(this.state.isUserLogin);
     return (
       <>
-        <AdminHeader
-          logoSrc={logo}
-          titleSrc={title}
-          logoTitleName="title_logo_name_main"
-        >
-          <div className="wrap_admin_user_info">
-            <span className="admin_user_info">지점명</span>
-            <span className="admin_user_info">선릉역</span>
-            <span className="admin_user_info">직책명</span>
-            <span className="admin_user_info">매니져</span>
-            <span className="admin_user_info">관리자명</span>
-            <span className="admin_user_info">아이유</span>
-          </div>
-          <button className="admin_login_button" onClick={this.handleLogout}>
-            로그아웃
-          </button>
-        </AdminHeader>
-
-        <section className="root_body_admin">
-          <div className="order_list_title">주문목록</div>
-          <div className="wrap_list_praph">
-            <section className="wrap_order_list">
-              <OrderListCard
-                orderNum="1"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-              <OrderListCard
-                orderNum="2"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-              <OrderListCard
-                orderNum="3"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-                REALTIMEPRICE
-              />
-              <OrderListCard
-                orderNum="4"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-              <OrderListCard
-                orderNum="21"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-              <OrderListCard
-                orderNum="1"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-              <OrderListCard
-                orderNum="1"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-              <OrderListCard
-                orderNum="1"
-                menuImg={ameri}
-                orderItem="아메리카노 1잔"
-                orderUser="레오"
-                handleReadyClick={this.handleReadyClick}
-                handleFinishClick={this.handleFinishClick}
-              />
-            </section>
-            <section className="wrap_order_list_graph">
-              <div className="wrap_day_month_sales_charts">
-                <SalesInforamtion
-                  canvasName="sales_canvas_day"
-                  visualPrice={this.state.daySalesPrice["day_price_percent"]}
-                  visualTitle="금일 판매금액"
-                  visualTotalPrice={
-                    this.state.daySalesPrice["day_price"] + "원"
-                  }
+        {!this.state.showBlank && (
+          <AdminHeader
+            logoSrc={logo}
+            titleSrc={title}
+            logoTitleName="title_logo_name_main"
+          >
+            <div className="wrap_admin_user_info_btn">
+              <div className="wrap_admin_user_info">
+                <span className="admin_user_info">지점명</span>
+                <span className="admin_user_info">선릉역</span>
+                <span className="admin_user_info">직책명</span>
+                <span className="admin_user_info">매니져</span>
+                <span className="admin_user_info">관리자명</span>
+                <span className="admin_user_info ">아이유</span>
+              </div>
+              {!this.state.responsiveWeb ? (
+                <button
+                  className="admin_login_button"
+                  onClick={this.handleLogout}
                 >
-                  <DaySalesChart
-                    totalPrice={
-                      100 - this.state.daySalesPrice["day_price_percent"]
+                  로그아웃
+                </button>
+              ) : (
+                <div className="wrap_admin_btn_option_message">
+                  <button
+                    className="admin_login_button"
+                    onClick={this.handleOption}
+                  ></button>
+                  {this.state.isOptionClick && (
+                    <div className="wrap_admin_option_message">
+                      <span className="admin_user_info">선릉역</span>
+                      <span className="admin_user_info">매니져</span>
+                      <button
+                        className="admin_logout_button"
+                        onClick={this.handleLogout}
+                      >
+                        로그아웃
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </AdminHeader>
+        )}
+        {!this.state.showBlank && (
+          <section className="root_body_admin">
+            <div className="order_list_title">주문목록</div>
+            <div className="wrap_list_praph">
+              <section className="wrap_order_list">
+                <OrderListCard
+                  orderNum="1"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+                <OrderListCard
+                  orderNum="2"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+                <OrderListCard
+                  orderNum="3"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                  REALTIMEPRICE
+                />
+                <OrderListCard
+                  orderNum="4"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+                <OrderListCard
+                  orderNum="21"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+                <OrderListCard
+                  orderNum="1"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+                <OrderListCard
+                  orderNum="1"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+                <OrderListCard
+                  orderNum="1"
+                  menuImg={ameri}
+                  orderItem="아메리카노 1잔"
+                  orderUser="레오"
+                  handleReadyClick={this.handleReadyClick}
+                  handleFinishClick={this.handleFinishClick}
+                />
+              </section>
+              <section className="wrap_order_list_graph">
+                <div className="wrap_day_month_sales_charts">
+                  <SalesInforamtion
+                    canvasName="sales_canvas_day"
+                    visualPrice={this.state.daySalesPrice["day_price_percent"]}
+                    visualTitle="금일 판매금액"
+                    visualTotalPrice={
+                      this.state.daySalesPrice["day_price"] + "원"
                     }
-                    todayPrice={this.state.daySalesPrice["day_price_percent"]}
-                  />
-                </SalesInforamtion>
-                <SalesInforamtion
-                  visualPrice={
-                    this.state.monthSalesPrice["month_price_percent"]
-                  }
-                  visualTitle="월간 누적판매금액"
-                  visualTotalPrice={
-                    this.state.monthSalesPrice["month_price"] + "원"
-                  }
-                >
-                  <MonthSalesChart
-                    totalMonthPrice={
-                      100 - this.state.monthSalesPrice["month_price_percent"]
-                    }
-                    monthPrice={
+                  >
+                    <DaySalesChart
+                      totalPrice={
+                        100 - this.state.daySalesPrice["day_price_percent"]
+                      }
+                      todayPrice={this.state.daySalesPrice["day_price_percent"]}
+                    />
+                  </SalesInforamtion>
+                  <SalesInforamtion
+                    visualPrice={
                       this.state.monthSalesPrice["month_price_percent"]
                     }
-                  />
-                </SalesInforamtion>
+                    visualTitle="월간 누적판매금액"
+                    visualTotalPrice={
+                      this.state.monthSalesPrice["month_price"] + "원"
+                    }
+                  >
+                    <MonthSalesChart
+                      totalMonthPrice={
+                        100 - this.state.monthSalesPrice["month_price_percent"]
+                      }
+                      monthPrice={
+                        this.state.monthSalesPrice["month_price_percent"]
+                      }
+                    />
+                  </SalesInforamtion>
 
-                <SalesInforamtion>
-                  <div className="wrap_popular_legend_op">
-                    <PopularItemChart itemList={this.state.popularItem} />
-                    <div className="wrap_legends">
-                      <div className="wrap_legend">
-                        <div
-                          className="legend_size"
-                          style={{ backgroundColor: "rgba(253, 194, 64)" }}
-                        ></div>
-                        <span className="legend_font">
-                          {this.state.popularItem.name[0]}
-                        </span>
-                      </div>
-                      <div className="wrap_legend">
-                        <div
-                          className="legend_size"
-                          style={{ backgroundColor: "rgba(90, 202, 184)" }}
-                        ></div>
-                        <span className="legend_font">
-                          {this.state.popularItem.name[1]}
-                        </span>
-                      </div>
-                      <div className="wrap_legend">
-                        <div
-                          className="legend_size"
-                          style={{ backgroundColor: "rgba(211, 103, 104)" }}
-                        ></div>
-                        <span className="legend_font">
-                          {this.state.popularItem.name[2]}
-                        </span>
-                      </div>
-                      <div className="wrap_legend">
-                        <div
-                          className="legend_size"
-                          style={{ backgroundColor: "rgba(176, 165, 202)" }}
-                        ></div>
-                        <span className="legend_font">
-                          {this.state.popularItem.name[3]}
-                        </span>
-                      </div>
-                      <div className="wrap_legend">
-                        <div
-                          className="legend_size"
-                          style={{ backgroundColor: "rgba(13, 123, 213)" }}
-                        ></div>
-                        <span className="legend_font">
-                          {this.state.popularItem.name[4]}
-                        </span>
+                  <SalesInforamtion>
+                    <div className="wrap_popular_legend_op">
+                      <PopularItemChart itemList={this.state.popularItem} />
+                      <div className="wrap_legends">
+                        <div className="wrap_legend">
+                          <div
+                            className="legend_size"
+                            style={{ backgroundColor: "rgba(253, 194, 64)" }}
+                          ></div>
+                          <span className="legend_font">
+                            {this.state.popularItem.name[0]}
+                          </span>
+                        </div>
+                        <div className="wrap_legend">
+                          <div
+                            className="legend_size"
+                            style={{ backgroundColor: "rgba(90, 202, 184)" }}
+                          ></div>
+                          <span className="legend_font">
+                            {this.state.popularItem.name[1]}
+                          </span>
+                        </div>
+                        <div className="wrap_legend">
+                          <div
+                            className="legend_size"
+                            style={{ backgroundColor: "rgba(211, 103, 104)" }}
+                          ></div>
+                          <span className="legend_font">
+                            {this.state.popularItem.name[2]}
+                          </span>
+                        </div>
+                        <div className="wrap_legend">
+                          <div
+                            className="legend_size"
+                            style={{ backgroundColor: "rgba(176, 165, 202)" }}
+                          ></div>
+                          <span className="legend_font">
+                            {this.state.popularItem.name[3]}
+                          </span>
+                        </div>
+                        <div className="wrap_legend">
+                          <div
+                            className="legend_size"
+                            style={{ backgroundColor: "rgba(13, 123, 213)" }}
+                          ></div>
+                          <span className="legend_font">
+                            {this.state.popularItem.name[4]}
+                          </span>
+                        </div>
                       </div>
                     </div>
+                  </SalesInforamtion>
+                </div>
+                <div className="wrap_realtime_timeoder">
+                  <div className="wrap_realtime_month">
+                    <RealTimeOrderChart value={this.state.realtimeValue} />
                   </div>
-                </SalesInforamtion>
-              </div>
-              <div className="wrap_realtime_timeoder">
-                <div className="wrap_realtime_month">
-                  <RealTimeOrderChart value={this.state.realtimeValue} />
+                  <div className="wrap_realtime_month">
+                    <TimeOrderAmountChart amount={this.state.orderAmount} />
+                  </div>
                 </div>
-                <div className="wrap_realtime_month">
-                  <TimeOrderAmountChart amount={this.state.orderAmount} />
+                <div className="wrap_per_month_price">
+                  <MonthPriceChart monthPrice={this.state.monthPrice} />
                 </div>
-              </div>
-              <div className="wrap_per_month_price">
-                <MonthPriceChart monthPrice={this.state.monthPrice} />
-              </div>
-            </section>
-          </div>
-        </section>
+              </section>
+            </div>
+          </section>
+        )}
+        {this.state.showBlank && <Blank />}
       </>
     );
   }

@@ -5,7 +5,7 @@ import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
 import { withRouter } from "react-router-dom";
 import { auth } from "Actions/AuthAction";
-import { ADDRESS, DJKLSAJFF } from "Config/Config.js";
+import { ADDRESS, DJKLSAJFF, LOGO } from "Config/Config.js";
 
 class AdminLogin extends Component {
   //상태값 리덕스에서 관리
@@ -34,6 +34,13 @@ class AdminLogin extends Component {
   //     let reqData = await fetch();
   //   };
   // };
+
+  handleExploer = async () => {
+    //둘러보기 기능. 토큰만 받아와서 박아놓기.
+    // let reqData = await fetch(ADDRESS + "account/employee/login", data);
+    // let result = await reqData.json();
+    // localStorage.setItem(DJKLSAJFF);
+  };
 
   handleLogin = () => {
     const { inputID, inputPassword } = this.state;
@@ -86,6 +93,7 @@ class AdminLogin extends Component {
             imgClassName="login_img_name"
             logoTitleName="title_logo_name"
           />
+
           <div className="wrap_login_admin_info">
             <div className="wrap_number_input_box">
               <div className="admin_number">사원번호</div>
@@ -106,13 +114,18 @@ class AdminLogin extends Component {
               />
             </div>
             <div className="wrap_admin_button">
+              <div className="wrap_admin_3button">
+                <button className="signup_btn" onClick={this.handleSignup}>
+                  회원가입
+                </button>
+                <button className="login_btn" onClick={this.handleLogin}>
+                  로그인
+                </button>
+                <button className="login_btn" onClick={this.handleExploer}>
+                  둘러보기
+                </button>
+              </div>
               <a id="kakao-login-btn" onClick={this.handleKakao}></a>
-              <button className="signup_btn" onClick={this.handleSignup}>
-                회원가입
-              </button>
-              <button className="login_btn" onClick={this.handleLogin}>
-                로그인
-              </button>
             </div>
           </div>
         </div>
@@ -140,5 +153,5 @@ AdminLogin = connect(
   mapStateToProps,
   mapDispatchToProps
 )(AdminLogin);
-
+console.log(AdminLogin);
 export default withRouter(AdminLogin);
