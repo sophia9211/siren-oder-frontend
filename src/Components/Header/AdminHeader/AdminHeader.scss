@@ -3,6 +3,7 @@
   height: 80px;
   display: flex;
   font-size: 20px;
+  justify-content: space-between;
   padding: 10px;
   position: fixed;
   top: 0px;
@@ -14,7 +15,7 @@
     margin-left: 5px;
     width: 350px;
     > img {
-      width: 100%;
+      width: 250px;
     }
   }
 
@@ -25,8 +26,8 @@
       font-weight: 700;
       font-family: "Dancing Script", cursive;
       position: relative;
-      left: -60px;
-      top: 30px;
+      left: 220px;
+      top: -30px;
     }
   }
 }

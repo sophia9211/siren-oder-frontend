@@ -7,9 +7,9 @@ const AdminHeader = ({ children, imgClassName, logoTitleName }) => {
     <header className="root_header_admin">
       <div className="header_logo">
         <img className={imgClassName} src={logo} />
-      </div>
-      <div className="title_logo">
-        <span className={logoTitleName}>admin</span>
+        <div className="title_logo">
+          <span className={logoTitleName}>admin</span>
+        </div>
       </div>
       {children}
     </header>

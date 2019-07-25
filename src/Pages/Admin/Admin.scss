@@ -8,12 +8,8 @@
 //우측상단 관리자 정보
 .wrap_admin_user_info {
   width: 100%;
-  // display: flex;
-  justify-content: flex-end;
-  color: black;
   font-size: 20px;
   line-height: 60px;
-  text-align: end;
   background-color: white;
 
   > span:nth-child(odd) {
@@ -33,7 +29,6 @@
 .admin_login_button {
   margin-top: 9px;
   margin-right: 19px;
-  width: 7%;
   font-size: 15px;
   font-weight: bold;
   height: 40px;
@@ -150,11 +145,53 @@
       }
     }
   }
-  .wrap_admin_user_info > span:nth-child(odd) {
+  .wrap_admin_user_info > span:not(:last-child) {
     display: none;
   }
-  .admin_login_button {
-    width: 150px;
+
+  .wrap_admin_user_info_btn {
+    display: flex;
+
+    .admin_login_button {
+      background-color: white !important;
+      background-blend-mode: multiply;
+      width: 64px;
+      height: 50px;
+      padding: 0px;
+      border: none;
+      opacity: 0.8;
+      background: url("../../Style/img/activity-feed-64.png");
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .wrap_admin_option_message {
+      border: 1px solid black;
+      padding-top: 10px;
+      position: absolute;
+      width: 200px;
+      height: 110px;
+      right: 30px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      box-shadow: 0 2px 6px 0 rgba(136, 106, 181, 0.5);
+      .admin_user_info {
+        margin-top: 5px;
+      }
+      .admin_logout_button {
+        margin-top: 5px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 90%;
+        background-color: #8769b5;
+        border: 1px solid #8769b5;
+        color: white;
+        font-size: 18px;
+      }
+    }
   }
 
   .root_body_admin {

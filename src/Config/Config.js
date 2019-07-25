@@ -16,7 +16,7 @@ const CHECK_IMG =
 // export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG };
 
 //지훈님 ip
-export const ADDRESS = "http://10.58.6.80:8000/";
+export const ADDRESS = "http://10.58.1.75:8001/";
 const RKXHSKZMS = "data.access_token";
 export const DJKLSAJFF = "result.access_token";
 
