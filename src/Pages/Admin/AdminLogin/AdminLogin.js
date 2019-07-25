@@ -9,7 +9,7 @@ import { ADDRESS, DJKLSAJFF, LOGO } from "Config/Config.js";
 
 class AdminLogin extends Component {
   //상태값 리덕스에서 관리
-  componentDidMount() {
+  componentDidMount = () => {
     //리덕스 컴포넌트 변경되었는지 확인.
     window.Kakao.init("a81d01b3bdfe45a0794edae07d009473");
 
@@ -17,23 +17,39 @@ class AdminLogin extends Component {
       container: "#kakao-login-btn",
       success: function(authObj) {
         console.log(JSON.stringify(authObj));
+
+        let data = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(authObj)
+        };
+
+        this.sendAjax = async () => {
+          let reqData = await fetch("url", data);
+          let result = await reqData.json();
+          console.log(result);
+        };
+        this.sendAjax();
       },
       fail: function(err) {
         console.log(JSON.stringify(err));
       }
     });
-  }
+  };
 
   handleSignup = () => {
     this.props.history.push("signup");
   };
 
   //카카오 로그인 백엔드 뷰 엔드포인트 만들어지면 던지기.
-  // handleKakao = () => {
-  //   this.sendAjax = async () => {
-  //     let reqData = await fetch();
-  //   };
-  // };
+  handleKakao = () => {
+    console.log("카카오");
+    // this.sendAjax = async () => {
+    //   let reqData = await fetch();
+    // };
+  };
 
   handleExploer = async () => {
     //둘러보기 기능. 토큰만 받아와서 박아놓기.
@@ -74,7 +90,6 @@ class AdminLogin extends Component {
 
     this.sendAjax();
     this.props.onAuth();
-    console.log(this.props.onAuth());
   };
 
   handleChange = e => {
