@@ -40,6 +40,20 @@ class Login extends Component {
       [e.target.name]: e.target.value
     });
   };
+  guestLogin = () => {
+    post({
+      path: "account/login",
+      body: { email: "guest@test.com", password: "123456" }
+    }).then(res => {
+      if (res.data.access_token) {
+        localStorage.setItem(RKXHSKZMS, res.data.access_token);
+        this.props.history.push({
+          pathname: "/"
+        });
+        alert("Guset로 로그인하셨습니다.");
+      }
+    });
+  };
 
   render() {
     return (
@@ -77,8 +91,11 @@ class Login extends Component {
               change={this.fillLogin}
             />
           </div>
-          <div className="login_link">
+          <div className="signup_link">
             <Link to="/signup">회원가입</Link>
+          </div>
+          <div className="guest_login">
+            <button onClick={this.guestLogin}>Guest로 로그인</button>
           </div>
         </div>
         {this.state.email && this.state.password ? (

@@ -8,27 +8,47 @@ import { post } from "Utils/api.js";
 class Mypage extends Component {
   state = {
     name: "",
-    email: ""
+    email: "",
+    newPw: "",
+    token: "",
+    password: ""
   };
 
   componentDidMount() {
-    // let token = localStorage.getItem(RKXHSKZMS);
+    let token = localStorage.getItem(RKXHSKZMS);
     let email = localStorage.getItem("email");
     let name = localStorage.getItem("name");
+
     this.setState({
       name: name,
-      email: email
+      email: email,
+      token: token
     });
   }
 
+  fillInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   changePw = () => {
-    post({
-      path: "account/login",
-      body: { email: this.state.email, password: this.state.password }
-    }).then(res => {});
+    fetch(`${API_URL}/account/login/chpw`, {
+      method: "POST",
+      headers: { Authorization: this.state.token },
+      body: JSON.stringify({
+        current_password: this.state.password,
+        new_password: this.state.newPw
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
   };
 
   changePhone = () => {};
+
   render() {
     return (
       <MainLayout>
@@ -46,7 +66,12 @@ class Mypage extends Component {
 
             <div className="profile_pw">
               <label>비밀번호</label>
-              <input type="password" />
+              <input
+                type="password"
+                name="password"
+                onChange={this.fillInput}
+              />
+              <input type="password" name="newPw" onChange={this.fillInput} />
               <button onClick={this.changePw}>변경</button>
             </div>
 

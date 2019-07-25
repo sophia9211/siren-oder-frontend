@@ -3,6 +3,7 @@
 .login_container {
     min-width: 320px;
     max-width: 450px;
+    font-family: source-code-pro;
 
     @media #{$smPhone} {
         margin: 0 auto;
@@ -37,7 +38,7 @@
 
         .login_logo {
             height: 80px;
-            margin-top: 97px;
+            margin-top: 61px;
 
             img {
                 height: 100%;
@@ -65,16 +66,23 @@
             }
         }
 
-        .login_link {
-            margin-left: 10px;
-            margin-top: 10px;
-            text-align: center;
+        .signup_link {
+            margin: 15px auto;
 
             a {
                 text-decoration: none;
                 color: black;
                 font-size: 13px;
                 outline: none;
+            }
+        }
+
+        .guest_login {
+            margin: 0 auto;
+
+            button {
+                border: none;
+                background-color: white;
             }
         }
     }

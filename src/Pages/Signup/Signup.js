@@ -39,7 +39,6 @@ class Signup extends Component {
     } else if (password !== password_chk) {
       alert("비밀번호를 다시 입력해주세요.");
     }
-    console.log(email, name, password, phone, gender);
     post({
       path: "account",
       body: {
