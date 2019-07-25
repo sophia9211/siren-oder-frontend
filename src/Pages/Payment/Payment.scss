@@ -12,7 +12,20 @@
         }
 
         .payment_store {
-            padding: 0 10px;
+            padding: 15px 10px;
+
+            p:first-child {
+                font-size: 14px;
+                margin: 0;
+                margin-bottom: 5px;
+            }
+
+            p:last-child {
+                font-size: 12px;
+                margin: 0;
+                margin-left: 5px;
+                color: rgb(75, 74, 74);
+            }
         }
 
         .payment_option {
@@ -45,32 +58,96 @@
 
         .payment_menu {
             padding: 0 10px;
+            padding-right: 15px;
+            font-size: 14px;
+            margin-bottom: 0;
 
             .menu_lists {
-                .menu_lists_total {
-                    display: inline-flex;
+                margin-top: 15px;
+                border-bottom: 1px solid rgb(175, 172, 172);
+
+                .menu_lists_fir {
+                    display: flex;
+                    margin-bottom: 5px;
 
                     div:first-child {
-                        flex: 4;
+                        flex: 6;
+                        margin-bottom: 5px;
                     }
+                }
 
-                    div:nth-child(2) {
-                        flex: 4;
-                    }
+                .menu_lists_sec {
+                    font-size: 13px;
+                    color: rgb(83, 82, 82);
 
-                    .menu_lists_img {
-                        flex: 0.5;
+                    padding-bottom: 10px;
+                    margin-left: 10px;
 
-                        img {
-                            width: 100%;
-                        }
+                    span:last-child {
+                        float: right;
+                        color: #c29f23;
+                        font-weight: 600;
                     }
                 }
             }
 
-            // .menu_lists_detail {}sss
-
-            // .menu_lists_hidden {}
+            li:last-child {
+                border: none;
+            }
         }
+
+        .payment_count {
+            background-color: #f6f5ef;
+            padding: 15px;
+
+            .payment_count_fir {
+                font-size: 14px;
+                color: rgb(70, 69, 69);
+                margin-bottom: 10px;
+
+                span:last-child {
+                    float: right;
+                    font-weight: 500;
+                    color: black;
+                }
+            }
+
+            .payment_count_sec {
+                font-size: 14px;
+                color: rgb(70, 69, 69);
+                margin-bottom: 10px;
+                border-bottom: 1px solid rgb(61, 60, 60);
+                padding-bottom: 10px;
+
+                span:last-child {
+                    float: right;
+                    font-weight: 500;
+                    color: rgb(155, 61, 61);
+                }
+            }
+
+            .payment_count_thir {
+                margin-bottom: 10px;
+
+                span:last-child {
+                    float: right;
+                    font-weight: 600;
+                    color: rgb(122, 90, 90);
+                }
+            }
+        }
+
+        .payment_btn_bg {
+            padding: 15px;
+
+            .payment_btn {
+                text-align: center;
+                padding: 10px;
+                background-color: rgb(143, 106, 106);
+                color: white;
+            }
+        }
+
+
     }
 }

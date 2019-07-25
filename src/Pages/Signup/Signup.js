@@ -32,28 +32,26 @@ class Signup extends Component {
   };
 
   clickSign = e => {
-    const { password, password_chk } = this.state;
-    e.preventDefault();
+    const { email, name, phone, gender, password, password_chk } = this.state;
+    // e.preventDefault();
     if (password.length < 6) {
       alert("비밀번호는 6자리 이상입니다.");
     } else if (password !== password_chk) {
       alert("비밀번호를 다시 입력해주세요.");
     }
+    console.log(email, name, password, phone, gender);
     post({
       path: "account",
       body: {
-        email: this.state.email,
-        name: this.state.name,
-        password: this.state.password,
-        phone_number: this.state.phone,
-        gender: this.state.gender
+        email: email,
+        name: name,
+        password: password,
+        phone_number: phone,
+        gender: gender
       }
     }).then(res => {
       // console.log(res);
-      if (res.message === "DUPLICATE_EMAIL") {
-        // this.setState({
-        //   email_text: "중복된 이메일입니다."
-        // });
+      if (res.data.message === "DUPLICATE_EMAIL") {
         alert("중복된 이메일입니다.");
       } else if (res.data.message === "SUCCESS") {
         alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
