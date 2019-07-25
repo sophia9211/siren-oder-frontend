@@ -84,6 +84,12 @@
                 border: none;
                 background-color: white;
             }
+
+            button:focus {
+                border: none;
+                background-color: white;
+                outline: none;
+            }
         }
     }
 }

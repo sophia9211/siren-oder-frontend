@@ -13,7 +13,9 @@ class Header extends React.Component {
           <Link to="./">
             <div className="header_text_logo"></div>
           </Link>
-          <div className="header_shopping_icon"></div>
+          <Link to="./shoppingcart">
+            <div className="header_shopping_icon"></div>
+          </Link>
         </div>
       </header>
     );

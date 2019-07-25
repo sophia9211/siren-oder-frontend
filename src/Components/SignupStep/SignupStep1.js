@@ -102,7 +102,7 @@ class SignupStep1 extends Component {
     return (
       <div className="signup_container">
         <div className="signup_container_flex">
-          <Link to="/login" className="signup_close_btn">
+          <Link to="/" className="signup_close_btn">
             <img src={CLOSE_BTN} alt="닫기" />
           </Link>
 
