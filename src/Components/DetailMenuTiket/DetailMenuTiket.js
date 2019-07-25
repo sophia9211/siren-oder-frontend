@@ -40,7 +40,7 @@ class DetailMenuTiket extends React.Component {
                 imgSrc={this.props.imgSrc}
                 menuName={this.props.menuName}
                 engName={this.props.engName}
-                detailText="안녕하세요 저는 돌체 구스타리 빵빠레"
+                detailText={this.props.text}
               />
             </ModalPortal>
           )}

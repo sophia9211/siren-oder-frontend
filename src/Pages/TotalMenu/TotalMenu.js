@@ -15,7 +15,8 @@ class TotalMenu extends React.Component {
     myData: [],
     detailMenu: [],
     menu: "drink",
-    id: 0
+    id: 0,
+    img_url: ""
   };
 
   componentDidMount() {
@@ -105,17 +106,19 @@ class TotalMenu extends React.Component {
     }
   };
 
-  pageChangeClick = e => {
+  pageChangeClick = (e, el) => {
     this.setState(
       {
-        id: e
+        id: e,
+        img_url: el
       },
       () => {
         this.props.history.push({
           pathname: "./detailmenu",
           state: {
             id: this.state.id,
-            menu: this.state.menu
+            menu: this.state.menu,
+            img_url: this.state.img_url
           }
         });
       }
@@ -164,7 +167,7 @@ class TotalMenu extends React.Component {
                 price={numberWithCommas(this.fillterPrice(el)) + "원"}
                 imgSrc={el.img_url}
                 onClick={() => {
-                  this.pageChangeClick(el.id);
+                  this.pageChangeClick(el.id, el.img_url);
                 }}
               >
                 {el.name}
