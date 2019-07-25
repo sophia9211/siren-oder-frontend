@@ -6,22 +6,20 @@ import CupPickContainBox from "Components/CupPickContainBox/CupPickContainBox";
 import SizeSelectBox from "Components/SizeSelectBox";
 import numberWithCommas from "Util/numberWithCommas";
 import API_URL_MENU from "../../Config/Config";
-
-const menuPrice = {
-  short_price: 3000,
-  tall_price: 4100,
-  grande_price: 5000,
-  venti_price: 5800
-};
+import fillterPrice from "Util/fillterPrice";
+import { throwStatement } from "@babel/types";
 
 class DetailMenu extends React.Component {
   state = {
+    condition: "",
+    data: {},
     name: "",
-    engName: "",
-    price: menuPrice.short_price,
+    english_name: "",
+    price: 0,
     count: 1,
     id: this.props.location.state.id,
-    menu: this.props.location.state.menu
+    menu: this.props.location.state.menu,
+    img_url: this.props.location.state.img_url
   };
   componentDidMount() {
     fetch(
@@ -32,15 +30,28 @@ class DetailMenu extends React.Component {
           "Content-Type": "application/json"
         }
       }
-    );
-    // .then(products => products.json())
-    // .then(products => {
-    //   this.setState({
-    //     name: products.name,
-    //     engName: poducts.engName
-    //   });
-    //   console.log(products);
-    // });
+    )
+      .then(products => products.json())
+      .then(products => {
+        console.log("111");
+        this.setState(
+          {
+            data: products.menu[0],
+            name: products.menu[0].name,
+            english_name: products.menu[0].english_name,
+            price: fillterPrice(products.menu[0]),
+            condition: products.menu[0].condition
+          },
+          () => {
+            this.props.history.push({
+              state: {
+                data: products.menu[0]
+              }
+            });
+          }
+        );
+        console.log(products);
+      });
   }
   countPlusClick = e => {
     this.setState({
@@ -55,35 +66,79 @@ class DetailMenu extends React.Component {
   handleCreate = data => {
     if (data === "short") {
       this.setState({
-        price: menuPrice.short_price
+        price: this.state.data.short_price
       });
     } else if (data === "tall") {
       this.setState({
-        price: menuPrice.tall_price
+        price: this.state.data.tall_price
       });
     } else if (data === "grande") {
       this.setState({
-        price: menuPrice.grande_price
+        price: this.state.data.grande_price
       });
     } else if (data === "venti") {
       this.setState({
-        price: menuPrice.venti_price
+        price: this.state.data.venti_price
       });
     }
   };
 
+  // fillterRender = data => {
+  //   let newData = [];
+  //   if (data.short_price < 0) {
+  //     newData.push("short");
+  //     console.log(newData);
+  //   } else if (data.tall_price < 0) {
+  //     console.log(newData);
+  //     newData.push("tall");
+  //   } else if (data.grande_price < 0) {
+  //     console.log(newData);
+  //     newData.push("grande");
+  //   } else if (data.venti_price < 0) {
+  //     newData.push("venti");
+  //     console.log(newData);
+  //   }
+  //   console.log(newData);
+  //   return newData;
+  // };
+
+  orderClick = () => {
+    const getToken = localStorage.getItem("data");
+    const Data = {
+      id: this.state.id,
+      name: this.state.name,
+      english_name: this.state.english_name,
+      price: this.state.price,
+      count: this.state.count,
+      img_url: this.state.img_url
+
+      // size: size,
+      // cup_type: cup_type
+    };
+    if (!getToken) {
+      const totalData = [Data];
+      window.localStorage.setItem("data", JSON.stringify(totalData));
+    }
+    if (getToken) {
+      let addData = JSON.parse(localStorage.getItem("data"));
+      addData.push(Data);
+      window.localStorage.setItem("data", JSON.stringify(addData));
+    }
+  };
+
   render() {
-    console.log(this.state);
+    console.log("원래 데이터", this.state.data);
     return (
       <MainLayout>
         <DetailMenuTiket
-          menuName="돌체 콜드 브루"
-          engName="Dolce Cold Brew"
+          menuName={this.state.name}
+          engName={this.state.english_name}
           price={numberWithCommas(this.state.price * this.state.count)}
-          imgSrc="http://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000002081]_20190409153909859.jpg"
+          imgSrc={this.state.img_url}
           count={this.state.count}
           plusClick={this.countPlusClick}
           minusClick={this.countMinusClick}
+          text={this.state.condition}
         />
         <div className="detail_sub_box">
           <CupPickContainBox />
@@ -95,11 +150,16 @@ class DetailMenu extends React.Component {
               { value: "grande", id: 2 },
               { value: "venti", id: 3 }
             ]}
+            data={this.state.data}
             onCreate={this.handleCreate}
           />
           <div className="menu_order_box">
-            <div className="menu_order_btn">주문하기</div>
-            <div className="menu_shopping_cart_">담기</div>
+            <div className="menu_order_btn" onClick={this.orderClick}>
+              주문하기
+            </div>
+            <div className="menu_shopping_cart_" onClick={this.orderClick}>
+              담기
+            </div>
           </div>
         </div>
       </MainLayout>

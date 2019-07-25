@@ -5,12 +5,16 @@ class SizeSelectBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: this.props.item || [],
+      data: this.props.data,
+      item: this.props.item,
       showItems: false,
       selectedItem: this.props.item && this.props.item[0],
       value: ""
     };
+    console.log(this.state.item);
+    console.log(this.state.data);
   }
+  componentDidUpdate = () => {};
 
   dropDown = () => {
     this.setState(prevState => ({
