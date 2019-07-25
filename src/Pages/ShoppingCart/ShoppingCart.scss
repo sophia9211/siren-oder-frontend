@@ -1,0 +1,103 @@
+.cart {
+    .cart_menu {
+        list-style: none;
+        padding: 0 15px;
+        padding-top: 20px;
+
+        li {
+            display: flex;
+            // padding: 5px;
+
+            .list_check {
+                flex: 1;
+                position: relative;
+                display: block;
+                height: 26px;
+                margin: 0 0;
+
+                #loginCheck {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #c7a111;
+                    cursor: pointer;
+                    background: url(https://png.pngtree.com/png-vector/20190121/ourmid/pngtree-correct-symbol-big-red-check-mark-stereoscopic-rendering-check-mark-png-image_508031.jpg) no-repeat;
+                    background-size: cover;
+                    border-radius: 4px;
+                }
+
+                #loginCheckNone {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #c7a111;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                // #loginCheckLabel {
+                //     margin-top: 4px;
+                //     margin-left: 0;
+                //     font-size: 15px;
+                //     line-height: 26px;
+                //     position: absolute;
+                //     top: 0;
+                //     left: 0;
+                //     height: 26px;
+                //     padding-left: 33px;
+                //     cursor: pointer;
+                //     color: #333;
+                // }
+
+            }
+        }
+
+        .list_info {
+            flex: 6;
+
+            p {
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            p:last-child {
+                color: red;
+            }
+        }
+
+
+
+        .list_price {
+            flex: 2;
+
+            .list_delete {
+                width: 30px;
+
+                img {
+                    width: 100%;
+                    margin-top: -5px;
+                }
+            }
+        }
+
+    }
+
+    .cart_pay_btn {
+        width: 50px;
+        margin: 0 auto;
+    }
+
+    .cart_pay {
+        background-color: rgba(37, 24, 24, 0.678);
+        padding: 15px;
+
+        .boxShow {
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        .boxHide {
+            display: none;
+        }
+    }
+
+
+}

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-import { LOGO, CLOSE_BTN, API_URL } from "Config/Config.js";
+import Inputbox from "Components/Inputbox";
+import Button from "Components/Button";
+import { LOGO, CLOSE_BTN, RKXHSKZMS } from "Config/Config.js";
+import { post } from "Utils/api.js";
 
 class Login extends Component {
   state = {
@@ -10,34 +13,34 @@ class Login extends Component {
   };
 
   clickLogin = e => {
-    e.preventDefault();
-    fetch(`${API_URL}/account/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        // if (data.error_code === "EMAIL_EXIST") {
-        //   this.setState({
-        //     email_text: "중복된 이메일입니다."
-        //   });
-        // } else if (data.message === "회원가입을 축하드립니다.") {
-        //   alert("회원가입을 축하드립니다!! 로그인 페이지로 이동합니다.");
-        //   this.props.history.push({
-        //     pathname: "/login"
-        //   });
-        // } else {
-        //   alert("죄송합니다. 회원가입을 다시 해주세요.");
-        // }
-      });
+    // e.preventDefault();
+    post({
+      path: "account/login",
+      body: { email: this.state.email, password: this.state.password }
+    }).then(data => {
+      console.log(data);
+      if (data.error_code === "EMAIL_NOT_FOUND") {
+        this.setState({
+          email_text: "존재하지 않는 이메일입니다."
+        });
+      } else if (data.access_token) {
+        localStorage.setItem(RKXHSKZMS, data.access_token);
+        console.log(data.access_token);
+        this.props.history.push({
+          pathname: "/"
+        });
+        alert("스타벅스에 오신 것을 환영합니다.");
+      }
+      //  else {
+      //   this.setState({
+      //     pw_text: "이메일 및 비밀번호를 확인해주세요."
+      //   });
+      // }
+    });
   };
 
   fillLogin = e => {
+    console.log(1);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -46,9 +49,12 @@ class Login extends Component {
   render() {
     return (
       <div className="login_container">
-        <div className="login_container_main">
+        <div className="login_container_flex">
+          <Link to="/" className="login_close_btn">
+            <img src={CLOSE_BTN} alt="닫기" />
+          </Link>
           <div className="login_logo">
-            <img src={LOGO} />
+            <img src={LOGO} alt="로그인 로고" />
           </div>
           <div className="login_text1">
             <p>
@@ -61,28 +67,34 @@ class Login extends Component {
             <p>회원 서비스 이용을 위해 로그인 해주세요.</p>
           </div>
           <div className="login_input">
-            <input
-              type="text"
-              placeholder="이메일"
-              label="이메일"
+            <Inputbox
+              className="basic_input"
               name="email"
-              onChange={this.fillLogin}
+              type="email"
+              placeholder="이메일"
+              change={this.fillLogin}
             />
-            <input
+            <Inputbox
+              className="basic_input"
+              name="password"
               type="password"
               placeholder="비밀번호"
-              label="비밀번호"
-              name="password"
-              onChange={this.fillLogin}
+              change={this.fillLogin}
             />
           </div>
           <div className="login_link">
             <Link to="/signup">회원가입</Link>
           </div>
-          <div className="login_btn">
-            <input type="submit" value="로그인하기" onClick={this.clickLogin} />
-          </div>
         </div>
+        {this.state.email && this.state.password ? (
+          <Button
+            className="login_btn"
+            value="로그인하기"
+            onClick={this.clickLogin}
+          />
+        ) : (
+          <Button className="login_btn_disabled" value="로그인하기" />
+        )}
       </div>
     );
   }

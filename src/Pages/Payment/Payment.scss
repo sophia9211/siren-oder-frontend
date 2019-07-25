@@ -1,0 +1,76 @@
+.payment {
+    .payment_lists {
+        .payment_title {
+            background-color: #f6f5ef;
+            padding: 10px;
+            color: rgb(68, 67, 67);
+            font-size: 15px;
+        }
+
+        .payment_title:first-child {
+            margin-top: -20px;
+        }
+
+        .payment_store {
+            padding: 0 10px;
+        }
+
+        .payment_option {
+            padding: 0 10px;
+
+            .check_flex {
+                display: inline-flex;
+
+                p {
+                    color: rgb(104, 102, 102);
+                    font-size: 13px;
+                    margin-top: 0;
+                }
+            }
+
+        }
+
+        .payment_method {
+            padding: 0 10px;
+            border-bottom: 1px solid grey;
+
+            .payment_lists {
+                margin-bottom: 20px;
+            }
+        }
+
+        .item_used {
+            border-style: none;
+        }
+
+        .payment_menu {
+            padding: 0 10px;
+
+            .menu_lists {
+                .menu_lists_total {
+                    display: inline-flex;
+
+                    div:first-child {
+                        flex: 4;
+                    }
+
+                    div:nth-child(2) {
+                        flex: 4;
+                    }
+
+                    .menu_lists_img {
+                        flex: 0.5;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            // .menu_lists_detail {}sss
+
+            // .menu_lists_hidden {}
+        }
+    }
+}

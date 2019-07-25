@@ -1,33 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import "./SelectBox.scss";
 
-class SelectBox extends Component {
-  state = {
-    isClicked: false
-  };
-
-  handleClick = () => {
-    const { isClicked } = this.state;
-    this.setState({
-      isClicked: !isClicked
-    });
-  };
-  render() {
-    const { isClicked } = this.state;
-    const { location1, location2, location3 } = this.props;
-    return (
-      <div className="root_selectbox">
-        <select
-          className={!isClicked ? "non_clickSelected" : "clickSelected"}
-          onClick={this.handleClick}
-        >
-          <option selected>{location1}</option>
-          <option>{location2}</option>
-          <option>{location3}</option>
-        </select>
-      </div>
-    );
-  }
-}
+const SelectBox = ({ handleSelectedChange, selectName, locationList }) => {
+  return (
+    <div className="root_selectbox">
+      <select
+        name={selectName}
+        className="clickSelected"
+        onChange={handleSelectedChange}
+      >
+        <option>선택</option>
+        {locationList &&
+          locationList.map((item, index) => {
+            return (
+              <option key={item + index} value={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
+      </select>
+    </div>
+  );
+};
 
 export default SelectBox;
