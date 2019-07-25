@@ -1,10 +1,10 @@
 import React from "react";
 import "./CupPickContainBox.scss";
+import SizeSelectBox from "Components/SizeSelectBox";
 
 class CupPickContainBox extends React.Component {
   state = {
     cupType: "",
-
     alertText: "환경보호를 위해 매장 내에서는 머그컵을 이용해주세요."
   };
 
@@ -44,7 +44,7 @@ class CupPickContainBox extends React.Component {
         </div>
         <div className="cup_pick_btn_contain_box">
           <div
-            className="cup_pick_btn_box none"
+            className="cup_pick_btn_box border_left_none"
             onClick={this.mugCup}
             style={{
               backgroundColor: `${
@@ -56,7 +56,7 @@ class CupPickContainBox extends React.Component {
             머그컵
           </div>
           <div
-            className="cup_pick_btn_box"
+            className="cup_pick_btn_box "
             onClick={this.personalCup}
             style={{
               backgroundColor: `${
@@ -70,7 +70,7 @@ class CupPickContainBox extends React.Component {
             개인 컵
           </div>
           <div
-            className="cup_pick_btn_box"
+            className="cup_pick_btn_box border_right_radius"
             onClick={this.oneCup}
             style={{
               backgroundColor: `${
@@ -81,11 +81,6 @@ class CupPickContainBox extends React.Component {
           >
             1회용 컵
           </div>
-        </div>
-        <div>사이즈</div>
-        <div>
-          <div>주문하기</div>
-          <div>담기</div>
         </div>
       </div>
     );

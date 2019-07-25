@@ -12,4 +12,6 @@ const CLOSE_BTN =
 
 const API_URL = "http://10.58.5.97:8000";
 
-export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG };
+const API_URL_MENU = "http://10.58.0.25:8000/product";
+
+export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, API_URL_MENU };

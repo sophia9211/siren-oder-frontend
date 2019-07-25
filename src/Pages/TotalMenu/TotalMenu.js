@@ -3,140 +3,176 @@ import "./TotalMenu.scss";
 import MainLayout from "Layouts/MainLayout";
 import CategoryButton from "Components/CategoryButton";
 import MenuTicket from "Components/MenuTicket";
-import { Link } from "react-router-dom";
-
-const sampleData = [
-  {
-    categoryName: "음료",
-    categoryId: 1,
-    subCategorys: [
-      {
-        subCategoryName: "콜드브루",
-        subCategoryId: 1
-      },
-      {
-        subCategoryName: "에스프레소",
-        subCategoryId: 2
-      },
-      {
-        subCategoryName: "리저브",
-        subCategoryId: 3
-      },
-      {
-        subCategoryName: "에스프레소",
-        subCategoryId: 4
-      },
-      {
-        subCategoryName: "야이야이",
-        subCategoryId: 5
-      },
-      {
-        subCategoryName: "에스프레소",
-        subCategoryId: 6
-      }
-    ]
-  },
-  {
-    categoryName: "푸드",
-    categoryId: 2,
-    subCategorys: [
-      {
-        subCategoryName: "케익",
-        subCategoryId: 1
-      },
-      {
-        subCategoryName: "쿠키",
-        subCategoryId: 2
-      }
-    ]
-  }
-];
-
-const myData = {};
-sampleData.map((el, idx) => {
-  console.log(el);
-
-  myData[el.categoryId] = el.subCategorys;
-  console.log(myData);
-});
+import FixedFooter from "Components/FixedFooter";
+import { Router, Route } from "react-router-dom";
+import numberWithCommas from "Util/numberWithCommas";
+import API_URL_MENU from "../../Config/Config";
 
 class TotalMenu extends React.Component {
   state = {
+    id: 1,
+    products: [],
+    myData: [],
+    detailMenu: [],
+    menu: "drink",
     id: 0
   };
 
   componentDidMount() {
-    this.setState({ id: 1 });
+    fetch("http://10.58.0.25:8000/product", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(products => products.json())
+      .then(products => {
+        console.log(products);
+        this.setState({
+          products: products.products,
+          myData: products.products[0].menu,
+          detailMenu: products.products[0].menu[0].drink
+        });
+      });
   }
 
   handleClick = a => {
-    this.setState({ id: a.toString() });
-    console.log(a);
+    if (a === 1) {
+      this.setState({
+        menu: "drink"
+      });
+    }
+    if (a === 2) {
+      this.setState({
+        menu: "food"
+      });
+    }
+    if (a === 3) {
+      this.setState({
+        menu: "stuff"
+      });
+    }
+    if (a === 4) {
+      this.setState({
+        detailMenu: this.state.products[3].cake,
+        menu: "cake"
+      });
+    }
+
+    this.setState(
+      {
+        id: a.toString(),
+        myData: this.state.products[a - 1].menu
+      },
+      () => {
+        console.log(this.state.menu);
+      }
+    );
+  };
+
+  detailClick = a => {
+    const fillter = obj => {
+      if (obj.drink.length !== 0) {
+        return obj.drink;
+      } else if (obj.foods.length !== 0) {
+        return obj.foods;
+      } else if (obj.stuff.length !== 0) {
+        return obj.stuff;
+      }
+    };
+
+    for (let i = 0; i < this.state.myData.length; i++) {
+      if (this.state.myData[i].id === a) {
+        this.setState({
+          detailMenu: fillter(this.state.myData[i])
+        });
+      }
+    }
+  };
+
+  fillterPrice = obj => {
+    if (obj.price) {
+      return obj.price;
+    }
+    if (obj.oz_price !== 0) {
+      return obj.oz_price;
+    } else if (obj.short_price !== 0) {
+      return obj.short_price;
+    } else if (obj.tall_price !== 0) {
+      return obj.tall_price;
+    } else if (obj.venti_price !== 0) {
+      return obj.venti_price;
+    }
+  };
+
+  pageChangeClick = e => {
+    this.setState(
+      {
+        id: e
+      },
+      () => {
+        this.props.history.push({
+          pathname: "./detailmenu",
+          state: {
+            id: this.state.id,
+            menu: this.state.menu
+          }
+        });
+      }
+    );
   };
 
   render() {
-    console.log(myData);
-    console.log(this.state.id);
-
     return (
       <MainLayout>
         <div className="total_menu_category_box">
-          {sampleData.map((el, idx) => {
+          {this.state.products.map((el, idx) => {
             return (
               <CategoryButton
                 className="total_menu_category_btn"
                 hoverClass="total_mene_btn_hover_bar"
                 onClick={e => {
-                  this.handleClick(el.categoryId);
+                  this.handleClick(el.id);
                 }}
               >
-                {el.categoryName}
+                {el.name}
               </CategoryButton>
             );
           })}
         </div>
         <div className="total_menu_category_box">
-          {myData[this.state.id] &&
-            Array.isArray(myData[this.state.id]) &&
-            myData[this.state.id].map((el, idx) => {
-              return (
-                <CategoryButton
-                  className="menu_category_btn"
-                  hoverBox="mene_btn_hover_box"
-                >
-                  {el.subCategoryName}
-                </CategoryButton>
-              );
-            })}
+          {this.state.myData.map((el, idx) => {
+            return (
+              <CategoryButton
+                className="menu_category_btn"
+                hoverBox="mene_btn_hover_box"
+                onClick={e => {
+                  this.detailClick(el.id);
+                }}
+              >
+                {el.name}
+              </CategoryButton>
+            );
+          })}
         </div>
         <div>
-          <Link to="./DetailMenu">
-            <MenuTicket
-              menuName="돌체 콜드 브루"
-              engName="Dolce Cold Brew"
-              price="4,100원"
-              imgSrc="http://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[9200000002081]_20190409153909859.jpg"
-            />
-          </Link>
-          <MenuTicket
-            menuName="제주 말차샷 크림 프라푸치노"
-            engName="Jeju Matcha Shot Cream Frappuccino"
-            price="6,300원"
-            imgSrc="http://image.istarbucks.co.kr/upload/store/skuimg/2017/06/[9200000000680]_20170623144915127.jpg"
-          />
-          <MenuTicket
-            menuName="블랙 티 레모네이드 피지오"
-            engName="Black Tea Lemonade Starbucks Fizzio™"
-            price="4,800원"
-            imgSrc="http://image.istarbucks.co.kr/upload/store/skuimg/2016/09/[107025]_20160905095924513.jpg"
-          />
-          <MenuTicket
-            menuName="아이스 시그니처 초콜릿"
-            engName="Iced Signature Chocolate"
-            price="5,600원"
-            imgSrc="http://image.istarbucks.co.kr/upload/store/skuimg/2015/07/[110621]_20150723005650154.jpg"
-          />
+          {this.state.detailMenu.map((el, idx) => {
+            return (
+              <MenuTicket
+                menuName={el.name}
+                engName={el.english_name}
+                price={numberWithCommas(this.fillterPrice(el)) + "원"}
+                imgSrc={el.img_url}
+                onClick={() => {
+                  this.pageChangeClick(el.id);
+                }}
+              >
+                {el.name}
+              </MenuTicket>
+            );
+          })}
         </div>
+        <FixedFooter />
       </MainLayout>
     );
   }
