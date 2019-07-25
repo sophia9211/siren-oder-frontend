@@ -37,7 +37,6 @@ class TotalMenu extends React.Component {
   }
 
   handleClick = a => {
-<<<<<<< HEAD
     if (a === 1) {
       this.setState({
         menu: "drink"
@@ -90,15 +89,6 @@ class TotalMenu extends React.Component {
       }
     }
   };
-=======
-    this.setState({ id: a.toString() });
-    // console.log(a);
-  };
-
-  render() {
-    // console.log(myData);
-    // console.log(this.state.id);
->>>>>>> origin
 
   fillterPrice = obj => {
     if (obj.price) {
