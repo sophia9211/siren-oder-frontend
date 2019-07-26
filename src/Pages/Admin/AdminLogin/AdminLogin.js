@@ -8,6 +8,10 @@ import { auth } from "Actions/AuthAction";
 import { ADDRESS, DJKLSAJFF, LOGO, ADDRESS1 } from "Config/Config.js";
 
 class AdminLogin extends Component {
+  state = {
+    inputID: "",
+    inputPassword: ""
+  };
   //상태값 리덕스에서 관리
   componentDidMount = () => {
     //리덕스 컴포넌트 변경되었는지 확인.
@@ -45,7 +49,6 @@ class AdminLogin extends Component {
   };
 
   handleExploer = async () => {
-    console.log("클릭");
     let sendData = {
       employee_code: "gosu111",
       password: "111111"
@@ -65,45 +68,40 @@ class AdminLogin extends Component {
     alert("로그인하였습니다.");
     this.props.history.push("/admin");
   };
+
   handleLogin = () => {
-    console.log("로그인 버튼눌렀냐?");
     const { inputID, inputPassword } = this.state;
-    console.log(inputID, inputPassword);
-    if (inputID && inputPassword !== null) {
-      let sendData = {
-        employee_code: inputID,
-        password: inputPassword
-      };
+    let sendData = {
+      employee_code: inputID,
+      password: inputPassword
+    };
 
-      let data = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(sendData)
-      };
+    let data = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(sendData)
+    };
 
-      this.sendAjax = async () => {
-        let reqData = await fetch(ADDRESS1 + "account/employee/login", data);
-        let result = await reqData.json();
+    this.sendAjax = async () => {
+      let reqData = await fetch(ADDRESS1 + "account/employee/login", data);
+      let result = await reqData.json();
 
-        if (result.message === "INVALID_EMPLOYEE") {
-          alert("가입되지 않은 사용자입니다");
-          window.location.reload();
-        } else if (result.access_token) {
-          alert("로그인하였습니다.");
-          let token = result.access_token;
-          localStorage.setItem(DJKLSAJFF, token);
-          console.log("로그인1");
-          this.props.history.push("/admin");
-        }
-      };
+      if (result.message === "INVALID_EMPLOYEE") {
+        alert("가입되지 않은 사용자입니다");
+        window.location.reload();
+      } else if (result.access_token) {
+        alert("로그인하였습니다.");
+        let token = result.access_token;
+        localStorage.setItem(DJKLSAJFF, token);
+        console.log("로그인1");
+        this.props.history.push("/admin");
+      }
+    };
 
-      this.sendAjax();
-      this.props.onAuth();
-    } else {
-      alert("사번과 비번을 입력해주세요.");
-    }
+    this.sendAjax();
+    this.props.onAuth();
   };
 
   handleChange = e => {
