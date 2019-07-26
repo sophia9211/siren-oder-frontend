@@ -37,7 +37,7 @@ class SizeSelectBox extends React.Component {
   render() {
     return (
       <form>
-        <div className="select_box_box">
+        <div className="select_box_box" style={this.props.style}>
           <div className="select_box_container" onClick={this.dropDown}>
             <div className="selected_item">
               {!this.state.selectedItem
