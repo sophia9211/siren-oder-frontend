@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeaderDetail from "Components/Header/HeaderDetail";
 import { Link } from "react-router-dom";
+import numberWithCommas from "Util/numberWithCommas";
 import "./ShoppingCart.scss";
 
 class ShoppingCart extends Component {
@@ -24,24 +25,19 @@ class ShoppingCart extends Component {
   };
 
   deleteMenu = (menu, index) => {
-    // console.log(menu, index);
-    let cart = JSON.parse(localStorage.getItem("cart"));
+    let cart = JSON.parse(localStorage.getItem("data"));
     cart.splice(index, 1);
-    localStorage.removeItem("cart");
-    localStorage.setItem("cart", cart);
-    // console.log(cart);
-    // const deleteMenu = JSON.stringify(menu[index]);
-    // console.log("deleteMenu", deleteMenu);
-    // localStorage.removeItem(deleteMenu);
+    localStorage.removeItem("data");
+    localStorage.setItem("data", JSON.stringify(cart));
   };
 
   render() {
-    const menu = JSON.parse(localStorage.getItem("cart"));
+    const menu = JSON.parse(localStorage.getItem("data"));
+    const stores = JSON.parse(localStorage.getItem("stores"));
     let total_price = 0;
     menu.forEach(el => {
       total_price += el.price * el.count;
     });
-    const stores = JSON.parse(localStorage.getItem("stores"));
     return (
       <div className="cart">
         <HeaderDetail link="/detailmenu">담기</HeaderDetail>
@@ -52,7 +48,7 @@ class ShoppingCart extends Component {
                 <div className="list_info">
                   <p>{ele.name}</p>
                   <p>
-                    {ele.count}개 / {ele.ICED} / {ele.size} / {ele.cup}
+                    {ele.count}개 {ele.size} {ele.cup_type}
                   </p>
                 </div>
                 <div className="list_price">
@@ -65,7 +61,7 @@ class ShoppingCart extends Component {
                       alt="닫기 버튼"
                     />
                   </div>
-                  <div>{ele.price * ele.count}원</div>
+                  <div>{numberWithCommas(ele.price * ele.count)}원</div>
                 </div>
               </li>
             );
@@ -82,7 +78,7 @@ class ShoppingCart extends Component {
           <div className={this.state.storeBox}>
             <div className="cart_count">
               <span>총 {menu.length}개</span>
-              <span>{total_price}원</span>
+              <span>{numberWithCommas(total_price)}원</span>
             </div>
             <div className="cart_store">
               <span>{stores.name}</span>

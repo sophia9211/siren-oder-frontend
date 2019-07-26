@@ -1,4 +1,21 @@
+@import "Style/config.scss";
+
 .payment {
+    min-width: 320px;
+    max-width: 800px;
+
+    @media #{$phone} {
+        margin: 0 auto;
+        // margin-top: 100px;
+        // border: 1px solid rgb(196, 194, 194);
+    }
+
+    @media #{$desktop} {
+        margin: 0 auto;
+        // margin-top: 100px;
+        // border: 1px solid rgb(196, 194, 194);
+    }
+
     .payment_lists {
         .payment_title {
             background-color: #f6f5ef;
@@ -143,7 +160,7 @@
             .payment_btn {
                 text-align: center;
                 padding: 10px;
-                background-color: rgb(143, 106, 106);
+                background-color: #c29f23;
                 color: white;
             }
         }

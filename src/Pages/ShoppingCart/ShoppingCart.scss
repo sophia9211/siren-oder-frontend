@@ -1,6 +1,20 @@
+@import "Style/config.scss";
+
 .cart {
     min-width: 320px;
-    max-width: 450px;
+    max-width: 800px;
+
+    @media #{$phone} {
+        margin: 0 auto;
+        // margin-top: 100px;
+        // border: 1px solid rgb(196, 194, 194);
+    }
+
+    @media #{$desktop} {
+        margin: 0 auto;
+        // margin-top: 100px;
+        // border: 1px solid rgb(196, 194, 194);
+    }
 
     .cart_menu {
         list-style: none;
@@ -32,16 +46,24 @@
 
         .list_price {
             flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 10px;
 
             .list_delete {
                 width: 25px;
-                margin-left: 28px;
                 margin-bottom: 7px;
 
                 img {
                     width: 100%;
                     margin-top: -5px;
                 }
+            }
+
+            div:last-child {
+                // float: right;
+                // margin-right: 10px;
             }
         }
 
@@ -107,14 +129,17 @@
 
             .cart_store {
                 padding: 10px;
+                padding-right: 0;
                 font-size: 13px;
+                // display: flex;
 
                 span:last-child {
                     float: right;
+                    // flex: 1;
                     background-color: white;
                     color: black;
                     width: 50px;
-                    padding: 7px;
+                    // padding: 7px;
                     border-radius: 10px;
                     text-align: center;
                     font-weight: 600;

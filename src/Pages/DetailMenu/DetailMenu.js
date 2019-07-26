@@ -5,6 +5,7 @@ import DetailMenuTiket from "Components/DetailMenuTiket";
 import CupPickContainBox from "Components/CupPickContainBox/CupPickContainBox";
 import SizeSelectBox from "Components/SizeSelectBox";
 import numberWithCommas from "Util/numberWithCommas";
+import { withRouter } from "react-router-dom";
 import API_URL_MENU from "../../Config/Config";
 import fillterPrice from "Util/fillterPrice";
 import { throwStatement } from "@babel/types";
@@ -120,7 +121,7 @@ class DetailMenu extends React.Component {
   //   return newData;
   // };
 
-  orderClick = () => {
+  orderClick = ele => {
     const getToken = localStorage.getItem("data");
     const Data = {
       id: this.state.id,
@@ -141,10 +142,27 @@ class DetailMenu extends React.Component {
       addData.push(Data);
       window.localStorage.setItem("data", JSON.stringify(addData));
     }
+
+    if (!localStorage.getItem("stores")) {
+      alert("주문할 매장을 먼저 선택해주세요.");
+      this.props.history.push({
+        pathname: "./store"
+      });
+    } else if (ele === "pay") {
+      this.props.history.push({
+        pathname: "./payment"
+      });
+    } else if (ele === "cart") {
+      this.props.history.push({
+        pathname: "./shoppingcart"
+      });
+    }
   };
 
   render() {
-    console.log("원래 데이터", this.state.data);
+    const pay = "pay";
+    const cart = "cart";
+    // console.log("원래 데이터", this.state.data);
     return (
       <MainLayout>
         <div className="background_white">
@@ -199,4 +217,4 @@ class DetailMenu extends React.Component {
   }
 }
 
-export default DetailMenu;
+export default withRouter(DetailMenu);

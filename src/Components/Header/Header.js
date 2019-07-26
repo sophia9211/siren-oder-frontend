@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   moveToCart = () => {
-    if (!localStorage.getItem("cart")) {
+    if (!localStorage.getItem("data")) {
       alert("장바구니가 텅~ 비어있습니다.");
     } else {
       this.props.history.push({
