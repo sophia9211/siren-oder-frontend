@@ -43,15 +43,17 @@ div.main_background_img {
   background-repeat: no-repeat;
   background-size: 100%;
   animation: fadeOn 2s;
-  @media only screen and (max-width: 1100px) {
-  }
 }
 @keyframes textHideOn {
   0% {
-    height: 30px;
+    // height: 18px;
+    top: 30px;
+  }
+  50% {
+    top: 0px;
   }
   100% {
-    height: 0px;
+    top: 0px;
   }
 }
 .main_login_box {
@@ -60,37 +62,52 @@ div.main_background_img {
   height: 60px;
   background-color: black;
   color: white;
+  @media only screen and (max-width: 700px) {
+    height: 100px;
+    display: inline-grid;
+  }
   .main_login_texts_box {
-    width: 55%;
+    width: 60%;
+    padding-left: 5%;
     height: 20px;
     text-align: center;
-    margin: 0;
+    margin-left: 5%;
     padding: 0;
     float: left;
     overflow: hidden;
-    margin-top: 15px;
-    border: 1px solid white;
+    margin-top: 22px;
+    position: relative;
+    @media only screen and (max-width: 700px) {
+      width: 100%;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      margin: 15px auto 0;
+      font-size: 0.65rem;
+    }
+
     .main_text_change {
       vertical-align: center;
-      overflow: hidden;
       height: 20px;
       text-align: center;
       margin: 0;
       padding: 0;
-    }
-    .first {
-      animation: textHideOn 2s 3s;
-      animation-direction: normal;
-      animation-iteration-count: infinite;
+      position: absolute;
+      top: 0;
+      animation: textHideOn 3s ease-in-out;
     }
   }
   .main_login_btn_box {
     display: flex;
-    width: 30%;
+    width: 28%;
     float: right;
     height: 60px;
+    margin-right: 5%;
+    @media only screen and (max-width: 700px) {
+      width: 80%;
+      margin: 0 auto;
+    }
 
-    border: 1px solid white;
     .main_login_btn {
       flex: 1;
       text-align: center;
@@ -99,9 +116,13 @@ div.main_background_img {
       margin: 10px;
       padding-top: 10px;
       border-radius: 3px;
-      border: 1px solid white;
+      border: 1.5px solid white;
     }
   }
+}
+.main_login_btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 @keyframes leftSideOn {
   0% {
@@ -109,7 +130,27 @@ div.main_background_img {
     opacity: 0;
   }
   100% {
-    left: 15%;
+    left: 20%;
+    opacity: 1;
+  }
+}
+@keyframes leftSideOn_sub {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+@keyframes leftSideOn_third {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  100% {
+    left: 20%;
     opacity: 1;
   }
 }
@@ -123,6 +164,26 @@ div.main_background_img {
     opacity: 1;
   }
 }
+@keyframes rightSideOn_sub {
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+  100% {
+    right: 10%;
+    opacity: 1;
+  }
+}
+@keyframes rightSideOn_third {
+  0% {
+    right: 20%;
+    opacity: 0;
+  }
+  100% {
+    right: 55%;
+    opacity: 1;
+  }
+}
 .main_coffee_background_img {
   position: relative;
   width: 100%;
@@ -131,32 +192,59 @@ div.main_background_img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
   .main_coffee_img {
     position: absolute;
+    display: flex;
+    top: 30px;
     width: 400px;
-    height: 560px;
-    left: 15%;
+    height: 500px;
+    left: 20%;
     background-image: url("../../Style/img/19_summer3_20thnew_bean.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
     animation: leftSideOn 3s;
+    @media only screen and (max-width: 1200px) {
+      left: 10%;
+      animation: leftSideOn_sub 3s;
+    }
+    @media only screen and (max-width: 800px) {
+      left: 20%;
+      animation: leftSideOn_third 3s;
+      width: 200px;
+    }
   }
   .main_coffee_text_img_box {
     position: absolute;
     right: 20%;
+    top: 60px;
     width: 400px;
     animation: rightSideOn 3s;
+    @media only screen and (max-width: 1200px) {
+      right: 10%;
+      animation: rightSideOn_sub 3s;
+    }
+    @media only screen and (max-width: 800px) {
+      right: 55%;
+      animation: rightSideOn_third 3s;
+      width: 80px;
+    }
 
     .main_coffee_text_img {
       position: absolute;
       width: 300px;
       height: 100px;
-      top: 80px;
+      top: 10px;
+      left: 5%;
       background-image: url("../../Style/img/19_summer3_20th_new_bean_ttl.png");
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100%;
+      @media only screen and (max-width: 800px) {
+        width: 200px;
+        height: 100px;
+      }
     }
     .main_coffee_sub_text_img {
       position: absolute;
@@ -167,6 +255,9 @@ div.main_background_img {
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100%;
+      @media only screen and (max-width: 800px) {
+        display: none;
+      }
     }
     .main_meun_btn {
       position: absolute;
@@ -179,7 +270,10 @@ div.main_background_img {
       font-family: $homefont;
       border: 2px solid #c7a111;
       color: #c7a111;
-      @media only screen and (max-width: 1100px) {
+      @media only screen and (max-width: 800px) {
+        width: 180px;
+        left: 10%;
+        top: 100px;
       }
     }
   }

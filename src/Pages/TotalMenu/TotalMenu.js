@@ -143,7 +143,14 @@ class TotalMenu extends React.Component {
             );
           })}
         </div>
-        <div className="total_menu_category_box">
+        <div
+          className="total_menu_category_box"
+          style={
+            this.state.menu === "cake"
+              ? { display: "none" }
+              : { display: "block" }
+          }
+        >
           {this.state.myData.map((el, idx) => {
             return (
               <CategoryButton
@@ -153,7 +160,7 @@ class TotalMenu extends React.Component {
                   this.detailClick(el.id);
                 }}
               >
-                {el.name}
+                <div className="menu_category_btn_div">{el.name}</div>
               </CategoryButton>
             );
           })}

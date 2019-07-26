@@ -29,6 +29,8 @@
     width: 100%;
     margin: 20px auto;
     font-family: $homefont;
+    @media only screen and (max-width: 1272px) {
+    }
     .shop_footer_btn {
       background-color: #c7a111;
       color: #333333;
