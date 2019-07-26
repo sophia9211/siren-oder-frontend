@@ -9,22 +9,21 @@ class StoreModal extends Component {
   //   address: this.props.address
   // };
   setStore = () => {
-    const store = JSON.parse(localStorage.getItem("store")) || {};
+    const stores = JSON.parse(localStorage.getItem("store"));
     const data = {
       id: this.props.id,
       name: this.props.name,
       address: this.props.address
     };
 
-    if (store) {
-      console.log("StoreModal", data);
-      localStorage.setItem("store", JSON.stringify(data));
+    if (stores) {
+      localStorage.removeItem("stores");
+      localStorage.setItem("stores", JSON.stringify(data));
       this.props.history.push({
         pathname: "/shoppingcart"
       });
     } else {
-      console.log("StoreModal else", data);
-      localStorage.setItem("store", JSON.stringify(data));
+      localStorage.setItem("stores", JSON.stringify(data));
       this.props.history.push({
         pathname: "/shoppingcart"
       });

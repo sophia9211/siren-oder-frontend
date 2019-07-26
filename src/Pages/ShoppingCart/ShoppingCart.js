@@ -24,10 +24,15 @@ class ShoppingCart extends Component {
   };
 
   deleteMenu = (menu, index) => {
-    // console.log(ele, index);
-    const deleteMenu = JSON.stringify(menu[index]);
-    console.log("deleteMenu", deleteMenu);
-    localStorage.removeItem(deleteMenu);
+    // console.log(menu, index);
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cart.splice(index, 1);
+    localStorage.removeItem("cart");
+    localStorage.setItem("cart", cart);
+    // console.log(cart);
+    // const deleteMenu = JSON.stringify(menu[index]);
+    // console.log("deleteMenu", deleteMenu);
+    // localStorage.removeItem(deleteMenu);
   };
 
   render() {
@@ -36,7 +41,7 @@ class ShoppingCart extends Component {
     menu.forEach(el => {
       total_price += el.price * el.count;
     });
-    const store = JSON.parse(localStorage.getItem("store"));
+    const stores = JSON.parse(localStorage.getItem("stores"));
     return (
       <div className="cart">
         <HeaderDetail link="/detailmenu">담기</HeaderDetail>
@@ -53,7 +58,7 @@ class ShoppingCart extends Component {
                 <div className="list_price">
                   <div
                     className="list_delete"
-                    onClick={() => this.deleteMenu(menu, index)}
+                    onClick={() => this.deleteMenu(ele, index)}
                   >
                     <img
                       src="https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/close2-256.png"
@@ -80,7 +85,7 @@ class ShoppingCart extends Component {
               <span>{total_price}원</span>
             </div>
             <div className="cart_store">
-              <span>{store.name}</span>
+              <span>{stores.name}</span>
               <Link to="/store">
                 <span>변경</span>
               </Link>
