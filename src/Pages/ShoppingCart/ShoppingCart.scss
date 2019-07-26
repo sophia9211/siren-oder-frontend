@@ -52,7 +52,7 @@
         margin: 0 auto;
 
         button {
-            background-color: rgba(37, 24, 24, 0.678);
+            background-color: #e9e7e3;
             border: none;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -61,7 +61,7 @@
             padding-top: 8px;
 
             .arrow_up {
-                border: solid white;
+                border: solid black;
                 border-width: 0 3px 3px 0;
                 display: inline-block;
                 padding: 3px;
@@ -70,7 +70,7 @@
             }
 
             .arrow_down {
-                border: solid white;
+                border: solid black;
                 border-width: 0 3px 3px 0;
                 display: inline-block;
                 padding: 3px;
@@ -85,8 +85,8 @@
     }
 
     .cart_pay {
-        background-color: rgba(37, 24, 24, 0.678);
-        padding: 25px;
+        background-color: #e9e7e3;
+        padding: 15px;
 
         .boxShow {
             background-color: white;
@@ -111,8 +111,8 @@
 
                 span:last-child {
                     float: right;
-                    background-color: #c7a111;
-                    color: white;
+                    background-color: white;
+                    color: black;
                     width: 50px;
                     padding: 7px;
                     border-radius: 10px;
@@ -129,7 +129,7 @@
         .order_btn {
             width: 100%;
             margin-top: 15px;
-            background-color: rgb(109, 68, 68);
+            background-color: rgb(87, 86, 86);
             border: none;
             color: white;
             padding: 10px;

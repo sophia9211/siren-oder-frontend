@@ -137,7 +137,10 @@ class Store extends Component {
             "        </div>" +
             '        <div class="body">' +
             '            <div class="img">' +
-            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+            '                <img src="' +
+            markerInfo.img_url +
+            '"' +
+            'width="73" height="70">' +
             "           </div>" +
             '            <div class="desc">' +
             '                <div class="ellipsis">' +
@@ -256,7 +259,7 @@ class Store extends Component {
   render() {
     return (
       <div className="store">
-        <HeaderDetail link="/">매장 검색</HeaderDetail>
+        <HeaderDetail>매장 검색</HeaderDetail>
         <div className="select_wraper">
           <SelectBox
             selectName="cityNum"
@@ -289,7 +292,7 @@ class Store extends Component {
                 >
                   <div className="store_container">
                     <div className="store_img">
-                      {/* <img src={ele.} alt="매장이미지" /> */}
+                      <img src={ele.img_url} alt="매장이미지" />
                     </div>
                     <div className="store_flex">
                       <h4>{ele.name}</h4>
@@ -313,7 +316,7 @@ class Store extends Component {
               id={this.state.modalInfo.id}
               name={this.state.modalInfo.name}
               address={this.state.modalInfo.address}
-              // img={ele.img}
+              img={this.state.modalInfo.img_url}
             />
           </StorePortal>
         )}

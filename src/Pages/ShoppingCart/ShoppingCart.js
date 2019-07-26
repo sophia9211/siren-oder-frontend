@@ -26,7 +26,7 @@ class ShoppingCart extends Component {
   deleteMenu = (menu, index) => {
     // console.log(ele, index);
     const deleteMenu = JSON.stringify(menu[index]);
-    console.log(deleteMenu);
+    console.log("deleteMenu", deleteMenu);
     localStorage.removeItem(deleteMenu);
   };
 
@@ -36,7 +36,7 @@ class ShoppingCart extends Component {
     menu.forEach(el => {
       total_price += el.price * el.count;
     });
-    // console.log(menu);
+    const store = JSON.parse(localStorage.getItem("store"));
     return (
       <div className="cart">
         <HeaderDetail link="/detailmenu">담기</HeaderDetail>
@@ -80,7 +80,7 @@ class ShoppingCart extends Component {
               <span>{total_price}원</span>
             </div>
             <div className="cart_store">
-              <span>매장 이름 menu.aa?</span>
+              <span>{store.name}</span>
               <Link to="/store">
                 <span>변경</span>
               </Link>

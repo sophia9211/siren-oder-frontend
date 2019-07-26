@@ -3,32 +3,36 @@ import "./StoreModal.scss";
 import { withRouter } from "react-router-dom";
 
 class StoreModal extends Component {
+  // state = {
+  //   id: this.props.id,
+  //   name: this.props.name,
+  //   address: this.props.address
+  // };
   setStore = () => {
-    const store = JSON.parse(localStorage.getItem("store"));
+    const store = JSON.parse(localStorage.getItem("store")) || {};
     const data = {
-      id: 1,
-      name: "강남점",
-      address: "서울시 강남구 대치동 대치상가"
+      id: this.props.id,
+      name: this.props.name,
+      address: this.props.address
     };
-    // this.props.history.push({
-    //   pathname: "/detailmenu"
-    // });
+
     if (store) {
-      localStorage.removeItem("store");
+      console.log("StoreModal", data);
       localStorage.setItem("store", JSON.stringify(data));
-      // this.props.history.push({
-      //   pathname: "/detailmenu"
-      // });
+      this.props.history.push({
+        pathname: "/shoppingcart"
+      });
     } else {
+      console.log("StoreModal else", data);
       localStorage.setItem("store", JSON.stringify(data));
-      // this.props.history.push({
-      //   pathname: "/detailmenu"
-      // });
+      this.props.history.push({
+        pathname: "/shoppingcart"
+      });
     }
   };
 
   render() {
-    const { name, address, onClick } = this.props;
+    const { id, name, address, onClick } = this.props;
     return (
       <div className="store_modal">
         <div className="store_modal_wrapper">

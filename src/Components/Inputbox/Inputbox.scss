@@ -1,3 +1,5 @@
+* {}
+
 .basic_input {
     position: relative;
     margin: 0 auto;
@@ -10,6 +12,7 @@
         padding: 5px;
         outline: none;
         cursor: pointer;
+        font-family: sans-serif !important;
     }
 
     input:focus {
@@ -30,6 +33,7 @@
         padding: 5px;
         outline: none;
         cursor: pointer;
+        font-family: sans-serif !important;
     }
 
     input:focus {

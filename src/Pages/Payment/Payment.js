@@ -27,7 +27,7 @@ class Payment extends Component {
     });
     return (
       <div className="payment">
-        <HeaderDetail link="/detailmenu">결제하기</HeaderDetail>
+        <HeaderDetail>결제하기</HeaderDetail>
         <div className="payment_lists">
           <div className="payment_title">주문 매장</div>
           <div className="payment_store">
