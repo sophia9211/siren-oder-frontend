@@ -11,19 +11,26 @@ import fillterPrice from "Util/fillterPrice";
 import { throwStatement } from "@babel/types";
 
 class DetailMenu extends React.Component {
-  state = {
-    condition: "",
-    data: {},
-    name: "",
-    english_name: "",
-    price: 0,
-    count: 1,
-    cup_type: "",
-    size: "",
-    id: this.props.location.state.id,
-    menu: this.props.location.state.menu,
-    img_url: this.props.location.state.img_url
-  };
+  constructor(props) {
+    super(props);
+
+    const { id, menu, img_url } = this.props.location.state;
+
+    this.state = {
+      condition: "",
+      data: {},
+      name: "",
+      english_name: "",
+      price: 0,
+      count: 1,
+      cup_type: "",
+      size: "",
+      id,
+      menu,
+      img_url
+    };
+  }
+
   componentDidMount() {
     fetch(
       "http://10.58.0.25:8000/product" + `/${this.state.menu}/${this.state.id}`,
@@ -125,9 +132,6 @@ class DetailMenu extends React.Component {
       img_url: this.state.img_url,
       cup_type: this.state.cup_type,
       size: this.state.size
-
-      // size: size,
-      // cup_type: cup_type
     };
     if (!getToken) {
       const totalData = [Data];
@@ -161,54 +165,50 @@ class DetailMenu extends React.Component {
     // console.log("원래 데이터", this.state.data);
     return (
       <MainLayout>
-        <DetailMenuTiket
-          menuName={this.state.name}
-          engName={this.state.english_name}
-          price={numberWithCommas(this.state.price * this.state.count)}
-          imgSrc={this.state.img_url}
-          count={this.state.count}
-          plusClick={this.countPlusClick}
-          minusClick={this.countMinusClick}
-          text={this.state.condition}
-        />
-        <div className="detail_sub_box">
-          <CupPickContainBox
-            style={
-              this.state.menu !== "drink"
-                ? { display: "none" }
-                : { display: "block" }
-            }
-            onCreate={this.cupValueCheck}
+        <div className="background_white">
+          <DetailMenuTiket
+            menuName={this.state.name}
+            engName={this.state.english_name}
+            price={numberWithCommas(this.state.price * this.state.count)}
+            imgSrc={this.state.img_url}
+            count={this.state.count}
+            plusClick={this.countPlusClick}
+            minusClick={this.countMinusClick}
+            text={this.state.condition}
           />
+          <div className="detail_sub_box">
+            <CupPickContainBox
+              style={
+                this.state.menu !== "drink"
+                  ? { display: "none" }
+                  : { display: "block" }
+              }
+              onCreate={this.cupValueCheck}
+            />
 
-          <SizeSelectBox
-            item={[
-              { value: "short", id: 0 },
-              { value: "tall", id: 1 },
-              { value: "grande", id: 2 },
-              { value: "venti", id: 3 }
-            ]}
-            data={this.state.data}
-            onCreate={this.handleCreate}
-            style={
-              this.state.menu !== "drink"
-                ? { display: "none" }
-                : { display: "block" }
-            }
-          />
-          <div className="menu_order_box">
-            <div
-              className="menu_order_btn"
-              onClick={() => this.orderClick(pay)}
-            >
-              주문하기
-            </div>
+            <SizeSelectBox
+              item={[
+                { value: "short", id: 0 },
+                { value: "tall", id: 1 },
+                { value: "grande", id: 2 },
+                { value: "venti", id: 3 }
+              ]}
+              data={this.state.data}
+              onCreate={this.handleCreate}
+              style={
+                this.state.menu !== "drink"
+                  ? { display: "none" }
+                  : { display: "block" }
+              }
+            />
+            <div className="menu_order_box">
+              <div className="menu_order_btn" onClick={this.orderClick}>
+                주문하기
+              </div>
 
-            <div
-              className="menu_shopping_cart_"
-              onClick={() => this.orderClick(cart)}
-            >
-              담기
+              <div className="menu_shopping_cart_" onClick={this.orderClick}>
+                담기
+              </div>
             </div>
           </div>
         </div>
