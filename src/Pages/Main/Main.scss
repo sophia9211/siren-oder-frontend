@@ -1,35 +1,224 @@
 @import "Style/font/font.scss";
 
 a {
-  color: #333333;
+  color: white;
 }
+
+.none {
+  display: none;
+}
+
 .padding {
   padding: 20px 0;
 }
-.main_contain_button_box {
-  font-weight: 600;
-  width: 90%;
-  height: 90px;
-  margin: 0px auto;
-  color: #333333;
-  background-color: white;
-  border-radius: 10px;
 
-  .main_meun_btn {
-    float: left;
+.pad_none {
+  padding: 0;
+}
+
+div.main_background_img {
+  display: flex;
+  width: 100%;
+  height: 350px;
+  background-image: url("../../Style/img/coffee_story_bigImg01.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeOn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.starbucks_main_background_logo {
+  margin: 30px auto;
+  width: 185px;
+  height: 260px;
+  top: 30px;
+  left: 44.5%;
+  background-image: url("../../Style/img/emblem.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  animation: fadeOn 2s;
+
+  @media only screen and (max-width: 1100px) {}
+}
+
+@keyframes textHideOn {
+  0% {
+    height: 30px;
+  }
+
+  100% {
+    height: 0px;
+  }
+}
+
+.main_login_box {
+  margin: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  color: white;
+
+  .main_login_texts_box {
+    width: 55%;
+    height: 20px;
     text-align: center;
-    width: 50%;
-    height: 50%;
-    margin: 20px 0;
-    padding: 5px 0;
-    font-size: 2rem;
-    font-family: $homefont;
-    border-right: 1px solid #333333;
-    @media only screen and (max-width: 1100px) {
-      font-size: 1.5rem;
-      padding: 12px 0;
+    margin: 0;
+    padding: 0;
+    float: left;
+    overflow: hidden;
+    margin-top: 15px;
+    border: 1px solid white;
+
+    .main_text_change {
+      vertical-align: center;
+      overflow: hidden;
+      height: 20px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .first {
+      animation: textHideOn 2s 3s;
+      animation-direction: normal;
+      animation-iteration-count: infinite;
     }
   }
+
+  .main_login_btn_box {
+    width: 30%;
+    float: right;
+    height: 60px;
+    border: 1px solid white;
+
+    div {
+      display: flex;
+
+      .main_login_btn {
+        flex: 1;
+        height: 40px;
+        margin: 10px;
+        padding-top: 10px;
+        border-radius: 3px;
+        border: 1px solid white;
+        text-decoration: none;
+        text-align: center;
+      }
+    }
+
+  }
+}
+
+@keyframes leftSideOn {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  100% {
+    left: 15%;
+    opacity: 1;
+  }
+}
+
+@keyframes rightSideOn {
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+
+  100% {
+    right: 20%;
+    opacity: 1;
+  }
+}
+
+.main_coffee_background_img {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  background-image: url("../../Style/img/greenb.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .main_coffee_img {
+    position: absolute;
+    width: 400px;
+    height: 560px;
+    left: 15%;
+    background-image: url("../../Style/img/19_summer3_20thnew_bean.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    animation: leftSideOn 3s;
+  }
+
+  .main_coffee_text_img_box {
+    position: absolute;
+    right: 20%;
+    width: 400px;
+    animation: rightSideOn 3s;
+
+    .main_coffee_text_img {
+      position: absolute;
+      width: 300px;
+      height: 100px;
+      top: 80px;
+      background-image: url("../../Style/img/19_summer3_20th_new_bean_ttl.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    .main_coffee_sub_text_img {
+      position: absolute;
+      width: 450px;
+      height: 160px;
+      top: 150px;
+      background-image: url("../../Style/img/19_summer3_20th_new_bean_txt.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    .main_meun_btn {
+      position: absolute;
+      text-align: center;
+      width: 180px;
+      height: 50px;
+      top: 300px;
+      padding-top: 14px;
+      border-radius: 3px;
+      font-family: $homefont;
+      border: 2px solid #c7a111;
+      color: #c7a111;
+
+      @media only screen and (max-width: 1100px) {}
+    }
+  }
+
+  .main_contain_button_box {
+    font-weight: 600;
+    width: 100%;
+    height: 80px;
+    margin: 0px auto;
+    color: white;
+    background-color: #333333;
+  }
+
   .main_history_btn {
     float: right;
     text-align: center;
@@ -39,10 +228,12 @@ a {
     margin: 20px 0;
     font-size: 2rem;
     font-family: $homefont;
+
     @media only screen and (max-width: 1100px) {
       font-size: 1.5rem;
       padding: 12px 0;
     }
+
     //   border: 1px solid black;
   }
 }

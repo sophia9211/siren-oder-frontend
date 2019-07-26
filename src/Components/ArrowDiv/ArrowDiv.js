@@ -5,7 +5,7 @@ const ArrowDiv = ({ children, className }) => {
   return (
     <div className={className}>
       <div>{children}</div>
-      <div />>
+      <div />
       <div className="right_arrow">
         <img
           src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-256.png"

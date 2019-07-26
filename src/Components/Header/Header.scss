@@ -3,6 +3,7 @@
   height: 80px;
   width: 100%;
   background-color: black;
+
   .header_angel_logo {
     position: absolute;
     background-image: url("../../Style/img/sLogo.png");
@@ -14,36 +15,40 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
   .header_text_logo {
-    position: absolute;
+    margin: 0 auto;
+    padding-top: 80px;
     background-image: url("../../Style/img/tLogo.png");
     width: 20%;
     height: 60px;
     min-width: 130px;
     max-width: 300px;
-    top: 10px;
-    left: 40%;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+
     @media only screen and(max-width: 700px) {
       left: 31%;
     }
   }
-  .header_search_icon {
-    position: absolute;
-    background-image: url("../../Style/img/search-glass.png");
-    width: 33px;
-    height: 33px;
-    top: 25px;
-    right: 80px;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    @media only screen and(max-width: 700px) {
-      display: none;
-    }
-  }
+
+  // .header_search_icon {
+  //   position: absolute;
+  //   background-image: url("../../Style/img/search-glass.png");
+  //   width: 33px;
+  //   height: 33px;
+  //   top: 25px;
+  //   right: 80px;
+  //   background-size: 100%;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+
+  //   @media only screen and(max-width: 700px) {
+  //     display: none;
+  //   }
+  // }
+
   .header_shopping_icon {
     position: absolute;
     background-image: url("../../Style/img/shopping-bag.png");
@@ -54,8 +59,9 @@
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    @media only screen and(max-width: 700px) {
-      background-image: url("../../Style/img/menu.png");
-    }
+
+    // @media only screen and(max-width: 700px) {
+    //   background-image: url("../../Style/img/menu.png");
+    // }
   }
 }

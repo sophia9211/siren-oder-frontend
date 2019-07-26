@@ -17,6 +17,8 @@ const CHECK_IMG =
 export const ADDRESS = "http://10.58.5.198:8000/";
 const RKXHSKZMS = "data.access_token";
 export const DJKLSAJFF = "result.access_token";
+const API_URL_MENU = "http://10.58.0.25:8000/product";
+const API_URL = "http://10.58.0.25:8000";
 
 //승재님 ip
 export const ADDRESS1 = "http://10.58.0.25:8000/";

@@ -1,53 +1,17 @@
 .cart {
+    min-width: 320px;
+    max-width: 450px;
+
     .cart_menu {
         list-style: none;
         padding: 0 15px;
-        padding-top: 20px;
 
         li {
             display: flex;
-            // padding: 5px;
-
-            .list_check {
-                flex: 1;
-                position: relative;
-                display: block;
-                height: 26px;
-                margin: 0 0;
-
-                #loginCheck {
-                    width: 20px;
-                    height: 20px;
-                    border: 2px solid #c7a111;
-                    cursor: pointer;
-                    background: url(https://png.pngtree.com/png-vector/20190121/ourmid/pngtree-correct-symbol-big-red-check-mark-stereoscopic-rendering-check-mark-png-image_508031.jpg) no-repeat;
-                    background-size: cover;
-                    border-radius: 4px;
-                }
-
-                #loginCheckNone {
-                    width: 20px;
-                    height: 20px;
-                    border: 2px solid #c7a111;
-                    cursor: pointer;
-                    border-radius: 4px;
-                }
-
-                // #loginCheckLabel {
-                //     margin-top: 4px;
-                //     margin-left: 0;
-                //     font-size: 15px;
-                //     line-height: 26px;
-                //     position: absolute;
-                //     top: 0;
-                //     left: 0;
-                //     height: 26px;
-                //     padding-left: 33px;
-                //     cursor: pointer;
-                //     color: #333;
-                // }
-
-            }
+            border-bottom: 1px solid black;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            margin-bottom: 15px;
         }
 
         .list_info {
@@ -55,11 +19,12 @@
 
             p {
                 margin: 0;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
             }
 
             p:last-child {
-                color: red;
+                color: rgb(66, 66, 66);
+                font-size: 14px;
             }
         }
 
@@ -69,7 +34,9 @@
             flex: 2;
 
             .list_delete {
-                width: 30px;
+                width: 25px;
+                margin-left: 28px;
+                margin-bottom: 7px;
 
                 img {
                     width: 100%;
@@ -81,21 +48,92 @@
     }
 
     .cart_pay_btn {
-        width: 50px;
+        width: 60px;
         margin: 0 auto;
+
+        button {
+            background-color: #e9e7e3;
+            border: none;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            width: 80px;
+            padding: 4px;
+            padding-top: 8px;
+
+            .arrow_up {
+                border: solid black;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+            }
+
+            .arrow_down {
+                border: solid black;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+            }
+        }
+
+        button:focus {
+            outline: none;
+        }
     }
 
     .cart_pay {
-        background-color: rgba(37, 24, 24, 0.678);
+        background-color: #e9e7e3;
         padding: 15px;
 
         .boxShow {
             background-color: white;
-            border-radius: 2px;
+            border-radius: 4px;
+            padding: 10px;
+            padding-bottom: 20px;
+            font-size: 15px;
+
+            .cart_count {
+                padding: 10px;
+                border-bottom: 1px solid grey;
+                margin-bottom: 8px;
+
+                span:last-child {
+                    float: right;
+                }
+            }
+
+            .cart_store {
+                padding: 10px;
+                font-size: 13px;
+
+                span:last-child {
+                    float: right;
+                    background-color: white;
+                    color: black;
+                    width: 50px;
+                    padding: 7px;
+                    border-radius: 10px;
+                    text-align: center;
+                    font-weight: 600;
+                }
+            }
         }
 
         .boxHide {
             display: none;
+        }
+
+        .order_btn {
+            width: 100%;
+            margin-top: 15px;
+            background-color: rgb(87, 86, 86);
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
         }
     }
 

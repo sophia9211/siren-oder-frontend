@@ -1,0 +1,54 @@
+.history {
+    .history_title {
+        text-align: center;
+        border-bottom: 1px solid grey;
+        padding-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .history_lists {
+            display: flex;
+            padding: 15px;
+
+            .history_img {
+                flex: 2;
+            }
+
+            .history_text {
+                flex: 6;
+
+                div:first-child {
+                    font-size: 15px;
+                }
+
+                div:last-child {
+                    font-size: 11px;
+                    margin-top: 10px;
+                    display: flex;
+
+                    span:first-child {
+                        flex: 2;
+                        color: rgb(90, 89, 89);
+                    }
+
+                    span:nth-child(2) {
+                        flex: 2;
+                    }
+
+                    span:last-child {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+
+        .history_lists:nth-child(odd) {
+            background-color: #f6f5ef;
+        }
+    }
+
+}
