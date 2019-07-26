@@ -23,5 +23,4 @@ const API_URL = "http://10.58.0.25:8000";
 //승재님 ip
 export const ADDRESS1 = "http://10.58.0.25:8000/";
 
-const API_URL = "http://10.58.0.181:8000";
 export { API_URL, LOGO, CLOSE_BTN, ICON, PROFILE_IMG, CHECK_IMG, RKXHSKZMS };

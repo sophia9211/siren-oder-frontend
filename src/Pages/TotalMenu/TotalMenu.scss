@@ -43,7 +43,7 @@
 }
 
 .menu_category_btn {
-  display: inline-block;
+  display: inline-table;
   position: relative;
   width: 25%;
   text-align: center;
@@ -61,6 +61,8 @@
     display: inline-block;
     padding: 3px 6px;
     border-radius: 7px;
+    @media only screen and (max-width: 800px) {
+    }
   }
 }
 

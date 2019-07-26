@@ -5,16 +5,45 @@ import { Link } from "react-router-dom";
 import { RKXHSKZMS } from "Config/Config.js";
 import Header from "Components/Header";
 
+const textArr = [
+  {
+    text: "스타벅스만의 특별한 혜택, 마이 스타벅스 리워드"
+  },
+  {
+    text: "스타벅스 회원이세요? 로그인을 통해 나만의 리워드를 확인해 보세요."
+  },
+  {
+    text: "스타벅스 회원아니세요? 가입을 통해 리워드 혜택을 즐기세요."
+  }
+];
+
 class Main extends React.Component {
   state = {
-    class: ""
+    count: ""
   };
 
-  // timmOut = () => {
-  //   setTimeout(() => {
-  //     this.
-  //   }, 1000);
-  // };
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+  getText = textArr => {
+    if (textArr.length > 1) {
+      let count = 0;
+      this.intervalId = setInterval(() => {
+        this.setState({
+          count: count
+        });
+        count++;
+        if (count > 2) {
+          return (count = 0);
+        }
+      }, 3000);
+      console.log(this.state.text);
+    }
+  };
+  componentDidMount() {
+    this.getText(textArr);
+  }
 
   logout = () => {
     localStorage.removeItem(RKXHSKZMS);
@@ -41,14 +70,35 @@ class Main extends React.Component {
         </div>
         <div className="main_login_box">
           <div className="main_login_texts_box">
-            <p className={`main_text_change ${this.state.class}`}>
+            <p
+              className={this.state.count === 0 ? "main_text_change" : ""}
+              style={
+                this.state.count === 0
+                  ? { display: "flex" }
+                  : { display: "none" }
+              }
+            >
               스타벅스만의 특별한 혜택, 마이 스타벅스 리워드
             </p>
-            <p className="main_text_change">
+            <p
+              className={this.state.count === 1 ? "main_text_change" : ""}
+              style={
+                this.state.count === 1
+                  ? { display: "flex" }
+                  : { display: "none" }
+              }
+            >
               스타벅스 회원이세요? 로그인을 통해 나만의 리워드를 확인해 보세요.
             </p>
-            <p className="main_text_change">
-              스타벅스 회원이 아니세요? 회원가입을 통해 리워드 혜택을 즐기세요.
+            <p
+              className={this.state.count === 2 ? "main_text_change" : ""}
+              style={
+                this.state.count === 2
+                  ? { display: "flex" }
+                  : { display: "none" }
+              }
+            >
+              스타벅스 회원아니세요? 가입을 통해 리워드 혜택을 즐기세요.
             </p>
           </div>
 
