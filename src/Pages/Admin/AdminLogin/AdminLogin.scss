@@ -33,13 +33,30 @@
   }
 }
 
-.wrap_login_admin_info {
-  position: relative;
-  top: 250px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 600px;
+.wrap_logo_information_text {
+  width: 400px;
+  margin: 200px auto 0px;
+  .logo {
+    width: 80px;
+    height: 80px;
+    background: url("../../../Style/img/sLogo.png");
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 30px;
+  }
+  .information_text {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  p {
+    color: #4e4d4d;
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+}
 
+.wrap_login_admin_info {
   .wrap_locations {
     display: flex;
 
@@ -64,60 +81,51 @@
     line-height: 57px;
   }
 
-  .wrap_location_select_box,
-  .wrap_position_select_box,
   .wrap_number_input_box,
   .wrap_password_input_box {
-    display: flex;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 15px;
     > div {
       font-size: 30px;
       margin-right: 3%;
     }
 
     .employees_numbers {
-      width: 66.8%;
-      height: 55px;
-      border: 1px solid #999;
-      margin-left: 11px;
+      width: 100%;
+      height: 40px;
+      border: none;
+      border-bottom: 1px solid #d6c798;
+    }
+    .employees_numbers::placeholder {
+      font-size: 16px;
     }
   }
   .wrap_admin_button {
-    float: right;
-    margin-right: 56px;
-    display: flex;
-    flex-direction: column;
-
+    margin-top: 50px;
+    border-bottom: 6px dotted #d6c798;
+    padding-bottom: 70px;
     .wrap_admin_3button {
-      display: flex;
-      margin-bottom: 10px;
-
       > button {
         width: 100px;
         height: 40px;
-        border-radius: 15px;
-        font-size: 20px;
-        border: 1px solid black;
-        background: green;
-        color: azure;
-        margin-left: 15px;
-        margin-top: 5px;
-        font-weight: bold;
+        border-radius: 8px;
+        font-size: 18px;
+        border: 2px solid #d6c798;
+        background: #ffffff;
+        color: #aaaaaa;
+        margin-right: 15px;
+        font-weight: 300;
+        &:hover {
+          cursor: pointer;
+          border: 2px solid #7a4504;
+          color: #7a4504;
+        }
       }
     }
-    > #kakao-login-btn {
-      width: 210px;
-      height: 40px;
-      margin-left: 10px;
-    }
-
-    // .kakaoLogin {
-    //   background-color: yellow;
-    //   color: #381e1f;
-    //   font-size: 14px;
-    //   font-weight: bold;
-    // }
+  }
+  > #kakao-login-btn {
+    display: block;
+    width: 200px;
+    margin-top: 70px;
   }
 }
 //media query
