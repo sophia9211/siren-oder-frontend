@@ -102,9 +102,9 @@ class Main extends React.Component {
             </p>
           </div>
 
-          <div className="main_login_btn_box">
+          <div>
             {!localStorage.getItem(RKXHSKZMS) ? (
-              <div>
+              <div className="main_login_btn_box">
                 <Link to="./signup" className="main_login_btn">
                   회원가입
                 </Link>

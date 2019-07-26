@@ -114,7 +114,7 @@ div.main_background_img {
     height: 60px;
     margin-right: 5%;
     @media only screen and (max-width: 700px) {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -127,6 +127,7 @@ div.main_background_img {
       padding-top: 10px;
       border-radius: 3px;
       border: 1.5px solid white;
+      text-decoration: none;
     }
   }
 }
@@ -177,6 +178,28 @@ div.main_background_img {
     opacity: 1;
   }
 }
+@keyframes rightSideOn_sub {
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+
+  100% {
+    right: 10%;
+    opacity: 1;
+  }
+}
+@keyframes rightSideOn_third {
+  0% {
+    right: 25%;
+    opacity: 0;
+  }
+
+  100% {
+    right: 55%;
+    opacity: 1;
+  }
+}
 .main_coffee_background_img {
   position: relative;
   width: 100%;
@@ -205,6 +228,7 @@ div.main_background_img {
     @media only screen and (max-width: 800px) {
       left: 20%;
       animation: leftSideOn_third 3s;
+      top: 100px;
       width: 200px;
     }
   }
