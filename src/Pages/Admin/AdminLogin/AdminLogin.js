@@ -5,31 +5,36 @@ import "./AdminLogin.scss";
 import SelectBox from "Components/SelectBox";
 import { withRouter } from "react-router-dom";
 import { auth } from "Actions/AuthAction";
-import { ADDRESS, DJKLSAJFF, LOGO } from "Config/Config.js";
+import { ADDRESS, DJKLSAJFF, LOGO, ADDRESS1 } from "Config/Config.js";
 
 class AdminLogin extends Component {
+  state = {
+    inputID: "",
+    inputPassword: ""
+  };
   //상태값 리덕스에서 관리
   componentDidMount = () => {
     //리덕스 컴포넌트 변경되었는지 확인.
-    window.Kakao.init("a81d01b3bdfe45a0794edae07d009473");
-
+    if (!window.Kakao.Link) {
+      window.Kakao.init("a81d01b3bdfe45a0794edae07d009473");
+    }
     window.Kakao.Auth.createLoginButton({
       container: "#kakao-login-btn",
-      success: function(authObj) {
-        console.log(JSON.stringify(authObj));
-
+      success: authObj => {
+        let nomalToken = localStorage.getItem(DJKLSAJFF);
         let data = {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(authObj)
+            "Content-Type": "application/json",
+            Authorization: JSON.stringify(authObj["access_token"])
+          }
         };
-
         this.sendAjax = async () => {
-          let reqData = await fetch("url", data);
+          let reqData = await fetch(ADDRESS1 + "account/employee/kakao", data);
           let result = await reqData.json();
-          console.log(result);
+          if (result.message === "SUCCESS") {
+            this.props.history.push("/admin");
+          }
         };
         this.sendAjax();
       },
@@ -40,22 +45,28 @@ class AdminLogin extends Component {
   };
 
   handleSignup = () => {
-    this.props.history.push("signup");
-  };
-
-  //카카오 로그인 백엔드 뷰 엔드포인트 만들어지면 던지기.
-  handleKakao = () => {
-    console.log("카카오");
-    // this.sendAjax = async () => {
-    //   let reqData = await fetch();
-    // };
+    this.props.history.push("/admin/signup");
   };
 
   handleExploer = async () => {
-    //둘러보기 기능. 토큰만 받아와서 박아놓기.
-    // let reqData = await fetch(ADDRESS + "account/employee/login", data);
-    // let result = await reqData.json();
-    // localStorage.setItem(DJKLSAJFF);
+    let sendData = {
+      employee_code: "gosu111",
+      password: "111111"
+    };
+    let data = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(sendData)
+    };
+
+    let reqData = await fetch(ADDRESS1 + "account/employee/login", data);
+    let result = await reqData.json();
+    let token = result.access_token;
+    localStorage.setItem(DJKLSAJFF, token);
+    alert("로그인하였습니다.");
+    this.props.history.push("/admin");
   };
 
   handleLogin = () => {
@@ -74,7 +85,7 @@ class AdminLogin extends Component {
     };
 
     this.sendAjax = async () => {
-      let reqData = await fetch(ADDRESS + "account/employee/login", data);
+      let reqData = await fetch(ADDRESS1 + "account/employee/login", data);
       let result = await reqData.json();
 
       if (result.message === "INVALID_EMPLOYEE") {
@@ -84,6 +95,7 @@ class AdminLogin extends Component {
         alert("로그인하였습니다.");
         let token = result.access_token;
         localStorage.setItem(DJKLSAJFF, token);
+        console.log("로그인1");
         this.props.history.push("/admin");
       }
     };
@@ -177,5 +189,5 @@ AdminLogin = connect(
   mapStateToProps,
   mapDispatchToProps
 )(AdminLogin);
-console.log(AdminLogin);
+
 export default withRouter(AdminLogin);
