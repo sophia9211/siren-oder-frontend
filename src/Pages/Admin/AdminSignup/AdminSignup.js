@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AdminHeader from "Components/Header/AdminHeader";
 import "./AdminSignup.scss";
 import SelectBox from "Components/SelectBox";
-import { ADDRESS } from "Config/Config";
+import { ADDRESS, ADDRESS1 } from "Config/Config";
 import { withRouter } from "react-router-dom";
 
 class AdminSignup extends Component {
@@ -79,7 +79,7 @@ class AdminSignup extends Component {
   };
 
   handleCancle = () => {
-    this.props.history.push("login");
+    this.props.history.push("/admin/login");
   };
 
   handleSignup = () => {
@@ -129,7 +129,7 @@ class AdminSignup extends Component {
       console.log(sendData);
 
       this.sendAjax = async () => {
-        let reqData = await fetch(ADDRESS + "account/employee", sendData);
+        let reqData = await fetch(ADDRESS1 + "account/employee", sendData);
         let getMessage = await reqData.json();
         console.log(getMessage); //왜 이늠은 안가지?
         if (getMessage.message === "SUCCESS") {

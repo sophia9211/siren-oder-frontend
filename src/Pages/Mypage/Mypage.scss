@@ -1,37 +1,218 @@
-.mypage_container {
-    display: flex;
-    flex-direction: column;
+@import "Style/config.scss";
 
-    label {
-        margin-right: 10px;
-    }
+.mypage {
+    min-width: 320px;
+    max-width: 450px;
 
-    p {
-        font-size: 10px;
-        color: grey;
-    }
-
-    .profile_fir {
-        padding-bottom: 20px;
+    @media #{$smPhone} {
         margin: 0 auto;
-
-        img {
-            height: 70px;
-            display: block;
-            margin: 15px auto;
-        }
     }
 
-    .profile_sec {
-        border-top: 1px solid rgb(26, 25, 25);
-        border-bottom: 1px solid rgb(26, 25, 25);
-        padding: 15px 20px;
+    @media #{$phone} {
+        margin: 0 auto;
+        margin-top: 100px;
+        border: 1px solid rgb(196, 194, 194);
+    }
+
+    @media #{$desktop} {
+        margin: 0 auto;
+        margin-top: 100px;
+        border: 1px solid rgb(196, 194, 194);
+    }
+
+    .mypage_container {
+        display: flex;
+        flex-direction: column;
+        // background-color: #f6f5ef;
+
+        .profile_fir {
+            padding-bottom: 20px;
+            margin: 0 auto;
+
+            img {
+                height: 70px;
+                display: block;
+                margin: 15px auto;
+                margin-bottom: 20px;
+            }
+
+            p {
+                text-align: center;
+                margin-bottom: 0;
+                font-size: 15px;
+            }
+        }
+
+        .profile_email {
+            border-bottom: 6px solid #f6f5ef;
+            border-top: 6px solid #f6f5ef;
+            padding: 0 15px;
+            font-size: 14px;
+
+            p {
+                display: inline-block;
+            }
+
+            p:last-child {
+                font-size: 12px;
+                color: rgb(66, 65, 65);
+                padding-left: 20px;
+            }
+        }
 
         .profile_pw {
-            margin: 10px 0;
+            border-bottom: 6px solid #f6f5ef;
+            padding: 0 15px;
+            padding-bottom: 16px;
+            font-size: 14px;
+
+            p {
+                display: inline-block;
+            }
+
+            button {
+                margin-left: 198px;
+                background-color: white;
+                border: none;
+                outline: none;
+                font-size: 11px;
+                color: black;
+                padding: 6px 10px;
+                border-radius: 10px;
+            }
+
+            .present_pw {
+                padding-left: 10px;
+                margin: 10px 0;
+
+                span {
+                    font-size: 12px;
+                    color: rgb(126, 125, 125);
+                    margin-right: 30px;
+                }
+
+                input {
+                    border: none;
+                    border: 1px solid #c29f23;
+                    font-family: sans-serif !important;
+                }
+            }
+
+            .new_pw {
+                padding-left: 10px;
+
+                span {
+                    font-size: 12px;
+                    color: rgb(126, 125, 125);
+                    margin-right: 19px;
+                }
+
+                input {
+                    border: none;
+                    border: 1px solid #c29f23;
+                    font-family: sans-serif !important;
+                }
+            }
         }
 
-    }
+        .profile_phone {
+            border-bottom: 6px solid #f6f5ef;
+            padding: 0 15px;
+            padding-bottom: 16px;
+            font-size: 14px;
 
-    .profile_thir {}
+            p:first-child {
+                margin-bottom: 6px;
+            }
+
+            p:nth-child(2) {
+                display: inline-block;
+                padding-left: 10px;
+                font-size: 11px;
+                margin: 0;
+            }
+
+            button {
+                margin-left: 71px;
+                background-color: white;
+                border: none;
+                outline: none;
+                font-size: 11px;
+                color: black;
+                padding: 6px 10px;
+                border-radius: 10px;
+            }
+
+            .present_phone {
+                padding-left: 10px;
+                margin: 10px 0;
+
+                span {
+                    font-size: 12px;
+                    color: rgb(126, 125, 125);
+                    margin-right: 20px;
+                }
+
+                input {
+                    border: none;
+                    border: 1px solid #c29f23;
+                    font-family: sans-serif !important;
+                }
+            }
+
+            .new_phone {
+                padding-left: 10px;
+
+                span {
+                    font-size: 12px;
+                    color: rgb(126, 125, 125);
+                    margin-right: 10px;
+                }
+
+                input {
+                    border: none;
+                    border: 1px solid #c29f23;
+                    font-family: sans-serif !important;
+                }
+            }
+        }
+
+        .profile_thir {
+            padding: 16px 15px;
+            font-size: 14px;
+
+            p:first-child {
+                margin-bottom: 5px;
+                margin-top: 0;
+            }
+
+            p:nth-child(2) {
+                font-size: 10px;
+                color: rgb(126, 125, 125);
+                margin-left: 15px;
+            }
+        }
+
+        .agree_radio {
+            padding-left: 15px;
+            display: flex;
+            margin-top: 10px;
+
+            span:last-child {
+                margin-left: -20px;
+                font-size: 14px;
+            }
+        }
+
+        .leave {
+            button {
+                background-color: white;
+                border: none;
+                outline: 0;
+                font-size: 11px;
+                float: right;
+                // color: grey;
+            }
+        }
+    }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./Main.scss";
 import FixedFooter from "Components/FixedFooter";
 import { Link } from "react-router-dom";
+import { RKXHSKZMS } from "Config/Config.js";
 import Header from "Components/Header";
 
 const textArr = [
@@ -43,6 +44,22 @@ class Main extends React.Component {
   componentDidMount() {
     this.getText(textArr);
   }
+
+  logout = () => {
+    localStorage.removeItem(RKXHSKZMS);
+    localStorage.removeItem("email");
+    localStorage.removeItem("name");
+  };
+
+  goMypage = () => {
+    if (localStorage.getItem("email")) {
+      this.props.history.push({
+        pathname: "/mypage"
+      });
+    } else {
+      alert("일반 회원가입을 해주세요.");
+    }
+  };
 
   render() {
     return (
@@ -86,8 +103,25 @@ class Main extends React.Component {
           </div>
 
           <div className="main_login_btn_box">
-            <div className="main_login_btn">회원가입</div>
-            <div className="main_login_btn">로그인</div>
+            {!localStorage.getItem(RKXHSKZMS) ? (
+              <div>
+                <Link to="./signup" className="main_login_btn">
+                  회원가입
+                </Link>
+                <Link to="./login" className="main_login_btn">
+                  로그인
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link onClick={this.goMypage} className="main_login_btn">
+                  마이페이지
+                </Link>
+                <Link onClick={this.logout} className="main_login_btn">
+                  로그아웃
+                </Link>
+              </div>
+            )}
           </div>
         </div>
         <div className="main_coffee_background_img">

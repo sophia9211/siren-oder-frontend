@@ -51,8 +51,9 @@
   }
   p {
     color: #4e4d4d;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 50px;
+    white-space: nowrap;
   }
 }
 
@@ -130,7 +131,7 @@
 }
 //media query
 @media #{$ipad} {
-  .wrap_login_admin_info {
-    margin-left: 30px;
+  .wrap_logo_information_text {
+    padding: 20px;
   }
 }

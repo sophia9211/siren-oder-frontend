@@ -3,15 +3,19 @@
 a {
   color: white;
 }
+
 .none {
   display: none;
 }
+
 .padding {
   padding: 20px 0;
 }
+
 .pad_none {
   padding: 0;
 }
+
 div.main_background_img {
   display: flex;
   width: 100%;
@@ -23,10 +27,12 @@ div.main_background_img {
   margin: 0;
   padding: 0;
 }
+
 @keyframes fadeOn {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -44,6 +50,7 @@ div.main_background_img {
   background-size: 100%;
   animation: fadeOn 2s;
 }
+
 @keyframes textHideOn {
   0% {
     // height: 18px;
@@ -52,10 +59,12 @@ div.main_background_img {
   50% {
     top: 0px;
   }
+
   100% {
     top: 0px;
   }
 }
+
 .main_login_box {
   margin: 0;
   width: 100%;
@@ -97,6 +106,7 @@ div.main_background_img {
       animation: textHideOn 3s ease-in-out;
     }
   }
+
   .main_login_btn_box {
     display: flex;
     width: 28%;
@@ -129,6 +139,7 @@ div.main_background_img {
     left: 0;
     opacity: 0;
   }
+
   100% {
     left: 20%;
     opacity: 1;
@@ -154,33 +165,15 @@ div.main_background_img {
     opacity: 1;
   }
 }
+
 @keyframes rightSideOn {
   0% {
     right: 0;
     opacity: 0;
   }
+
   100% {
     right: 20%;
-    opacity: 1;
-  }
-}
-@keyframes rightSideOn_sub {
-  0% {
-    right: 0;
-    opacity: 0;
-  }
-  100% {
-    right: 10%;
-    opacity: 1;
-  }
-}
-@keyframes rightSideOn_third {
-  0% {
-    right: 20%;
-    opacity: 0;
-  }
-  100% {
-    right: 55%;
     opacity: 1;
   }
 }
@@ -215,6 +208,7 @@ div.main_background_img {
       width: 200px;
     }
   }
+
   .main_coffee_text_img_box {
     position: absolute;
     right: 20%;
@@ -246,6 +240,7 @@ div.main_background_img {
         height: 100px;
       }
     }
+
     .main_coffee_sub_text_img {
       position: absolute;
       width: 450px;
@@ -259,6 +254,7 @@ div.main_background_img {
         display: none;
       }
     }
+
     .main_meun_btn {
       position: absolute;
       text-align: center;
@@ -286,6 +282,7 @@ div.main_background_img {
     color: white;
     background-color: #333333;
   }
+
   .main_history_btn {
     float: right;
     text-align: center;
@@ -295,10 +292,12 @@ div.main_background_img {
     margin: 20px 0;
     font-size: 2rem;
     font-family: $homefont;
+
     @media only screen and (max-width: 1100px) {
       font-size: 1.5rem;
       padding: 12px 0;
     }
+
     //   border: 1px solid black;
   }
 }
