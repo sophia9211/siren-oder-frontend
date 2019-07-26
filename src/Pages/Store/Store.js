@@ -15,41 +15,6 @@ class Store extends Component {
   };
 
   componentDidMount = async () => {
-    const data = [
-      // { name: "강남 1호점", address: "서울시 강남구 강남역 9번출구" },
-      {
-        id: 12,
-        name: "아메리카노",
-        english_name: "americano",
-        price: 4000,
-        size: "Tall",
-        cup: "개인컵",
-        ICED: "ICED",
-        count: 1
-      },
-      {
-        id: 13,
-        name: "카푸치노",
-        english_name: "capuchino",
-        price: 5000,
-        size: "granse",
-        cup: "일회용",
-        ICED: "HOT",
-        count: 2
-      },
-      {
-        id: 17,
-        name: "아이스티",
-        english_name: "ice tea",
-        price: 3000,
-        size: "venti",
-        cup: "머그컵",
-        ICED: "ICED",
-        count: 1
-      }
-    ];
-    localStorage.setItem("cart", JSON.stringify(data));
-
     this.getCity();
 
     var mapContainer = document.getElementById("map"), // 지도의 중심좌표

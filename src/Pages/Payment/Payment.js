@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import HeaderDetail from "Components/Header/HeaderDetail";
 import RadioButton from "Components/RadioButton";
 import CheckboxCustom from "Components/Checkbox/CheckboxCustom";
+import numberWithCommas from "Util/numberWithCommas";
 import ArrowDiv from "Components/ArrowDiv";
 import "./Payment.scss";
+import { RKXHSKZMS } from "Config/Config.js";
+import { post } from "Utils/api.js";
 
 class Payment extends Component {
   state = {
@@ -16,11 +19,24 @@ class Payment extends Component {
     let arr = date.split(" ");
     let arr1 = arr[3] + " " + arr[1] + " " + arr[2] + " " + arr[4];
     console.log(arr1);
-    return arr1;
+
+    post({
+      path: "order/cart",
+      body: { email: "guest@test.com", password: "123456" }
+    }).then(res => {
+      if (res.data.access_token) {
+        localStorage.setItem(RKXHSKZMS, res.data.access_token);
+        this.props.history.push({
+          pathname: "/"
+        });
+        alert("Guset로 로그인하셨습니다.");
+      }
+    });
   };
 
   render() {
-    const menu = JSON.parse(localStorage.getItem("cart"));
+    const menu = JSON.parse(localStorage.getItem("data"));
+    const stores = JSON.parse(localStorage.getItem("stores"));
     let total_price = 0;
     menu.forEach(el => {
       total_price += el.price * el.count;
@@ -31,8 +47,8 @@ class Payment extends Component {
         <div className="payment_lists">
           <div className="payment_title">주문 매장</div>
           <div className="payment_store">
-            <p>강남 1호점</p>
-            <p>서울시 강남구 대치동</p>
+            <p>{stores.name}</p>
+            <p>{stores.address}</p>
           </div>
 
           <div className="payment_title">주문 옵션</div>
@@ -71,9 +87,9 @@ class Payment extends Component {
                   </div>
                   <div className="menu_lists_sec">
                     <span className="menu_lists_thir">
-                      {ele.count}개 / {ele.ICED} / {ele.size} / {ele.cup}
+                      {ele.count}개 {ele.size} {ele.cup_type}
                     </span>
-                    <span>{ele.price * ele.count}원</span>
+                    <span>{numberWithCommas(ele.price * ele.count)}원</span>
                   </div>
                 </li>
               );
@@ -82,7 +98,7 @@ class Payment extends Component {
           <div className="payment_count">
             <div className="payment_count_fir">
               <span>총 주문 금액</span>
-              <span>{total_price}원</span>
+              <span>{numberWithCommas(total_price)}원</span>
             </div>
 
             <div className="payment_count_sec">
@@ -92,7 +108,7 @@ class Payment extends Component {
 
             <div className="payment_count_thir">
               <span>최종 결제 금액</span>
-              <span>{total_price}원</span>
+              <span>{numberWithCommas(total_price)}원</span>
             </div>
           </div>
           <div className="payment_btn_bg">

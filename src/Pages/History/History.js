@@ -4,18 +4,19 @@ import "./History.scss";
 
 class History extends Component {
   render() {
-    const menu = JSON.parse(localStorage.getItem("cart"));
+    const menu = JSON.parse(localStorage.getItem("data"));
     return (
-      <div>
+      <div className="history">
         <HeaderDetail>히스토리</HeaderDetail>
-        <div className="history">
+        <div>
           <div className="history_title">회원님의 주문 목록입니다.</div>
           <ul>
             {menu.map(ele => {
+              console.log(ele);
               return (
                 <li className="history_lists">
                   <div className="history_img">
-                    <img />
+                    <img src={ele.img_url} alt="img" />
                   </div>
                   <div className="history_text">
                     <div>{ele.name}</div>

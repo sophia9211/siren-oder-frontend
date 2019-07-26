@@ -1,3 +1,5 @@
+@import "Style/config.scss";
+
 .store_modal {
     background: rgba(0, 0, 0, 0.25);
     position: fixed;
@@ -18,6 +20,31 @@
         background: white;
         width: 80%;
         padding: 15px;
+
+        max-width: 500px;
+
+        .modal_img {
+            @media #{$phone} {
+                margin: 0 auto;
+                width: 150px;
+                // margin-top: 100px;
+                // border: 1px solid rgb(196, 194, 194);
+            }
+
+            @media #{$desktop} {
+                margin: 0 auto;
+                width: 200px;
+                // margin-top: 100px;
+                // border: 1px solid rgb(196, 194, 194);
+            }
+
+            width: 100px;
+            margin: 0 auto;
+
+            img {
+                width: 100%;
+            }
+        }
 
         p:first-child {
             text-align: center;
@@ -55,10 +82,16 @@
         }
 
         div:last-child {
+            margin: 0 auto;
+            // width: 100%;
+            display: flex;
+
+            justify-content: space-between;
 
             button {
-                width: 45%;
-                margin-right: 22px;
+                flex: 4.5;
+                // width: 50%;
+                // margin-right: 5%;
                 border: none;
                 background-color: rgb(233, 214, 196);
                 color: rgb(107, 79, 6);
@@ -66,7 +99,12 @@
                 outline: none;
             }
 
+            div:nth-child(2) {
+                flex: 1;
+            }
+
             button:last-child {
+                flex: 4.5;
                 margin-right: 0;
                 color: white;
                 background-color: darkgoldenrod;

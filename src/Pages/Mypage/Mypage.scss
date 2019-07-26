@@ -2,7 +2,7 @@
 
 .mypage {
     min-width: 320px;
-    max-width: 450px;
+    max-width: 600px;
 
     @media #{$smPhone} {
         margin: 0 auto;
@@ -10,14 +10,10 @@
 
     @media #{$phone} {
         margin: 0 auto;
-        margin-top: 100px;
-        border: 1px solid rgb(196, 194, 194);
     }
 
     @media #{$desktop} {
         margin: 0 auto;
-        margin-top: 100px;
-        border: 1px solid rgb(196, 194, 194);
     }
 
     .mypage_container {
