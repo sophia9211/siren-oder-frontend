@@ -17,6 +17,8 @@ class DetailMenu extends React.Component {
     english_name: "",
     price: 0,
     count: 1,
+    cup_type: "",
+    size: "",
     id: this.props.location.state.id,
     menu: this.props.location.state.menu,
     img_url: this.props.location.state.img_url
@@ -66,23 +68,32 @@ class DetailMenu extends React.Component {
   handleCreate = data => {
     if (data === "short") {
       this.setState({
-        price: this.state.data.short_price
+        price: this.state.data.short_price,
+        size: data
       });
     } else if (data === "tall") {
       this.setState({
-        price: this.state.data.tall_price
+        price: this.state.data.tall_price,
+        size: data
       });
     } else if (data === "grande") {
       this.setState({
-        price: this.state.data.grande_price
+        price: this.state.data.grande_price,
+        size: data
       });
     } else if (data === "venti") {
       this.setState({
-        price: this.state.data.venti_price
+        price: this.state.data.venti_price,
+        size: data
       });
     }
   };
 
+  cupValueCheck = data => {
+    this.setState({
+      cup_type: data
+    });
+  };
   // fillterRender = data => {
   //   let newData = [];
   //   if (data.short_price < 0) {
@@ -110,7 +121,9 @@ class DetailMenu extends React.Component {
       english_name: this.state.english_name,
       price: this.state.price,
       count: this.state.count,
-      img_url: this.state.img_url
+      img_url: this.state.img_url,
+      cup_type: this.state.cup_type,
+      size: this.state.size
 
       // size: size,
       // cup_type: cup_type
@@ -141,7 +154,14 @@ class DetailMenu extends React.Component {
           text={this.state.condition}
         />
         <div className="detail_sub_box">
-          <CupPickContainBox />
+          <CupPickContainBox
+            style={
+              this.state.menu !== "drink"
+                ? { display: "none" }
+                : { display: "block" }
+            }
+            onCreate={this.cupValueCheck}
+          />
 
           <SizeSelectBox
             item={[
@@ -152,11 +172,17 @@ class DetailMenu extends React.Component {
             ]}
             data={this.state.data}
             onCreate={this.handleCreate}
+            style={
+              this.state.menu !== "drink"
+                ? { display: "none" }
+                : { display: "block" }
+            }
           />
           <div className="menu_order_box">
             <div className="menu_order_btn" onClick={this.orderClick}>
               주문하기
             </div>
+
             <div className="menu_shopping_cart_" onClick={this.orderClick}>
               담기
             </div>
