@@ -17,32 +17,41 @@ class Login extends Component {
     post({
       path: "account/login",
       body: { email: this.state.email, password: this.state.password }
-    }).then(data => {
-      console.log(data);
-      if (data.error_code === "EMAIL_NOT_FOUND") {
-        this.setState({
-          email_text: "존재하지 않는 이메일입니다."
-        });
-      } else if (data.access_token) {
-        localStorage.setItem(RKXHSKZMS, data.access_token);
-        console.log(data.access_token);
+    }).then(res => {
+      console.log(res.data);
+      if (res.data.message === "INVALID_EMAIL") {
+        alert("존재하지 않는 이메일입니다.");
+      } else if (res.data.access_token) {
+        localStorage.setItem(RKXHSKZMS, res.data.access_token);
+        localStorage.setItem("email", res.data.email);
+        localStorage.setItem("name", res.data.user_name);
         this.props.history.push({
           pathname: "/"
         });
-        alert("스타벅스에 오신 것을 환영합니다.");
+        alert("이제 맛있는 음료와 음식을 주문해주세요!");
+      } else {
+        alert("비밀번호를 확인해주세요.");
       }
-      //  else {
-      //   this.setState({
-      //     pw_text: "이메일 및 비밀번호를 확인해주세요."
-      //   });
-      // }
     });
   };
 
   fillLogin = e => {
-    console.log(1);
     this.setState({
       [e.target.name]: e.target.value
+    });
+  };
+  guestLogin = () => {
+    post({
+      path: "account/login",
+      body: { email: "guest@test.com", password: "123456" }
+    }).then(res => {
+      if (res.data.access_token) {
+        localStorage.setItem(RKXHSKZMS, res.data.access_token);
+        this.props.history.push({
+          pathname: "/"
+        });
+        alert("Guset로 로그인하셨습니다.");
+      }
     });
   };
 
@@ -82,8 +91,11 @@ class Login extends Component {
               change={this.fillLogin}
             />
           </div>
-          <div className="login_link">
+          <div className="signup_link">
             <Link to="/signup">회원가입</Link>
+          </div>
+          <div className="guest_login">
+            <button onClick={this.guestLogin}>Guest로 로그인</button>
           </div>
         </div>
         {this.state.email && this.state.password ? (

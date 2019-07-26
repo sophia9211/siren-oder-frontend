@@ -15,6 +15,41 @@ class Store extends Component {
   };
 
   componentDidMount = async () => {
+    const data = [
+      // { name: "강남 1호점", address: "서울시 강남구 강남역 9번출구" },
+      {
+        id: 12,
+        name: "아메리카노",
+        english_name: "americano",
+        price: 4000,
+        size: "Tall",
+        cup: "개인컵",
+        ICED: "ICED",
+        count: 1
+      },
+      {
+        id: 13,
+        name: "카푸치노",
+        english_name: "capuchino",
+        price: 5000,
+        size: "granse",
+        cup: "일회용",
+        ICED: "HOT",
+        count: 2
+      },
+      {
+        id: 17,
+        name: "아이스티",
+        english_name: "ice tea",
+        price: 3000,
+        size: "venti",
+        cup: "머그컵",
+        ICED: "ICED",
+        count: 1
+      }
+    ];
+    localStorage.setItem("cart", JSON.stringify(data));
+
     this.getCity();
 
     var mapContainer = document.getElementById("map"), // 지도의 중심좌표
@@ -102,7 +137,10 @@ class Store extends Component {
             "        </div>" +
             '        <div class="body">' +
             '            <div class="img">' +
-            '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+            '                <img src="' +
+            markerInfo.img_url +
+            '"' +
+            'width="73" height="70">' +
             "           </div>" +
             '            <div class="desc">' +
             '                <div class="ellipsis">' +
@@ -221,7 +259,7 @@ class Store extends Component {
   render() {
     return (
       <div className="store">
-        <HeaderDetail link="/">매장 검색</HeaderDetail>
+        <HeaderDetail>매장 검색</HeaderDetail>
         <div className="select_wraper">
           <SelectBox
             selectName="cityNum"
@@ -254,7 +292,7 @@ class Store extends Component {
                 >
                   <div className="store_container">
                     <div className="store_img">
-                      {/* <img src={ele.} alt="매장이미지" /> */}
+                      <img src={ele.img_url} alt="매장이미지" />
                     </div>
                     <div className="store_flex">
                       <h4>{ele.name}</h4>
@@ -270,25 +308,15 @@ class Store extends Component {
                 </li>
               );
             })}
-          {/* <li onClick={this.handleOpenModal}>123</li>
-          {this.state.modal && (
-            <StorePortal>
-              <StoreModal
-                onClick={this.handleCloseModal}
-                // name={ele.name}
-                // address={ele.address}
-                // img={ele.img}
-              />
-            </StorePortal>
-          )} */}
         </ul>
         {this.state.modal && (
           <StorePortal>
             <StoreModal
               onClick={this.handleCloseModal}
+              id={this.state.modalInfo.id}
               name={this.state.modalInfo.name}
               address={this.state.modalInfo.address}
-              // img={ele.img}
+              img={this.state.modalInfo.img_url}
             />
           </StorePortal>
         )}
